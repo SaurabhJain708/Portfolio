@@ -145,7 +145,7 @@ const DATA = {
 
 const BlueprintGrid = () => (
   <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-size-[40px_40px]" />
     <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,transparent_0%,#020617_80%)" />
   </div>
 );
@@ -169,7 +169,7 @@ const Avatar = () => {
       />
       
       {/* Avatar container */}
-      <div className="relative rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-gradient-to-br from-blue-600/20 to-indigo-600/20 backdrop-blur-sm">
+      <div className="relative rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-linear-to-br from-blue-600/20 to-indigo-600/20 backdrop-blur-sm">
         <div className="aspect-square w-full relative">
           {/* Glitch layers */}
           <div className="absolute inset-0 z-20 glitch-layer glitch-layer-1 pointer-events-none rounded-full overflow-hidden">
@@ -203,7 +203,7 @@ const Avatar = () => {
           />
           
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10" />
           
           {/* Status indicator */}
           <div className="absolute bottom-4 right-4 z-30">
@@ -283,9 +283,9 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
       </div>
       <div className="space-y-2 sm:space-y-3">
         {exp.highlights.map((h: ExperienceHighlight, i: number) => (
-          <div key={i} className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all cursor-pointer">
+          <div key={i} className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/2 border border-white/5 hover:border-blue-500/30 transition-all cursor-pointer">
             <h4 className="text-white text-xs sm:text-sm font-bold flex items-center gap-2 mb-1">
-              <ChevronRight className="w-3 h-3 text-blue-500 flex-shrink-0" /> <span>{h.title}</span>
+              <ChevronRight className="w-3 h-3 text-blue-500 shrink-0" /> <span>{h.title}</span>
             </h4>
             <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed">{h.desc}</p>
           </div>
@@ -305,7 +305,7 @@ const App = () => {
       <BlueprintGrid />
       
       {/* Scroll Progress */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-[100] origin-left" style={{ scaleX }} />
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-100 origin-left" style={{ scaleX }} />
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/5">
@@ -411,11 +411,11 @@ const App = () => {
             <div className="space-y-4 sm:space-y-6 relative">
               <Avatar />
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="p-4 sm:p-6 bg-white/[0.02] border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 transition-all cursor-pointer">
+                <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 transition-all cursor-pointer">
                   <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-blue-500 transition-colors">90%</div>
                   <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">RAG Accuracy</div>
                 </div>
-                <div className="p-4 sm:p-6 bg-white/[0.02] border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 transition-all cursor-pointer">
+                <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 transition-all cursor-pointer">
                   <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-emerald-500 transition-colors">0%</div>
                   <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">Migration Downtime</div>
                 </div>
@@ -426,7 +426,7 @@ const App = () => {
       </header>
 
       {/* OSS Highlight Section */}
-      <section id="oss" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/[0.02] relative overflow-hidden">
+      <section id="oss" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/2 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
@@ -454,7 +454,7 @@ const App = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-6 sm:p-8 bg-white/[0.02] border border-white/5 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/[0.05] hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
+                className="group p-6 sm:p-8 bg-white/2 border border-white/5 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/5 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
                    <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
@@ -494,7 +494,7 @@ const App = () => {
       </section>
 
       {/* Technical Domain Section - REDESIGNED */}
-      <section id="stack" className="py-16 sm:py-24 md:py-32 bg-white/[0.01] relative">
+      <section id="stack" className="py-16 sm:py-24 md:py-32 bg-white/1 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">Technical <span className="text-blue-500">Domains</span></h2>
@@ -512,7 +512,7 @@ const App = () => {
                 className="group relative h-full"
               >
                 {/* Hardware Aesthetic Card */}
-                <div className="h-full p-8 bg-[#0a0f1e] border border-white/10 rounded-[2rem] overflow-hidden flex flex-col transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/[0.02] relative cursor-pointer">
+                <div className="h-full p-8 bg-[#0a0f1e] border border-white/10 rounded-4xl overflow-hidden flex flex-col transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/2 relative cursor-pointer">
                   
                   {/* Scanning Effect */}
                   <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-scan-x z-10" />
@@ -584,8 +584,8 @@ const App = () => {
           <div className="grid lg:grid-cols-1 gap-8">
             {/* Stack Vault */}
             <div className="group relative p-1">
-              <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 rounded-[2rem] opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
-              <div className="relative h-full bg-[#0a0f1e] border border-white/10 rounded-xl sm:rounded-2xl md:rounded-[2rem] p-6 sm:p-8 md:p-12 overflow-hidden">
+              <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 rounded-4xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
+              <div className="relative h-full bg-[#0a0f1e] border border-white/10 rounded-xl sm:rounded-2xl md:rounded-4xl p-6 sm:p-8 md:p-12 overflow-hidden">
                 <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
