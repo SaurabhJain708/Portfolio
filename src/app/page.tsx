@@ -3,9 +3,9 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useSpring, useInView } from 'framer-motion';
 import { 
-  Github, Linkedin, Terminal, Zap, ArrowRight, 
+  Github, Linkedin, Terminal, Zap, 
   ChevronRight, GitBranch, Menu, X, ExternalLink,
-  Cpu as CpuIcon, Workflow, HardDrive, Layout, Activity
+  Cpu as CpuIcon, Workflow, HardDrive, Layout, Activity, Download
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -150,10 +150,54 @@ const BlueprintGrid = () => (
   </div>
 );
 
+const HackerGlitch = () => {
+  const characters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+  
+  // Generate random values once using useState
+  const [glitchData] = useState(() => {
+    return Array.from({ length: 60 }).map(() => ({
+      char: characters[Math.floor(Math.random() * characters.length)],
+      left: `${3 + Math.random() * 94}%`,
+      delay: Math.random() * 10,
+      duration: 4 + Math.random() * 4,
+      repeatDelay: Math.random() * 3,
+    }));
+  });
+  
+  return (
+    <div className="absolute inset-0 z-25 pointer-events-none" style={{ overflow: 'visible' }}>
+      {glitchData.map((data, i) => (
+        <motion.div
+          key={i}
+          className="hacker-char absolute font-mono text-[9px] sm:text-[10px] text-emerald-300 font-bold whitespace-nowrap"
+          style={{ 
+            left: data.left,
+            opacity: 0.95,
+          }}
+          initial={{ y: -30, opacity: 0 }}
+          animate={{
+            y: 600,
+            opacity: [0, 0.8, 1, 0.95, 0.7, 0.4, 0],
+          }}
+          transition={{
+            duration: data.duration,
+            delay: data.delay,
+            repeat: Infinity,
+            repeatDelay: data.repeatDelay,
+            ease: 'linear',
+          }}
+        >
+          {data.char}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
 const Avatar = () => {
   return (
     <motion.div 
-      className="relative w-full max-w-md mx-auto"
+      className="relative w-full max-w-md lg:max-w-xl xl:max-w-lg 2xl:max-w-xl mx-auto"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
@@ -170,9 +214,9 @@ const Avatar = () => {
       
       {/* Avatar container */}
       <div className="relative rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-linear-to-br from-blue-600/20 to-indigo-600/20 backdrop-blur-sm">
-        <div className="aspect-square w-full relative">
-          {/* Glitch layers */}
-          <div className="absolute inset-0 z-20 glitch-layer glitch-layer-1 pointer-events-none rounded-full overflow-hidden">
+        <div className="aspect-square w-full relative glitch-container">
+          {/* RGB Glitch Layers - Subtle Chromatic Aberration */}
+          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-red pointer-events-none rounded-full overflow-hidden">
             <Image
               src="/avatar.png"
               alt=""
@@ -182,7 +226,17 @@ const Avatar = () => {
               aria-hidden="true"
             />
           </div>
-          <div className="absolute inset-0 z-20 glitch-layer glitch-layer-2 pointer-events-none rounded-full overflow-hidden">
+          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-green pointer-events-none rounded-full overflow-hidden">
+            <Image
+              src="/avatar.png"
+              alt=""
+              fill
+              className="object-cover rounded-full"
+              priority
+              aria-hidden="true"
+            />
+          </div>
+          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-blue pointer-events-none rounded-full overflow-hidden">
             <Image
               src="/avatar.png"
               alt=""
@@ -200,6 +254,24 @@ const Avatar = () => {
             fill
             className="object-cover transition-all duration-700 relative z-10"
             priority
+          />
+          
+          {/* Hacker-style glitch overlay */}
+          <div className="absolute inset-0 z-20 hacker-overlay rounded-full" style={{ overflow: 'visible' }}>
+            <HackerGlitch />
+          </div>
+          
+          {/* Scan line effect */}
+          <motion.div
+            className="absolute inset-0 z-21 hacker-scanline pointer-events-none"
+            animate={{
+              y: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
           />
           
           {/* Overlay gradient */}
@@ -301,7 +373,7 @@ const App = () => {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <div className="bg-[#020617] text-gray-300 min-h-screen font-sans selection:bg-blue-500/30">
+    <div className="bg-[#020617] text-gray-300 min-h-screen font-sans selection:bg-blue-500/30 overflow-x-hidden">
       <BlueprintGrid />
       
       {/* Scroll Progress */}
@@ -326,48 +398,70 @@ const App = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             <a 
               href={`mailto:${DATA.contact.email}`}
-              className="hidden sm:block px-4 sm:px-6 py-2 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
+              className="hidden sm:flex items-center gap-2 px-4 sm:px-6 py-2 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
             >
-              Contact
+              <Download className="w-3 h-3 sm:w-4 sm:h-4" />
+              Download Resume
             </a>
             <button 
               onClick={() => setMobileMenu(!mobileMenu)}
-              className="md:hidden p-2 text-white cursor-pointer"
+              className="md:hidden p-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30 transition-all cursor-pointer"
             >
-              {mobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenu ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
             </button>
           </div>
         </div>
         
         {/* Mobile Menu */}
         {mobileMenu && (
-          <div className="md:hidden bg-[#020617]/95 backdrop-blur-xl border-t border-white/5 px-4 py-4">
-            <div className="flex flex-col gap-4">
-              {["OSS", "Experience", "Products", "Stack"].map(item => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setMobileMenu(false)}
-                  className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-blue-400 transition-colors cursor-pointer py-2"
-                >
-                  {item}
-                </a>
-              ))}
-              <a 
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#020617]/98 backdrop-blur-2xl border-t border-white/10 shadow-2xl"
+          >
+            <div className="px-4 py-6 space-y-3">
+              <div className="mb-4 pb-4 border-b border-white/10">
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 mb-3">NAVIGATION</p>
+                {["OSS", "Experience", "Products", "Stack"].map((item, index) => (
+                  <motion.a 
+                    key={item} 
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setMobileMenu(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-center gap-3 py-3.5 px-4 rounded-xl bg-white/2 border border-white/5 hover:bg-white/5 hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-pointer group"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-blue-500 transition-colors" />
+                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 group-hover:text-blue-400 transition-colors">
+                      {item}
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-blue-500 ml-auto transition-colors" />
+                  </motion.a>
+                ))}
+              </div>
+              
+              <motion.a 
                 href={`mailto:${DATA.contact.email}`}
                 onClick={() => setMobileMenu(false)}
-                className="px-6 py-3 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer text-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-center justify-center gap-2 px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all cursor-pointer shadow-lg shadow-blue-500/20 active:scale-95"
               >
-                Contact
-              </a>
+                <Download className="w-4 h-4" />
+                <span>Download Resume</span>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         )}
       </nav>
 
       {/* Hero Section */}
       <header className="relative pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-24 md:pb-32 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_0.8fr] gap-8 sm:gap-12 md:gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] xl:grid-cols-[1.1fr_1fr] gap-8 sm:gap-12 md:gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -377,18 +471,19 @@ const App = () => {
               <span className="hidden sm:inline">Operational in Production Environment</span>
               <span className="sm:hidden">Production Ready</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-white tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 uppercase">
               Engineer <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">Intelligent</span><br />
               Infrastructure
             </h1>
-            <p className="text-base sm:text-lg text-gray-400 max-w-xl mb-8 sm:mb-12 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg lg:text-base xl:text-lg text-gray-400 max-w-xl mb-8 sm:mb-12 leading-relaxed font-medium">
               Bridging the gap between <span className="text-white">robust backend systems</span> and <span className="text-white">agentic AI workflows</span>. Specializing in RAG optimization and zero-downtime engineering.
             </p>
             
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <button className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer">
-                Contact <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                <Download className="w-3 h-3 sm:w-4 sm:h-4" />
+                Download Resume
               </button>
               <div className="flex gap-2">
                 <a href={`https://github.com/${DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer">
@@ -680,172 +775,283 @@ const App = () => {
           animation: scan-x 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        @keyframes glitch-cyber-1 {
-          0%, 90%, 100% {
-            transform: translate(0);
-            opacity: 0;
-            filter: hue-rotate(0deg);
+        @keyframes subtle-glitch {
+          0%, 100% {
+            filter: brightness(1) contrast(1) saturate(1);
           }
-          2% {
-            transform: translate(2px, -2px);
-            opacity: 1;
-            filter: hue-rotate(180deg) saturate(2);
-            clip-path: inset(0 0 98% 0);
+          10% {
+            filter: brightness(1.05) contrast(1.08) saturate(1.1);
           }
-          4% {
-            transform: translate(-2px, 2px);
-            opacity: 0;
-            clip-path: inset(98% 0 0 0);
+          20% {
+            filter: brightness(0.98) contrast(1.05) saturate(1.05);
           }
-          12% {
-            transform: translate(0, -4px);
-            opacity: 1;
-            filter: hue-rotate(120deg) saturate(1.8);
-            clip-path: inset(15% 0 80% 0);
-          }
-          14% {
-            transform: translate(0);
-            opacity: 0;
-          }
-          48% {
-            transform: translate(-3px, 0);
-            opacity: 1;
-            filter: hue-rotate(240deg) saturate(2.2);
-            clip-path: inset(45% 0 45% 0);
+          30% {
+            filter: brightness(1) contrast(1) saturate(1);
           }
           50% {
-            transform: translate(3px, 0);
-            opacity: 1;
-            clip-path: inset(45% 0 45% 0);
-          }
-          52% {
-            transform: translate(0);
-            opacity: 0;
-          }
-          68% {
-            transform: translate(0, 4px);
-            opacity: 1;
-            filter: hue-rotate(60deg) saturate(1.9);
-            clip-path: inset(70% 0 15% 0);
-          }
-          70% {
-            transform: translate(0);
-            opacity: 0;
-          }
-        }
-
-        @keyframes glitch-cyber-2 {
-          0%, 85%, 100% {
-            transform: translate(0);
-            opacity: 0;
-            filter: hue-rotate(0deg);
-          }
-          6% {
-            transform: translate(0, -3px);
-            opacity: 1;
-            filter: hue-rotate(300deg) saturate(2.1);
-            clip-path: inset(30% 0 60% 0);
-          }
-          8% {
-            transform: translate(0, 3px);
-            opacity: 0;
-            clip-path: inset(60% 0 30% 0);
-          }
-          22% {
-            transform: translate(4px, 0);
-            opacity: 1;
-            filter: hue-rotate(150deg) saturate(1.7);
-            clip-path: inset(0 0 92% 0);
-          }
-          24% {
-            transform: translate(-4px, 0);
-            opacity: 0;
-          }
-          42% {
-            transform: translate(-2px, -2px);
-            opacity: 1;
-            filter: hue-rotate(90deg) saturate(2.3);
-            clip-path: inset(25% 0 65% 0);
-          }
-          44% {
-            transform: translate(2px, 2px);
-            opacity: 0;
-          }
-          58% {
-            transform: translate(0, -2px);
-            opacity: 1;
-            filter: hue-rotate(210deg) saturate(2);
-            clip-path: inset(55% 0 35% 0);
+            filter: brightness(1.03) contrast(1.06) saturate(1.08);
           }
           60% {
-            transform: translate(0);
-            opacity: 0;
+            filter: brightness(0.99) contrast(1.03) saturate(1.03);
           }
-          76% {
-            transform: translate(3px, -3px);
-            opacity: 1;
-            filter: hue-rotate(30deg) saturate(1.8);
-            clip-path: inset(80% 0 10% 0);
-          }
-          78% {
-            transform: translate(0);
-            opacity: 0;
+          70% {
+            filter: brightness(1) contrast(1) saturate(1);
           }
         }
 
-        @keyframes glitch-scanline {
+        @keyframes rgb-shift {
           0%, 100% {
+            transform: translateX(0);
+          }
+          5% {
+            transform: translateX(-1px);
+          }
+          10% {
+            transform: translateX(1px);
+          }
+          15% {
+            transform: translateX(0);
+          }
+          35% {
+            transform: translateX(1px);
+          }
+          40% {
+            transform: translateX(-1px);
+          }
+          45% {
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes rgb-glitch-red {
+          0%, 100% {
+            transform: translateX(0);
             opacity: 0;
+          }
+          5% {
+            transform: translateX(-2px);
+            opacity: 0.6;
+          }
+          10% {
+            transform: translateX(1px);
+            opacity: 0.4;
+          }
+          15% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          45% {
+            transform: translateX(-1.5px);
+            opacity: 0.5;
           }
           50% {
-            opacity: 0.1;
+            transform: translateX(1.5px);
+            opacity: 0.5;
+          }
+          55% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          85% {
+            transform: translateX(-1px);
+            opacity: 0.4;
+          }
+          90% {
+            transform: translateX(1px);
+            opacity: 0.3;
+          }
+          95% {
+            transform: translateX(0);
+            opacity: 0;
           }
         }
 
-        .glitch-layer-1 {
-          animation: glitch-cyber-1 10s infinite;
+        @keyframes rgb-glitch-green {
+          0%, 100% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          7% {
+            transform: translateX(2px);
+            opacity: 0.5;
+          }
+          12% {
+            transform: translateX(-1px);
+            opacity: 0.3;
+          }
+          17% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          47% {
+            transform: translateX(1.5px);
+            opacity: 0.4;
+          }
+          52% {
+            transform: translateX(-1.5px);
+            opacity: 0.4;
+          }
+          57% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          87% {
+            transform: translateX(1px);
+            opacity: 0.3;
+          }
+          92% {
+            transform: translateX(-1px);
+            opacity: 0.25;
+          }
+          97% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+        }
+
+        @keyframes rgb-glitch-blue {
+          0%, 100% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          3% {
+            transform: translateX(-1.5px);
+            opacity: 0.55;
+          }
+          8% {
+            transform: translateX(2px);
+            opacity: 0.35;
+          }
+          13% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          43% {
+            transform: translateX(-1px);
+            opacity: 0.45;
+          }
+          48% {
+            transform: translateX(2px);
+            opacity: 0.45;
+          }
+          53% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          83% {
+            transform: translateX(-1.5px);
+            opacity: 0.35;
+          }
+          88% {
+            transform: translateX(1.5px);
+            opacity: 0.3;
+          }
+          93% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+        }
+
+        .rgb-glitch {
+          opacity: 0;
+        }
+
+        .rgb-glitch-red {
+          animation: rgb-glitch-red 12s infinite;
           mix-blend-mode: screen;
-          will-change: transform, opacity, filter;
         }
 
-        .glitch-layer-2 {
-          animation: glitch-cyber-2 7s infinite;
-          mix-blend-mode: difference;
-          will-change: transform, opacity, filter;
+        .rgb-glitch-green {
+          animation: rgb-glitch-green 12s infinite 0.15s;
+          mix-blend-mode: screen;
         }
 
-        .glitch-layer-1::after {
+        .rgb-glitch-blue {
+          animation: rgb-glitch-blue 12s infinite 0.3s;
+          mix-blend-mode: screen;
+        }
+
+        .rgb-glitch-red img {
+          filter: contrast(1.5) brightness(0.85) saturate(1.8);
+        }
+
+        .rgb-glitch-green img {
+          filter: contrast(1.4) brightness(0.9) saturate(1.6);
+        }
+
+        .rgb-glitch-blue img {
+          filter: contrast(1.3) brightness(1.1) saturate(1.4);
+        }
+
+        .glitch-container {
+          position: relative;
+          animation: subtle-glitch 20s infinite ease-in-out;
+        }
+
+        .glitch-container::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 15;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(16, 185, 129, 0.03) 25%,
+            transparent 50%,
+            rgba(59, 130, 246, 0.03) 75%,
+            transparent 100%
+          );
+          animation: rgb-shift 15s infinite;
+          pointer-events: none;
+          mix-blend-mode: screen;
+          opacity: 0.6;
+        }
+
+        .hacker-overlay {
+          background: radial-gradient(circle at center, transparent 30%, rgba(16, 185, 129, 0.02) 50%, rgba(16, 185, 129, 0.03) 70%, transparent 90%);
+          mix-blend-mode: screen;
+          opacity: 0.4;
+        }
+
+        .hacker-char {
+          text-shadow: 0 0 10px rgba(16, 185, 129, 1), 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.5);
+          filter: blur(0.3px);
+          font-weight: 900;
+          letter-spacing: 0.1em;
+          color: rgba(110, 231, 183, 1) !important;
+        }
+
+        .hacker-scanline {
+          background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 48%,
+            rgba(16, 185, 129, 0.15) 49%,
+            rgba(16, 185, 129, 0.15) 51%,
+            transparent 52%,
+            transparent 100%
+          );
+          height: 2px;
+          opacity: 0.4;
+          box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+          mix-blend-mode: screen;
+        }
+
+        .hacker-scanline::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #00ffff, transparent);
-          box-shadow: 0 0 8px #00ffff;
-          animation: glitch-scanline 3s infinite;
-          z-index: 30;
-        }
-
-        .glitch-layer-2::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #ff00ff, transparent);
-          box-shadow: 0 0 8px #ff00ff;
-          animation: glitch-scanline 2.5s infinite;
-          z-index: 30;
-        }
-
-        .glitch-layer-1 img {
-          filter: contrast(1.3) brightness(1.1);
-        }
-
-        .glitch-layer-2 img {
-          filter: contrast(1.2) brightness(0.95);
+          height: 100%;
+          background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(16, 185, 129, 0.03) 49.5%,
+            rgba(16, 185, 129, 0.06) 50%,
+            rgba(16, 185, 129, 0.03) 50.5%,
+            transparent 100%
+          );
         }
 
         h1, h2, h3, h4 {
