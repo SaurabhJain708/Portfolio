@@ -1,46 +1,88 @@
-'use client';
+"use client";
 
-import React, { useState, useRef } from 'react';
-import { motion, useScroll, useSpring, useInView } from 'framer-motion';
-import { 
-  Github, Linkedin, Terminal, Zap, 
-  ChevronRight, GitBranch, Menu, X, ExternalLink,
-  Cpu as CpuIcon, Workflow, HardDrive, Layout, Activity, Download
-} from 'lucide-react';
-import Image from 'next/image';
+import React, { useState, useRef } from "react";
+import { motion, useScroll, useSpring, useInView } from "framer-motion";
+import {
+  Github,
+  Linkedin,
+  Terminal,
+  Zap,
+  ChevronRight,
+  GitBranch,
+  Menu,
+  X,
+  ExternalLink,
+  Cpu as CpuIcon,
+  Workflow,
+  HardDrive,
+  Layout,
+  Activity,
+  Download,
+} from "lucide-react";
+import Image from "next/image";
 
 const DATA = {
   name: "Saurabh Jain",
   title: "Full-Stack AI Engineer | RAG & Infrastructure Architect",
   roles: ["RAG Architect", "Infrastructure Specialist", "Founding Engineer"],
-  summary: "High-impact Full Stack Engineer with deep expertise in AI infrastructure, RAG systems, and secure authentication. Proven track record of executing zero-downtime migrations and shipping complex production features for live clients in agency environments. Specialist in bridging traditional backend engineering (PostgreSQL, Redis) with cutting-edge AI tooling (MCP, Vercel AI SDK). Currently acting as a solo lead on high-stakes billing and analytics systems.",
+  summary:
+    "High-impact Full Stack Engineer with deep expertise in AI infrastructure, RAG systems, and secure authentication. Proven track record of executing zero-downtime migrations and shipping complex production features for live clients in agency environments. Specialist in bridging traditional backend engineering (PostgreSQL, Redis) with cutting-edge AI tooling (MCP, Vercel AI SDK). Currently acting as a solo lead on high-stakes billing and analytics systems.",
   contact: {
     email: "sauravjain.dev@gmail.com",
     github: "SaurabhJain708",
     linkedin: "saurabh-jain-226295320",
-    twitter: "_Saurav_Jain_"
+    twitter: "_Saurav_Jain_",
   },
   skills: {
     "AI & RAG": {
       id: "INTEL-01",
-      items: ["Vercel AI SDK", "MCP", "Vector DBs", "RAG Optimization", "LangChain", "Puppeteer (Automation)"],
-      color: "blue"
+      items: [
+        "Vercel AI SDK",
+        "MCP",
+        "Vector DBs",
+        "RAG Optimization",
+        "LangChain",
+        "Puppeteer (Automation)",
+      ],
+      color: "blue",
     },
-    "Frontend": {
+    Frontend: {
       id: "LAYER-02",
-      items: ["React", "Next.js 14+", "TypeScript", "Tailwind CSS", "Recharts", "Shadcn UI"],
-      color: "indigo"
+      items: [
+        "React",
+        "Next.js 14+",
+        "TypeScript",
+        "Tailwind CSS",
+        "Recharts",
+        "Shadcn UI",
+      ],
+      color: "indigo",
     },
-    "Backend": {
+    Backend: {
       id: "DATA-03",
-      items: ["Node.js", "tRPC", "PostgreSQL (Neon)", "Redis", "Better Auth", "NextAuth", "Zod"],
-      color: "emerald"
+      items: [
+        "Node.js",
+        "tRPC",
+        "PostgreSQL (Neon)",
+        "Redis",
+        "Better Auth",
+        "NextAuth",
+        "Zod",
+      ],
+      color: "emerald",
     },
     "DevOps & Tools": {
       id: "OPS-04",
-      items: ["Docker", "Kubernetes", "CI/CD (GitHub Actions)", "AWS", "E2B", "Bot Scaling"],
-      color: "orange"
-    }
+      items: [
+        "Docker",
+        "Kubernetes",
+        "CI/CD (GitHub Actions)",
+        "AWS",
+        "E2B",
+        "Bot Scaling",
+      ],
+      color: "orange",
+    },
   },
   experience: [
     {
@@ -51,25 +93,25 @@ const DATA = {
       highlights: [
         {
           title: "AI Infrastructure & RAG Optimization",
-          desc: "Engineered a multi-agent system with Dynamic Chain of Thought and Web Search tools using MCP. Improved RAG citation accuracy by 90% and data retrieval by 70% via complex vector DB logic and post-hoc processing."
+          desc: "Engineered a multi-agent system with Dynamic Chain of Thought and Web Search tools using MCP. Improved RAG citation accuracy by 90% and data retrieval by 70% via complex vector DB logic and post-hoc processing.",
         },
         {
           title: "Solo Lead (Billing & AI)",
-          desc: "Built complex billing infrastructure and shipped a full AI chat system with dynamic interactive charts (Vercel AI SDK, Recharts) in <2.5 weeks. Debugged critical production 'ghost migrations' with 100% reliability."
+          desc: "Built complex billing infrastructure and shipped a full AI chat system with dynamic interactive charts (Vercel AI SDK, Recharts) in <2.5 weeks. Debugged critical production 'ghost migrations' with 100% reliability.",
         },
         {
           title: "Critical Zero-Downtime Migration",
-          desc: "Executed a high-stakes migration from NextAuth to Better Auth for a live production app, resulting in 0% downtime and zero data loss."
+          desc: "Executed a high-stakes migration from NextAuth to Better Auth for a live production app, resulting in 0% downtime and zero data loss.",
         },
         {
           title: "Advanced Security & Infrastructure",
-          desc: "Refactored tRPC infra for security (zip-bomb protection, E2B sandboxing). Implemented 100% secure Redis-backed pagination for MCP, boosting client agent accuracy by 90%."
+          desc: "Refactored tRPC infra for security (zip-bomb protection, E2B sandboxing). Implemented 100% secure Redis-backed pagination for MCP, boosting client agent accuracy by 90%.",
         },
         {
           title: "High-Velocity Engineering",
-          desc: "Contributed to 3 production projects from Day 1 (zero onboarding). Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching."
-        }
-      ]
+          desc: "Contributed to 3 production projects from Day 1 (zero onboarding). Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching.",
+        },
+      ],
     },
     {
       company: "Freelance Client",
@@ -79,14 +121,14 @@ const DATA = {
       highlights: [
         {
           title: "Secure Containerized Web Application",
-          desc: "Delivered a secure, containerized (Docker) web application using Next.js and MongoDB."
+          desc: "Delivered a secure, containerized (Docker) web application using Next.js and MongoDB.",
         },
         {
           title: "Reusable Component Library",
-          desc: "Built a reusable UI component library and containerized the app to reduce deployment friction and ensure environment consistency."
-        }
-      ]
-    }
+          desc: "Built a reusable UI component library and containerized the app to reduce deployment friction and ensure environment consistency.",
+        },
+      ],
+    },
   ],
   products: [
     {
@@ -100,9 +142,9 @@ const DATA = {
         "Architected and launched a multi-tenant SaaS platform serving 50+ active users, featuring custom domain support (Vercel-style routing) and dynamic subdomains via Next.js Middleware.",
         "Integrated an AI Assistant to automate user support and enhance portfolio creation workflows.",
         "Implemented robust CI/CD pipelines using GitHub Actions for dev and prod branches, automating linting, testing, and builds to prevent regressions.",
-        "Enforced end-to-end type safety using Zod across all API endpoints and database schemas."
-      ]
-    }
+        "Enforced end-to-end type safety using Zod across all API endpoints and database schemas.",
+      ],
+    },
   ],
   openSource: [
     {
@@ -111,7 +153,7 @@ const DATA = {
       desc: "Merged 8+ PRs in a single month, working alongside core senior developers on high-priority tickets and received direct mentorship. Contributed a significant portion to the new calendar-based Kanban feature, implementing complex frontend logic and interactions.",
       impact: "8+ PRs Merged",
       link: "https://github.com/twentyhq/twenty",
-      tags: ["CRM", "Frontend", "Kanban"]
+      tags: ["CRM", "Frontend", "Kanban"],
     },
     {
       name: "Formbricks",
@@ -119,7 +161,7 @@ const DATA = {
       desc: "Integrated Vitest for type-safe unit testing and resolved critical UI formatting bugs affecting thousands of users.",
       impact: "Thousands Impacted",
       link: "https://github.com/formbricks/formbricks",
-      tags: ["Open Survey", "Vitest", "Typescript"]
+      tags: ["Open Survey", "Vitest", "Typescript"],
     },
     {
       name: "GPT Engineer",
@@ -127,18 +169,63 @@ const DATA = {
       desc: "Integrated Morph AI into the GPT Engineer codebase within a 3-hour sprint to enable 'Cursor-style' in-place file editing. Replaced full-file rewrites with diff-based editing, increasing agent accuracy by 60% and reducing generation costs.",
       impact: "High-Velocity MVP",
       link: "https://github.com/AntonOsika/gpt-engineer",
-      tags: ["AI Agent", "Morph AI", "Diffing"]
-    }
+      tags: ["AI Agent", "Morph AI", "Diffing"],
+    },
   ],
   education: {
     degree: "Bachelor of Science in Data Science",
     school: "Indian Institute of Technology, Madras",
-    period: "Expected Graduation: May 2029"
+    period: "Expected Graduation: May 2029",
   },
   certifications: [
     { name: "Docker Certification", issuer: "Docker, Inc.", year: "2025" },
-    { name: "GitHub Actions Workshop: CI/CD Pipelines", issuer: "Microsoft Press", year: "2025" }
-  ]
+    {
+      name: "GitHub Actions Workshop: CI/CD Pipelines",
+      issuer: "Microsoft Press",
+      year: "2025",
+    },
+  ],
+  recommendations: [
+    {
+      name: "Dev Dalia",
+      role: "Senior Software Engineer at Buildway.ai",
+      image: "/dev.jpeg",
+      linkedin: "https://linkedin.com/in/saurabh-jain-226295320",
+      text: `Saurabh is a powerhouse engineer. I supervised him on our most critical infrastructure sprints, and he operated with the autonomy and precision of a senior from Day 1.
+
+In his very first week, he executed a flawless zero-downtime migration of our authentication system (NextAuth to Better Auth) on a live production app. He didn't just 'contribute': he owned the entire execution.
+
+He went on to re-architect our AI pipeline, building a custom Redis-backed MCP pagination system that solved complex context limits and improved citation accuracy. He also proactively hardened security (tRPC refactor, zip-bomb protection) without needing oversight.
+
+Saurabh combines deep architectural insight with incredible speed. He is a 'fire-and-forget' engineer for high-stakes problems. Highly recommended.`,
+    },
+    {
+      name: "Suhotra Dey",
+      role: "Senior Software Engineer at Buildway.ai",
+      image: "/suhotra.jpeg",
+      linkedin: "https://linkedin.com/in/saurabh-jain-226295320",
+      text: `I've worked with many engineers, but Saurabh stands out for his speed and technical depth. He joined our team and immediately took ownership of our most critical infrastructure.
+
+He successfully migrated our entire authentication system to Better Auth with zero downtime in his first week. He then moved on to optimize our AI pipeline, refactoring the vector database logic to boost citation accuracy.
+
+Saurabh has a rare ability to blend 'speed' with 'security.' He shipped complex features like web-search tools (MCP) and secure file handling (zip-bomb protection) in single sprints while simultaneously refactoring our core tRPC codebase.
+
+He is a high-velocity builder who writes production-grade code. Highly recommended for any team building complex AI or data-intensive systems.`,
+    },
+    {
+      name: "Pradip Chaudhary",
+      role: "Product lead at Buildway.ai",
+      image: "/pradip.jpeg",
+      linkedin: "https://linkedin.com/in/saurabh-jain-226295320",
+      text: `I can't recommend Saurabh highly enough. I went on leave for a few weeks and handed him the keys to a critical sprint involving a live billing system refactor and a new AI analytics suite.
+
+Saurabh didn't just keep the lights on; he operated as a fully autonomous Lead Engineer. He shipped our entire Generative UI chat feature (using Vercel AI SDK, Postgres, and Recharts) and architected secure dynamic dashboards from scratch with zero onboarding.
+
+He also debugged critical production issues, including complex ghost migrations, resolving them with 100% reliability and no data loss.
+
+It's rare to find a developer who can step into a complex, high-traffic codebase, optimize performance (caching/tRPC), and ship production-grade features solo in just 2.5 weeks. Saurabh is a machine.`,
+    },
+  ],
 };
 
 // --- Components ---
@@ -150,27 +237,61 @@ const BlueprintGrid = () => (
   </div>
 );
 
+const HACKER_CHARACTERS = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+];
+
 const HackerGlitch = () => {
-  const characters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-  
-  // Generate random values once using useState
-  const [glitchData] = useState(() => {
-    return Array.from({ length: 60 }).map(() => ({
-      char: characters[Math.floor(Math.random() * characters.length)],
-      left: `${3 + Math.random() * 94}%`,
-      delay: Math.random() * 10,
-      duration: 4 + Math.random() * 4,
-      repeatDelay: Math.random() * 3,
-    }));
-  });
-  
+  // Generate random values only on client to avoid hydration mismatch
+  const [glitchData, setGlitchData] = useState<Array<{
+    char: string;
+    left: string;
+    delay: number;
+    duration: number;
+    repeatDelay: number;
+  }>>([]);
+
+  React.useEffect(() => {
+    setGlitchData(
+      Array.from({ length: 60 }).map(() => ({
+        char: HACKER_CHARACTERS[Math.floor(Math.random() * HACKER_CHARACTERS.length)],
+        left: `${3 + Math.random() * 94}%`,
+        delay: Math.random() * 10,
+        duration: 4 + Math.random() * 4,
+        repeatDelay: Math.random() * 3,
+      }))
+    );
+  }, []);
+
+  if (glitchData.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="absolute inset-0 z-25 pointer-events-none" style={{ overflow: 'visible' }}>
+    <div
+      className="absolute inset-0 z-25 pointer-events-none"
+      style={{ overflow: "visible" }}
+    >
       {glitchData.map((data, i) => (
         <motion.div
           key={i}
           className="hacker-char absolute font-mono text-[9px] sm:text-[10px] text-emerald-300 font-bold whitespace-nowrap"
-          style={{ 
+          style={{
             left: data.left,
             opacity: 0.95,
           }}
@@ -184,7 +305,7 @@ const HackerGlitch = () => {
             delay: data.delay,
             repeat: Infinity,
             repeatDelay: data.repeatDelay,
-            ease: 'linear',
+            ease: "linear",
           }}
         >
           {data.char}
@@ -196,7 +317,7 @@ const HackerGlitch = () => {
 
 const Avatar = () => {
   return (
-    <motion.div 
+    <motion.div
       className="relative w-full max-w-md lg:max-w-xl xl:max-w-lg 2xl:max-w-xl mx-auto"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -204,14 +325,14 @@ const Avatar = () => {
     >
       {/* Glow effect */}
       <div className="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full" />
-      
+
       {/* Animated border ring */}
       <motion.div
         className="absolute -inset-2 rounded-full border-2 border-dashed border-blue-500/30"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
-      
+
       {/* Avatar container */}
       <div className="relative rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-linear-to-br from-blue-600/20 to-indigo-600/20 backdrop-blur-sm">
         <div className="aspect-square w-full relative glitch-container">
@@ -246,7 +367,7 @@ const Avatar = () => {
               aria-hidden="true"
             />
           </div>
-          
+
           {/* Main image */}
           <Image
             src="/avatar.png"
@@ -255,38 +376,43 @@ const Avatar = () => {
             className="object-cover transition-all duration-700 relative z-10"
             priority
           />
-          
+
           {/* Hacker-style glitch overlay */}
-          <div className="absolute inset-0 z-20 hacker-overlay rounded-full" style={{ overflow: 'visible' }}>
+          <div
+            className="absolute inset-0 z-20 hacker-overlay rounded-full"
+            style={{ overflow: "visible" }}
+          >
             <HackerGlitch />
           </div>
-          
+
           {/* Scan line effect */}
           <motion.div
             className="absolute inset-0 z-21 hacker-scanline pointer-events-none"
             animate={{
-              y: ['-100%', '100%'],
+              y: ["-100%", "100%"],
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: 'linear',
+              ease: "linear",
             }}
           />
-          
+
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10" />
-          
+
           {/* Status indicator */}
           <div className="absolute bottom-4 right-4 z-30">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[9px] font-black text-emerald-300 uppercase tracking-widest">Active</span>
+              <span className="text-[9px] font-black text-emerald-300 uppercase tracking-widest">
+                Active
+              </span>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Floating badges */}
       <motion.div
         className="absolute -top-4 -right-4 bg-blue-600 p-3 rounded-xl shadow-xl border border-white/10 z-30"
@@ -295,7 +421,7 @@ const Avatar = () => {
       >
         <Terminal className="w-6 h-6 text-white" />
       </motion.div>
-      
+
       <motion.div
         className="absolute -bottom-4 -left-4 bg-indigo-600 p-3 rounded-xl shadow-xl border border-white/10 z-30"
         animate={{ y: [0, 10, 0] }}
@@ -308,13 +434,19 @@ const Avatar = () => {
 };
 
 const SkillIcon = ({ category }: { category: string }) => {
-  switch(category) {
-    case "AI & RAG": return <CpuIcon className="w-6 h-6" />;
-    case "Frontend": return <Layout className="w-6 h-6" />;
-    case "Backend": return <HardDrive className="w-6 h-6" />;
-    case "DevOps & Tools": return <Workflow className="w-6 h-6" />;
-    case "DevOps": return <Workflow className="w-6 h-6" />;
-    default: return <Zap className="w-6 h-6" />;
+  switch (category) {
+    case "AI & RAG":
+      return <CpuIcon className="w-6 h-6" />;
+    case "Frontend":
+      return <Layout className="w-6 h-6" />;
+    case "Backend":
+      return <HardDrive className="w-6 h-6" />;
+    case "DevOps & Tools":
+      return <Workflow className="w-6 h-6" />;
+    case "DevOps":
+      return <Workflow className="w-6 h-6" />;
+    default:
+      return <Zap className="w-6 h-6" />;
   }
 };
 
@@ -331,12 +463,116 @@ interface Experience {
   highlights: ExperienceHighlight[];
 }
 
+const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0]; index: number }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  const truncatedText = rec.text.length > 200 ? rec.text.substring(0, 200) + '...' : rec.text;
+  const displayText = isExpanded ? rec.text : truncatedText;
+  const needsExpansion = rec.text.length > 200;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="group relative"
+    >
+      <div className="h-full p-6 sm:p-8 bg-white/2 border border-white/5 rounded-2xl sm:rounded-3xl hover:bg-white/5 hover:border-indigo-500/30 transition-all relative overflow-hidden">
+        {/* Background Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
+          style={{
+            backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+
+        {/* Top Section with Image */}
+        <div className="flex items-start gap-4 sm:gap-5 mb-6 relative z-10">
+          <div className="relative shrink-0">
+            <div className="absolute -inset-1 bg-indigo-500/30 rounded-full blur-md group-hover:bg-indigo-500/50 transition-colors" />
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/10 ring-2 ring-indigo-500/20 group-hover:ring-indigo-500/40 transition-all">
+              <Image
+                src={rec.image}
+                alt={rec.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter mb-1 group-hover:text-indigo-400 transition-colors">
+              {rec.name}
+            </h3>
+            <p className="text-xs sm:text-sm text-indigo-400 font-bold uppercase tracking-wider">
+              {rec.role}
+            </p>
+          </div>
+        </div>
+
+        {/* Recommendation Text */}
+        <div className="relative z-10 mb-6">
+          <div className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
+            &ldquo;
+          </div>
+          <p 
+            ref={textRef}
+            className={`text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic relative transition-all ${
+              isExpanded ? '' : 'line-clamp-4'
+            }`}
+          >
+            {displayText}
+          </p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center justify-between gap-3 relative z-10 pt-4 border-t border-white/5">
+          {needsExpansion && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-xs cursor-pointer font-bold text-indigo-400 hover:text-indigo-300 uppercase tracking-wider transition-colors flex items-center gap-1"
+            >
+              {isExpanded ? (
+                <>
+                  <span>Show Less</span>
+                  <ChevronRight className="w-3 h-3 rotate-90" />
+                </>
+              ) : (
+                <>
+                  <span>See More</span>
+                  <ChevronRight className="w-3 h-3 -rotate-90" />
+                </>
+              )}
+            </button>
+          )}
+          {!needsExpansion && <div />}
+          <a
+            href={rec.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all group/link"
+          >
+            <Linkedin className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">LinkedIn</span>
+            <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+          </a>
+        </div>
+
+        {/* Bottom Accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-indigo-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
+    </motion.div>
+  );
+};
+
 const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       initial={{ opacity: 0, x: -20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -346,8 +582,12 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
       <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div>
-          <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter uppercase">{exp.role}</h3>
-          <p className="text-blue-400 font-bold uppercase text-xs sm:text-sm">{exp.company}</p>
+          <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter uppercase">
+            {exp.role}
+          </h3>
+          <p className="text-blue-400 font-bold uppercase text-xs sm:text-sm">
+            {exp.company}
+          </p>
         </div>
         <span className="text-[9px] sm:text-[10px] font-black px-2 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full uppercase tracking-widest text-gray-500">
           {exp.period}
@@ -355,11 +595,17 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
       </div>
       <div className="space-y-2 sm:space-y-3">
         {exp.highlights.map((h: ExperienceHighlight, i: number) => (
-          <div key={i} className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/2 border border-white/5 hover:border-blue-500/30 transition-all cursor-pointer">
+          <div
+            key={i}
+            className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/2 border border-white/5 hover:border-blue-500/30 transition-all cursor-pointer"
+          >
             <h4 className="text-white text-xs sm:text-sm font-bold flex items-center gap-2 mb-1">
-              <ChevronRight className="w-3 h-3 text-blue-500 shrink-0" /> <span>{h.title}</span>
+              <ChevronRight className="w-3 h-3 text-blue-500 shrink-0" />{" "}
+              <span>{h.title}</span>
             </h4>
-            <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed">{h.desc}</p>
+            <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+              {h.desc}
+            </p>
           </div>
         ))}
       </div>
@@ -375,46 +621,63 @@ const App = () => {
   return (
     <div className="bg-[#020617] text-gray-300 min-h-screen font-sans selection:bg-blue-500/30 overflow-x-hidden">
       <BlueprintGrid />
-      
+
       {/* Scroll Progress */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-100 origin-left" style={{ scaleX }} />
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-100 origin-left"
+        style={{ scaleX }}
+      />
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white text-lg sm:text-xl">S</div>
-            <span className="font-black text-white tracking-tighter text-base sm:text-xl uppercase">Saurabh<span className="text-blue-500">.</span>Jain</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white text-lg sm:text-xl">
+              S
+            </div>
+            <span className="font-black text-white tracking-tighter text-base sm:text-xl uppercase">
+              Saurabh<span className="text-blue-500">.</span>Jain
+            </span>
           </div>
-          
+
           <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-            {["OSS", "Experience", "Products", "Stack"].map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-blue-400 transition-colors cursor-pointer">
-                {item}
-              </a>
-            ))}
+            {["OSS", "Experience", "Products", "Recommendations", "Stack"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  {item}
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <a 
+            <a
               href={`mailto:${DATA.contact.email}`}
               className="hidden sm:flex items-center gap-2 px-4 sm:px-6 py-2 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
               Download Resume
             </a>
-            <button 
+            <button
               onClick={() => setMobileMenu(!mobileMenu)}
               className="md:hidden p-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30 transition-all cursor-pointer"
             >
-              {mobileMenu ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+              {mobileMenu ? (
+                <X className="w-5 h-5 text-white" />
+              ) : (
+                <Menu className="w-5 h-5 text-white" />
+              )}
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         {mobileMenu && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -423,10 +686,18 @@ const App = () => {
           >
             <div className="px-4 py-6 space-y-3">
               <div className="mb-4 pb-4 border-b border-white/10">
-                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 mb-3">NAVIGATION</p>
-                {["OSS", "Experience", "Products", "Stack"].map((item, index) => (
-                  <motion.a 
-                    key={item} 
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 mb-3">
+                  NAVIGATION
+                </p>
+                {[
+                  "OSS",
+                  "Experience",
+                  "Products",
+                  "Recommendations",
+                  "Stack",
+                ].map((item, index) => (
+                  <motion.a
+                    key={item}
                     href={`#${item.toLowerCase()}`}
                     onClick={() => setMobileMenu(false)}
                     initial={{ opacity: 0, x: -20 }}
@@ -442,8 +713,8 @@ const App = () => {
                   </motion.a>
                 ))}
               </div>
-              
-              <motion.a 
+
+              <motion.a
                 href={`mailto:${DATA.contact.email}`}
                 onClick={() => setMobileMenu(false)}
                 initial={{ opacity: 0, y: 10 }}
@@ -462,39 +733,67 @@ const App = () => {
       {/* Hero Section */}
       <header className="relative pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-24 md:pb-32 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] xl:grid-cols-[1.1fr_1fr] gap-8 sm:gap-12 md:gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-blue-400 mb-6 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              <span className="hidden sm:inline">Operational in Production Environment</span>
+              <span className="hidden sm:inline">
+                Operational in Production Environment
+              </span>
               <span className="sm:hidden">Production Ready</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-white tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 uppercase">
               Engineer <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">Intelligent</span><br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">
+                Intelligent
+              </span>
+              <br />
               Infrastructure
             </h1>
             <p className="text-base sm:text-lg lg:text-base xl:text-lg text-gray-400 max-w-xl mb-8 sm:mb-12 leading-relaxed font-medium">
-              Bridging the gap between <span className="text-white">robust backend systems</span> and <span className="text-white">agentic AI workflows</span>. Specializing in RAG optimization and zero-downtime engineering.
+              Bridging the gap between{" "}
+              <span className="text-white">robust backend systems</span> and{" "}
+              <span className="text-white">agentic AI workflows</span>.
+              Specializing in RAG optimization and zero-downtime engineering.
             </p>
-            
+
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <button className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer">
                 <Download className="w-3 h-3 sm:w-4 sm:h-4" />
                 Download Resume
               </button>
               <div className="flex gap-2">
-                <a href={`https://github.com/${DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer">
+                <a
+                  href={`https://github.com/${DATA.contact.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                >
                   <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
-                <a href={`https://linkedin.com/in/${DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer">
+                <a
+                  href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                >
                   <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
-                <a href={`https://x.com/${DATA.contact.twitter}`} target="_blank" rel="noopener noreferrer" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                <a
+                  href={`https://x.com/${DATA.contact.twitter}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                >
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
               </div>
@@ -507,12 +806,20 @@ const App = () => {
               <Avatar />
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 transition-all cursor-pointer">
-                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-blue-500 transition-colors">90%</div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">RAG Accuracy</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-blue-500 transition-colors">
+                    90%
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">
+                    RAG Accuracy
+                  </div>
                 </div>
                 <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 transition-all cursor-pointer">
-                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-emerald-500 transition-colors">0%</div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">Migration Downtime</div>
+                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-emerald-500 transition-colors">
+                    0%
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">
+                    Migration Downtime
+                  </div>
                 </div>
               </div>
             </div>
@@ -521,29 +828,37 @@ const App = () => {
       </header>
 
       {/* OSS Highlight Section */}
-      <section id="oss" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/2 relative overflow-hidden">
+      <section
+        id="oss"
+        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/2 relative overflow-hidden"
+      >
         <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 text-indigo-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
-                <Activity className="w-3 h-3 sm:w-4 sm:h-4" /> Global Contribution Metrics
+                <Activity className="w-3 h-3 sm:w-4 sm:h-4" /> Global
+                Contribution Metrics
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
-                Open Source <br /> <span className="text-indigo-500">Impact.</span>
+                Open Source <br />{" "}
+                <span className="text-indigo-500">Impact.</span>
               </h2>
             </div>
             <div className="p-6 sm:p-8 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl sm:rounded-3xl backdrop-blur-xl md:max-w-xs">
-              <div className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter">TOP 4%</div>
+              <div className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter">
+                TOP 4%
+              </div>
               <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest leading-relaxed">
-                Global contributor rank on GitHub. Architecting tools used by the modern developer ecosystem.
+                Global contributor rank on GitHub. Architecting tools used by
+                the modern developer ecosystem.
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {DATA.openSource.map((oss, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -552,9 +867,9 @@ const App = () => {
                 className="group p-6 sm:p-8 bg-white/2 border border-white/5 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/5 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
-                   <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
+                  <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
                 </div>
-                
+
                 <div className="flex justify-between items-start mb-6 sm:mb-8 relative z-10">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
                     <Terminal className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -564,20 +879,34 @@ const App = () => {
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-white uppercase mb-3 sm:mb-4 group-hover:text-indigo-400 transition-colors relative z-10">{oss.name}</h3>
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">{oss.desc}</p>
-                
+                <h3 className="text-xl sm:text-2xl font-black text-white uppercase mb-3 sm:mb-4 group-hover:text-indigo-400 transition-colors relative z-10">
+                  {oss.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">
+                  {oss.desc}
+                </p>
+
                 <div className="space-y-6 relative z-10">
                   <div className="flex flex-wrap gap-2">
-                    {oss.tags?.map(t => (
-                      <span key={t} className="text-[9px] font-black uppercase tracking-widest text-gray-600 bg-white/5 px-2 py-1 rounded">#{t}</span>
+                    {oss.tags?.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[9px] font-black uppercase tracking-widest text-gray-600 bg-white/5 px-2 py-1 rounded"
+                      >
+                        #{t}
+                      </span>
                     ))}
                   </div>
                   <div className="pt-6 border-t border-white/5 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest">
                       <Zap className="w-3 h-3" /> {oss.impact}
                     </div>
-                    <a href={oss.link} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-indigo-600 text-white transition-all cursor-pointer">
+                    <a
+                      href={oss.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-white/5 hover:bg-indigo-600 text-white transition-all cursor-pointer"
+                    >
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -589,16 +918,21 @@ const App = () => {
       </section>
 
       {/* Technical Domain Section - REDESIGNED */}
-      <section id="stack" className="py-16 sm:py-24 md:py-32 bg-white/1 relative">
+      <section
+        id="stack"
+        className="py-16 sm:py-24 md:py-32 bg-white/1 relative"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <div className="mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">Technical <span className="text-blue-500">Domains</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">
+              Technical <span className="text-blue-500">Domains</span>
+            </h2>
             <div className="w-16 sm:w-20 h-1 bg-blue-600 rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.entries(DATA.skills).map(([name, category], i) => (
-              <motion.div 
+              <motion.div
                 key={name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -608,10 +942,9 @@ const App = () => {
               >
                 {/* Hardware Aesthetic Card */}
                 <div className="h-full p-8 bg-[#0a0f1e] border border-white/10 rounded-4xl overflow-hidden flex flex-col transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/2 relative cursor-pointer">
-                  
                   {/* Scanning Effect */}
                   <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-scan-x z-10" />
-                  
+
                   {/* Tech HUD Accents */}
                   <div className="absolute top-4 right-6 font-mono text-[9px] text-gray-700 group-hover:text-blue-500/50 transition-colors uppercase font-bold tracking-widest">
                     [{category.id}]
@@ -622,17 +955,26 @@ const App = () => {
 
                   {/* Icon & Label */}
                   <div className="mb-10 relative">
-                    <div className={`w-14 h-14 rounded-2xl bg-${category.color}-500/10 flex items-center justify-center text-${category.color}-500 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                    <div
+                      className={`w-14 h-14 rounded-2xl bg-${category.color}-500/10 flex items-center justify-center text-${category.color}-500 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                    >
                       <SkillIcon category={name} />
                     </div>
-                    <h3 className="text-xl font-black text-white uppercase tracking-tighter mb-1">{name}</h3>
-                    <div className={`h-0.5 w-12 bg-${category.color}-500/40 group-hover:w-full transition-all duration-700`} />
+                    <h3 className="text-xl font-black text-white uppercase tracking-tighter mb-1">
+                      {name}
+                    </h3>
+                    <div
+                      className={`h-0.5 w-12 bg-${category.color}-500/40 group-hover:w-full transition-all duration-700`}
+                    />
                   </div>
 
                   {/* Items List */}
                   <div className="flex-1 space-y-3">
                     {category.items.map((item) => (
-                      <div key={item} className="flex items-center justify-between group/item">
+                      <div
+                        key={item}
+                        className="flex items-center justify-between group/item"
+                      >
                         <span className="text-[11px] font-mono font-bold text-gray-500 group-hover:text-gray-300 transition-colors uppercase tracking-tight">
                           {item}
                         </span>
@@ -642,8 +984,14 @@ const App = () => {
                   </div>
 
                   {/* Card Background Patterns */}
-                  <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity" 
-                    style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+                  <div
+                    className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(#fff 1px, transparent 0)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
                 </div>
               </motion.div>
             ))}
@@ -655,12 +1003,56 @@ const App = () => {
       <section id="experience" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 md:mb-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">Deployment History</h2>
-            <p className="text-gray-500 font-mono text-xs sm:text-sm tracking-widest">TIMELINE // PRODUCTION_LOGS</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">
+              Deployment History
+            </h2>
+            <p className="text-gray-500 font-mono text-xs sm:text-sm tracking-widest">
+              TIMELINE // PRODUCTION_LOGS
+            </p>
           </div>
           <div className="space-y-4">
             {DATA.experience.map((exp, i) => (
               <ExperienceItem key={i} exp={exp} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recommendations */}
+      <section
+        id="recommendations"
+        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/5 relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-1/3 h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
+            <div>
+              <div className="flex items-center gap-2 sm:gap-3 text-indigo-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
+                <Activity className="w-3 h-3 sm:w-4 sm:h-4" /> Peer Validation
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
+                Professional <br />{" "}
+                <span className="text-indigo-500">Endorsements.</span>
+              </h2>
+              <p className="text-gray-400 font-medium text-sm sm:text-base max-w-xl mt-4">
+                Recommendations from colleagues and leaders in the industry.
+              </p>
+            </div>
+            <a
+              href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:bg-indigo-500 transition-all cursor-pointer group"
+            >
+              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+              View All on LinkedIn
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {DATA.recommendations.map((rec, i) => (
+              <RecommendationCard key={i} rec={rec} index={i} />
             ))}
           </div>
         </div>
@@ -671,8 +1063,12 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-end mb-12 sm:mb-16 md:mb-20">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase mb-2">Live Products</h2>
-              <p className="text-gray-400 font-medium text-sm sm:text-base">Production-grade builds and architectures.</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase mb-2">
+                Live Products
+              </h2>
+              <p className="text-gray-400 font-medium text-sm sm:text-base">
+                Production-grade builds and architectures.
+              </p>
             </div>
           </div>
 
@@ -684,32 +1080,49 @@ const App = () => {
                 <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                      <div className="px-2 sm:px-3 py-1 bg-blue-500/20 rounded-full text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest">Flagship Product</div>
+                      <div className="px-2 sm:px-3 py-1 bg-blue-500/20 rounded-full text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest">
+                        Flagship Product
+                      </div>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-4 uppercase">Stack Vault</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-4 uppercase">
+                      Stack Vault
+                    </h3>
                     <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-2xl">
-                      High-performance SaaS Portfolio builder with multi-tenant routing, AI support agents, and enterprise-grade middleware. Serving 50+ active users with custom subdomains.
+                      High-performance SaaS Portfolio builder with multi-tenant
+                      routing, AI support agents, and enterprise-grade
+                      middleware. Serving 50+ active users with custom
+                      subdomains.
                     </p>
                     <div className="flex flex-wrap gap-3 mb-8">
-                      {DATA.products[0].tech.map(t => (
-                        <span key={t} className="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t}</span>
+                      {DATA.products[0].tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                        >
+                          {t}
+                        </span>
                       ))}
                     </div>
-                    <a href={DATA.products[0].url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-white font-black text-xs uppercase tracking-widest hover:text-blue-400 transition-colors cursor-pointer">
+                    <a
+                      href={DATA.products[0].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 text-white font-black text-xs uppercase tracking-widest hover:text-blue-400 transition-colors cursor-pointer"
+                    >
                       Live Dashboard <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
                   <div className="w-full md:w-80 aspect-square bg-white/5 rounded-3xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden">
-                     <div className="absolute inset-0 bg-radial-gradient(circle, #3b82f620 0%, transparent 70%)" />
-                     <div className="relative z-10 w-full h-full">
-                       <Image
-                         src="/stackvault.png"
-                         alt="Stack Vault"
-                         fill
-                         className="object-contain rounded-2xl"
-                         priority
-                       />
-                     </div>
+                    <div className="absolute inset-0 bg-radial-gradient(circle, #3b82f620 0%, transparent 70%)" />
+                    <div className="relative z-10 w-full h-full">
+                      <Image
+                        src="/stackvault.png"
+                        alt="Stack Vault"
+                        fill
+                        className="object-contain rounded-2xl"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -726,20 +1139,50 @@ const App = () => {
             Initialize <br />
             <span className="text-blue-500 italic">Contact.</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 font-medium px-4">Currently reviewing opportunities for Founding Engineer & AI Infrastructure roles.</p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 font-medium px-4">
+            Currently reviewing opportunities for Founding Engineer & AI
+            Infrastructure roles.
+          </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
-             <a href={`mailto:${DATA.contact.email}`} className="px-8 sm:px-12 py-4 sm:py-6 bg-white text-black font-black rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all cursor-pointer w-full sm:w-auto">
-               Direct Mail
-             </a>
-             <div className="flex gap-3 sm:gap-4 justify-center">
-                <a href={`https://github.com/${DATA.contact.github}`} target="_blank" rel="noopener noreferrer" className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"><Github className="w-5 h-5 sm:w-6 sm:h-6" /></a>
-                <a href={`https://linkedin.com/in/${DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"><Linkedin className="w-5 h-5 sm:w-6 sm:h-6" /></a>
-                <a href={`https://x.com/${DATA.contact.twitter}`} target="_blank" rel="noopener noreferrer" className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-              </div>
+            <a
+              href={`mailto:${DATA.contact.email}`}
+              className="px-8 sm:px-12 py-4 sm:py-6 bg-white text-black font-black rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all cursor-pointer w-full sm:w-auto"
+            >
+              Direct Mail
+            </a>
+            <div className="flex gap-3 sm:gap-4 justify-center">
+              <a
+                href={`https://github.com/${DATA.contact.github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+              >
+                <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+              </a>
+              <a
+                href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+              >
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+              </a>
+              <a
+                href={`https://x.com/${DATA.contact.twitter}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+              >
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -748,10 +1191,15 @@ const App = () => {
       <footer className="fixed bottom-0 w-full z-50 px-3 sm:px-6 py-3 sm:py-4 bg-[#020617]/80 backdrop-blur-md border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-[8px] sm:text-[9px] font-bold text-gray-600 uppercase tracking-[0.2em] sm:tracking-[0.3em]">
           <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> SYSTEM_STABLE</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{" "}
+              SYSTEM_STABLE
+            </span>
             <span className="hidden sm:inline">LOC: BERLIN_REMOTE</span>
           </div>
-          <div className="text-center sm:text-left">© 2026 SAURABH_JAIN // VERSION_4.0.1</div>
+          <div className="text-center sm:text-left">
+            © 2026 SAURABH_JAIN // VERSION_4.0.1
+          </div>
         </div>
       </footer>
 
