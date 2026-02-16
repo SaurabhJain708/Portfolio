@@ -18,8 +18,13 @@ import {
   Layout,
   Activity,
   Download,
+  BookOpen,
+  Play,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { createPortal } from "react-dom";
+import { blogs } from "@/data/blogs";
 
 const DATA = {
   name: "Saurabh Jain",
@@ -237,6 +242,125 @@ const BlueprintGrid = () => (
   </div>
 );
 
+const FLOATING_ORBS = [
+  { top: "8%", left: "10%", w: 320, h: 320, color: "rgba(59,130,246,0.22)", blur: 100, delay: 0, duration: 25 },
+  { top: "60%", left: "75%", w: 280, h: 280, color: "rgba(99,102,241,0.18)", blur: 90, delay: 2, duration: 30 },
+  { top: "25%", left: "82%", w: 200, h: 200, color: "rgba(34,211,238,0.15)", blur: 70, delay: 1, duration: 22 },
+  { top: "70%", left: "15%", w: 240, h: 240, color: "rgba(139,92,246,0.16)", blur: 80, delay: 3, duration: 28 },
+  { top: "40%", left: "50%", w: 400, h: 400, color: "rgba(59,130,246,0.14)", blur: 120, delay: 1.5, duration: 35 },
+  { top: "15%", left: "55%", w: 160, h: 160, color: "rgba(99,102,241,0.2)", blur: 60, delay: 0.5, duration: 20 },
+  { top: "85%", left: "45%", w: 220, h: 220, color: "rgba(59,130,246,0.16)", blur: 75, delay: 2.5, duration: 26 },
+];
+
+const FLOATING_ICONS: { Icon: React.ComponentType<{ className?: string }>; top: string; left: string; size: number; delay: number; duration: number; opacity: number }[] = [
+  { Icon: Terminal, top: "12%", left: "18%", size: 24, delay: 0, duration: 18, opacity: 0.14 },
+  { Icon: CpuIcon, top: "22%", left: "88%", size: 32, delay: 2, duration: 24, opacity: 0.12 },
+  { Icon: Workflow, top: "55%", left: "8%", size: 28, delay: 1, duration: 20, opacity: 0.14 },
+  { Icon: GitBranch, top: "75%", left: "85%", size: 26, delay: 3, duration: 22, opacity: 0.12 },
+  { Icon: Layout, top: "35%", left: "92%", size: 22, delay: 0.5, duration: 26, opacity: 0.1 },
+  { Icon: HardDrive, top: "88%", left: "22%", size: 24, delay: 2.5, duration: 19, opacity: 0.12 },
+  { Icon: Activity, top: "48%", left: "5%", size: 28, delay: 1.5, duration: 21, opacity: 0.14 },
+  { Icon: Zap, top: "18%", left: "72%", size: 20, delay: 1, duration: 23, opacity: 0.12 },
+  { Icon: BookOpen, top: "65%", left: "28%", size: 22, delay: 2, duration: 25, opacity: 0.1 },
+];
+
+const FloatingAmbient = () => (
+  <div
+    className="fixed inset-0 overflow-hidden pointer-events-none"
+    style={{ zIndex: 1 }}
+    aria-hidden
+  >
+    {/* Gradient orbs */}
+    {FLOATING_ORBS.map((orb, i) => (
+      <motion.div
+        key={`orb-${i}`}
+        className="absolute rounded-full"
+        style={{
+          top: orb.top,
+          left: orb.left,
+          width: orb.w,
+          height: orb.h,
+          background: orb.color,
+          filter: `blur(${orb.blur}px)`,
+        }}
+        animate={{
+          x: [0, 30, -20, 0],
+          y: [0, -25, 15, 0],
+          scale: [1, 1.08, 0.95, 1],
+        }}
+        transition={{
+          duration: orb.duration,
+          delay: orb.delay,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    ))}
+    {/* Floating tech icons */}
+    {FLOATING_ICONS.map(({ Icon, top, left, size, delay, duration, opacity }, i) => (
+      <motion.div
+        key={`icon-${i}`}
+        className="absolute text-blue-400/80"
+        style={{
+          top,
+          left,
+          width: size,
+          height: size,
+          opacity,
+        }}
+        animate={{
+          y: [0, -12, 8, 0],
+          x: [0, 8, -5, 0],
+          rotate: [0, 5, -3, 0],
+        }}
+        transition={{
+          duration,
+          delay,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Icon className="w-full h-full" />
+      </motion.div>
+    ))}
+    {/* Subtle floating brackets / code symbols */}
+    {["{", "}", "[", "]", "<", ">", "()"].map((char, i) => {
+      const positions = [
+        { top: "30%", left: "12%" }, { top: "55%", left: "78%" }, { top: "8%", left: "45%" },
+        { top: "82%", left: "55%" }, { top: "42%", left: "25%" }, { top: "68%", left: "62%" }, { top: "20%", left: "88%" },
+      ];
+      const pos = positions[i % positions.length];
+      return (
+        <motion.span
+          key={`char-${i}`}
+          className="absolute font-mono text-blue-400/30 text-2xl sm:text-3xl"
+          style={{ top: pos.top, left: pos.left }}
+          animate={{
+            y: [0, -8, 0],
+            opacity: [0.12, 0.2, 0.12],
+          }}
+          transition={{
+            duration: 14 + i * 2,
+            delay: i * 0.7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {char}
+        </motion.span>
+      );
+    })}
+    {/* Soft grid overlay for depth */}
+    <div
+      className="absolute inset-0 opacity-[0.06]"
+      style={{
+        backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)",
+        backgroundSize: "32px 32px",
+      }}
+    />
+  </div>
+);
+
 const HACKER_CHARACTERS = [
   "0",
   "1",
@@ -450,6 +574,16 @@ const SkillIcon = ({ category }: { category: string }) => {
   }
 };
 
+const DOMAIN_COLORS: Record<string, { bg: string; text: string; accent: string; border: string }> = {
+  "AI & RAG": { bg: "bg-blue-500/15", text: "text-blue-400", accent: "bg-blue-500/50", border: "border-blue-500/30" },
+  Frontend: { bg: "bg-indigo-500/15", text: "text-indigo-400", accent: "bg-indigo-500/50", border: "border-indigo-500/30" },
+  Backend: { bg: "bg-emerald-500/15", text: "text-emerald-400", accent: "bg-emerald-500/50", border: "border-emerald-500/30" },
+  "DevOps & Tools": { bg: "bg-orange-500/15", text: "text-orange-400", accent: "bg-orange-500/50", border: "border-orange-500/30" },
+};
+function getDomainStyle(name: string) {
+  return DOMAIN_COLORS[name] ?? DOMAIN_COLORS["AI & RAG"];
+}
+
 interface ExperienceHighlight {
   title: string;
   desc: string;
@@ -464,106 +598,175 @@ interface Experience {
 }
 
 const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0]; index: number }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const truncatedText = rec.text.length > 200 ? rec.text.substring(0, 200) + "..." : rec.text;
+  const needsFullView = rec.text.length > 200;
 
-  const truncatedText = rec.text.length > 200 ? rec.text.substring(0, 200) + '...' : rec.text;
-  const displayText = isExpanded ? rec.text : truncatedText;
-  const needsExpansion = rec.text.length > 200;
+  React.useEffect(() => {
+    if (!modalOpen) return;
+    const onEscape = (e: KeyboardEvent) => e.key === "Escape" && setModalOpen(false);
+    document.addEventListener("keydown", onEscape);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="group relative"
-    >
-      <div className="h-full p-6 sm:p-8 bg-white/2 border border-white/5 rounded-2xl sm:rounded-3xl hover:bg-white/5 hover:border-indigo-500/30 transition-all relative overflow-hidden">
-        {/* Background Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
-          style={{
-            backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
-            backgroundSize: "20px 20px",
-          }}
-        />
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className="group relative"
+      >
+        <div className="h-full p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-3xl hover:bg-white/8 hover:border-indigo-500/30 transition-all relative overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]">
+          {/* Background Pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
+            style={{
+              backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
+              backgroundSize: "20px 20px",
+            }}
+          />
 
-        {/* Top Section with Image */}
-        <div className="flex items-start gap-4 sm:gap-5 mb-6 relative z-10">
-          <div className="relative shrink-0">
-            <div className="absolute -inset-1 bg-indigo-500/30 rounded-full blur-md group-hover:bg-indigo-500/50 transition-colors" />
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/10 ring-2 ring-indigo-500/20 group-hover:ring-indigo-500/40 transition-all">
-              <Image
-                src={rec.image}
-                alt={rec.name}
-                fill
-                className="object-cover"
-              />
+          {/* Top Section with Image */}
+          <div className="flex items-start gap-4 sm:gap-5 mb-6 relative z-10">
+            <div className="relative shrink-0">
+              <div className="absolute -inset-1 bg-indigo-500/30 rounded-full blur-md group-hover:bg-indigo-500/50 transition-colors" />
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/15 ring-2 ring-indigo-500/20 group-hover:ring-indigo-500/40 transition-all">
+                <Image
+                  src={rec.image}
+                  alt={rec.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter mb-1 group-hover:text-indigo-400 transition-colors">
+                {rec.name}
+              </h3>
+              <p className="text-xs sm:text-sm text-indigo-400 font-bold uppercase tracking-wider">
+                {rec.role}
+              </p>
             </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter mb-1 group-hover:text-indigo-400 transition-colors">
-              {rec.name}
-            </h3>
-            <p className="text-xs sm:text-sm text-indigo-400 font-bold uppercase tracking-wider">
-              {rec.role}
+
+          {/* Recommendation Text */}
+          <div className="relative z-10 mb-6">
+            <div className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
+              &ldquo;
+            </div>
+            <p className="text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic relative line-clamp-4">
+              {truncatedText}
             </p>
           </div>
-        </div>
 
-        {/* Recommendation Text */}
-        <div className="relative z-10 mb-6">
-          <div className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
-            &ldquo;
-          </div>
-          <p 
-            ref={textRef}
-            className={`text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic relative transition-all ${
-              isExpanded ? '' : 'line-clamp-4'
-            }`}
-          >
-            {displayText}
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex items-center justify-between gap-3 relative z-10 pt-4 border-t border-white/5">
-          {needsExpansion && (
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-xs cursor-pointer font-bold text-indigo-400 hover:text-indigo-300 uppercase tracking-wider transition-colors flex items-center gap-1"
+          {/* Action Buttons */}
+          <div className="flex items-center justify-between gap-3 relative z-10 pt-4 border-t border-white/5">
+            {needsFullView ? (
+              <button
+                onClick={() => setModalOpen(true)}
+                className="text-xs cursor-pointer font-bold text-indigo-400 hover:text-indigo-300 uppercase tracking-wider transition-colors flex items-center gap-1"
+              >
+                <span>View full</span>
+                <ChevronRight className="w-3 h-3 -rotate-90" />
+              </button>
+            ) : (
+              <div />
+            )}
+            <a
+              href={rec.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all group/link"
             >
-              {isExpanded ? (
-                <>
-                  <span>Show Less</span>
-                  <ChevronRight className="w-3 h-3 rotate-90" />
-                </>
-              ) : (
-                <>
-                  <span>See More</span>
-                  <ChevronRight className="w-3 h-3 -rotate-90" />
-                </>
-              )}
-            </button>
-          )}
-          {!needsExpansion && <div />}
-          <a
-            href={rec.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all group/link"
-          >
-            <Linkedin className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">LinkedIn</span>
-            <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
-          </a>
-        </div>
+              <Linkedin className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">LinkedIn</span>
+              <ExternalLink className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+            </a>
+          </div>
 
-        {/* Bottom Accent */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-indigo-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
-    </motion.div>
+          {/* Bottom Accent */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-indigo-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+      </motion.div>
+
+      {/* Full recommendation modal */}
+      {modalOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="recommendation-modal-title"
+          >
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setModalOpen(false)}
+              aria-hidden
+            />
+            <div
+              className="relative w-full max-w-lg max-h-[85vh] flex flex-col bg-[#0f172a] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between gap-4 p-4 sm:p-6 border-b border-white/10 shrink-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
+                    <Image
+                      src={rec.image}
+                      alt={rec.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 id="recommendation-modal-title" className="text-base sm:text-lg font-black text-white truncate">
+                      {rec.name}
+                    </h2>
+                    <p className="text-xs text-indigo-400 font-bold uppercase tracking-wider truncate">
+                      {rec.role}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="shrink-0 w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                <div className="relative">
+                  <span className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
+                    &ldquo;
+                  </span>
+                  <p className="text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic">
+                    {rec.text}
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 border-t border-white/10 shrink-0">
+                <a
+                  href={rec.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                  View on LinkedIn
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+    </>
   );
 };
 
@@ -597,7 +800,7 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
         {exp.highlights.map((h: ExperienceHighlight, i: number) => (
           <div
             key={i}
-            className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/2 border border-white/5 hover:border-blue-500/30 transition-all cursor-pointer"
+            className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/5 border border-white/15 hover:border-blue-500/30 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
           >
             <h4 className="text-white text-xs sm:text-sm font-bold flex items-center gap-2 mb-1">
               <ChevronRight className="w-3 h-3 text-blue-500 shrink-0" />{" "}
@@ -613,6 +816,116 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
   );
 };
 
+const BlogCard = ({
+  blog,
+  className = "",
+}: {
+  blog: (typeof blogs)[0];
+  className?: string;
+}) => (
+  <Link
+    href={`/blog/${blog.id}`}
+    className={`group shrink-0 flex flex-col p-6 sm:p-8 rounded-3xl transition-all duration-300 cursor-pointer h-full relative overflow-hidden ${className}
+      bg-white/8 border border-white/15
+      backdrop-blur-2xl
+      shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_4px_24px_-4px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.06)]
+      hover:bg-white/10 hover:border-white/25
+      hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]`}
+    style={{ width: 480, minWidth: 480 }}
+  >
+    {/* Left accent bar */}
+    <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-blue-500/60 via-blue-400/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity rounded-l-3xl" />
+    <div className="absolute inset-0 bg-linear-to-br from-white/2 via-transparent to-transparent pointer-events-none rounded-3xl" />
+    <div className="flex items-center gap-2 mb-4 relative z-10">
+      <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:scale-105 transition-all border border-white/10">
+        <BookOpen className="w-5 h-5" />
+      </div>
+      <span className="text-[9px] font-black uppercase tracking-widest text-gray-500">
+        {blog.date}
+      </span>
+    </div>
+    <h3 className="text-lg sm:text-xl font-black text-white uppercase mb-3 group-hover:text-blue-400 transition-colors relative z-10 line-clamp-2 pr-2">
+      {blog.title}
+    </h3>
+    <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-5 line-clamp-3 relative z-10">
+      {blog.excerpt}
+    </p>
+    <div className="flex flex-wrap gap-2 mb-4 relative z-10">
+      {blog.tags.slice(0, 3).map((t) => (
+        <span
+          key={t}
+          className="text-[8px] font-bold uppercase tracking-widest text-gray-500 bg-white/10 border border-white/10 px-2.5 py-1 rounded-lg"
+        >
+          #{t}
+        </span>
+      ))}
+    </div>
+    <span className="inline-flex items-center gap-2 text-blue-400 text-[10px] font-black uppercase tracking-widest group-hover:gap-3 transition-all relative z-10">
+      Read more <ChevronRight className="w-4 h-4" />
+    </span>
+  </Link>
+);
+
+const BLOG_CARD_GAP = 40;
+
+const BlogCarousel = () => {
+  const setRef = useRef<HTMLDivElement>(null);
+  const [setWidth, setSetWidth] = useState<number | null>(null);
+
+  React.useEffect(() => {
+    const measure = () => {
+      if (setRef.current) setSetWidth(setRef.current.offsetWidth);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (setRef.current) ro.observe(setRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  const trackWidth =
+    setWidth !== null ? 2 * setWidth + 2 * BLOG_CARD_GAP : undefined;
+
+  return (
+    <div className="w-screen relative left-1/2 -translate-x-1/2 py-6">
+      <div className="w-full overflow-hidden">
+        <div
+          className="flex will-change-transform"
+          style={{
+            width: trackWidth ?? "max-content",
+            animation: trackWidth
+              ? "blog-marquee 45s linear infinite"
+              : "none",
+          }}
+        >
+          <div
+            ref={setRef}
+            className="flex shrink-0"
+            style={{ gap: BLOG_CARD_GAP, marginRight: BLOG_CARD_GAP }}
+          >
+            {blogs.map((blog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
+          </div>
+          <div
+            className="flex shrink-0"
+            style={{ gap: BLOG_CARD_GAP, marginRight: BLOG_CARD_GAP }}
+          >
+            {blogs.map((blog) => (
+              <BlogCard key={`dup-${blog.id}`} blog={blog} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @keyframes blog-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const App = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -621,7 +934,10 @@ const App = () => {
   return (
     <div className="bg-[#020617] text-gray-300 min-h-screen font-sans selection:bg-blue-500/30 overflow-x-hidden">
       <BlueprintGrid />
+      <FloatingAmbient />
 
+      {/* Main content above ambient layer */}
+      <div className="relative z-10">
       {/* Scroll Progress */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-100 origin-left"
@@ -641,7 +957,7 @@ const App = () => {
           </div>
 
           <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-            {["OSS", "Experience", "Products", "Recommendations", "Stack"].map(
+            {["OSS", "Experience", "Products", "Blog", "Recommendations", "Stack"].map(
               (item) => (
                 <a
                   key={item}
@@ -693,6 +1009,7 @@ const App = () => {
                   "OSS",
                   "Experience",
                   "Products",
+                  "Blog",
                   "Recommendations",
                   "Stack",
                 ].map((item, index) => (
@@ -805,7 +1122,7 @@ const App = () => {
             <div className="space-y-4 sm:space-y-6 relative">
               <Avatar />
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 transition-all cursor-pointer">
+                <div className="p-4 sm:p-6 bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_20px_-4px_rgba(0,0,0,0.3)]">
                   <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-blue-500 transition-colors">
                     90%
                   </div>
@@ -813,7 +1130,7 @@ const App = () => {
                     RAG Accuracy
                   </div>
                 </div>
-                <div className="p-4 sm:p-6 bg-white/2 border border-white/5 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 transition-all cursor-pointer">
+                <div className="p-4 sm:p-6 bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_20px_-4px_rgba(0,0,0,0.3)]">
                   <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-emerald-500 transition-colors">
                     0%
                   </div>
@@ -826,6 +1143,71 @@ const App = () => {
           </div>
         </div>
       </header>
+
+      {/* Who I Am — Video intro placeholder */}
+      <section
+        id="who-i-am"
+        className="relative py-12 sm:py-16 md:py-20 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-blue-600/5 to-transparent pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <div className="text-center mb-8 sm:mb-10">
+            <p className="text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+              In my own words
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2">
+              Who I Am
+            </h2>
+            <div className="h-1 w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full mx-auto" />
+          </div>
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-white/2 shadow-[0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_0_rgba(255,255,255,0.03)]">
+            <div className="aspect-video flex items-center justify-center bg-[#0a0f1e] relative group">
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-50 group-hover:opacity-70 transition-opacity" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-white/20 bg-white/5 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:border-blue-400/40 transition-all cursor-pointer">
+                  <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white/90 ml-1" fill="currentColor" />
+                </div>
+              </div>
+              <p className="absolute bottom-4 left-4 right-4 text-center text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-500">
+                Your YouTube intro video will go here
+              </p>
+            </div>
+          </div>
+          <p className="text-center text-gray-500 text-sm mt-4">
+            Drop your embed code or video link above when ready.
+          </p>
+        </div>
+      </section>
+
+      {/* Blog — Carousel at top */}
+      <section
+        id="blog"
+        className="relative py-12 sm:py-16 md:py-20 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-linear-to-b from-blue-600/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 sm:mb-10 relative">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" /> Latest
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-1">
+                Blog
+              </h2>
+              <div className="h-1 w-16 sm:w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full" />
+            </div>
+            <Link
+              href="/blog"
+              className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-blue-400 transition-colors"
+            >
+              View all posts
+            </Link>
+          </div>
+        </div>
+        <BlogCarousel />
+      </section>
 
       {/* OSS Highlight Section */}
       <section
@@ -845,12 +1227,12 @@ const App = () => {
                 <span className="text-indigo-500">Impact.</span>
               </h2>
             </div>
-            <div className="p-6 sm:p-8 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl sm:rounded-3xl backdrop-blur-xl md:max-w-xs">
+            <div className="p-6 sm:p-8 bg-indigo-500/15 border border-indigo-500/25 rounded-2xl sm:rounded-3xl backdrop-blur-xl md:max-w-xs shadow-[0_0_0_1px_rgba(99,102,241,0.2),0_4px_24px_-4px_rgba(0,0,0,0.3)]">
               <div className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter">
                 TOP 4%
               </div>
               <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest leading-relaxed">
-                Global contributor rank on GitHub. Architecting tools used by
+                Global contributor rank on Twenty CRM. Architecting tools used by
                 the modern developer ecosystem.
               </p>
             </div>
@@ -864,7 +1246,7 @@ const App = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-6 sm:p-8 bg-white/2 border border-white/5 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/5 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer"
+                className="group p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/8 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]"
               >
                 <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
                   <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
@@ -917,84 +1299,85 @@ const App = () => {
         </div>
       </section>
 
-      {/* Technical Domain Section - REDESIGNED */}
+      {/* Technical Domain Section */}
       <section
         id="stack"
-        className="py-16 sm:py-24 md:py-32 bg-white/1 relative"
+        className="py-16 sm:py-24 md:py-32 relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+        <div className="absolute inset-0 bg-linear-to-b from-blue-600/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-1/4 right-0 w-1/3 h-1/2 bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
           <div className="mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">
+            <p className="text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+              Stack
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2">
               Technical <span className="text-blue-500">Domains</span>
             </h2>
-            <div className="w-16 sm:w-20 h-1 bg-blue-600 rounded-full" />
+            <div className="h-1 w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Object.entries(DATA.skills).map(([name, category], i) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative h-full"
-              >
-                {/* Hardware Aesthetic Card */}
-                <div className="h-full p-8 bg-[#0a0f1e] border border-white/10 rounded-4xl overflow-hidden flex flex-col transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/2 relative cursor-pointer">
-                  {/* Scanning Effect */}
-                  <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-scan-x z-10" />
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+            {Object.entries(DATA.skills).map(([name, category], i) => {
+              const style = getDomainStyle(name);
+              return (
+                <motion.div
+                  key={name}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="group relative h-full"
+                >
+                  <div
+                    className={`h-full p-8 sm:p-10 bg-white/8 border border-white/15 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 group-hover:border-white/25 group-hover:bg-white/10 relative cursor-pointer backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_24px_-4px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_-4px_rgba(0,0,0,0.35)]`}
+                  >
+                    {/* Left accent bar */}
+                    <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-3xl ${style.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
 
-                  {/* Tech HUD Accents */}
-                  <div className="absolute top-4 right-6 font-mono text-[9px] text-gray-700 group-hover:text-blue-500/50 transition-colors uppercase font-bold tracking-widest">
-                    [{category.id}]
-                  </div>
-                  <div className="absolute bottom-4 left-6 font-mono text-[8px] text-gray-800 uppercase tracking-tighter">
-                    REF-COORDS: 34.{i}2 / 09.43
-                  </div>
-
-                  {/* Icon & Label */}
-                  <div className="mb-10 relative">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-${category.color}-500/10 flex items-center justify-center text-${category.color}-500 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
-                    >
-                      <SkillIcon category={name} />
+                    <div className="absolute top-4 right-6 font-mono text-[9px] text-gray-600 group-hover:text-gray-400 transition-colors uppercase font-bold tracking-widest">
+                      {category.id}
                     </div>
-                    <h3 className="text-xl font-black text-white uppercase tracking-tighter mb-1">
-                      {name}
-                    </h3>
+
+                    <div className="flex items-start gap-5 mb-8 relative">
+                      <div
+                        className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center ${style.text} border border-white/10 group-hover:scale-105 transition-transform shrink-0`}
+                      >
+                        <SkillIcon category={name} />
+                      </div>
+                      <div className="min-w-0 pt-0.5">
+                        <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter mb-2">
+                          {name}
+                        </h3>
+                        <div className={`h-0.5 w-14 ${style.accent} rounded-full group-hover:w-20 transition-all duration-500`} />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 space-y-3.5">
+                      {category.items.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-3 group/item"
+                        >
+                          <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${style.accent} opacity-70 group-hover/item:opacity-100 group-hover/item:shadow-[0_0_6px_currentColor] transition-all`} />
+                          <span className="text-xs sm:text-[13px] font-medium text-gray-400 group-hover/item:text-gray-200 transition-colors">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
                     <div
-                      className={`h-0.5 w-12 bg-${category.color}-500/40 group-hover:w-full transition-all duration-700`}
+                      className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.04] pointer-events-none transition-opacity rounded-3xl"
+                      style={{
+                        backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
+                        backgroundSize: "24px 24px",
+                      }}
                     />
                   </div>
-
-                  {/* Items List */}
-                  <div className="flex-1 space-y-3">
-                    {category.items.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center justify-between group/item"
-                      >
-                        <span className="text-[11px] font-mono font-bold text-gray-500 group-hover:text-gray-300 transition-colors uppercase tracking-tight">
-                          {item}
-                        </span>
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/5 border border-white/20 group-hover/item:bg-blue-500 group-hover/item:shadow-[0_0_8px_rgba(59,130,246,0.6)] transition-all" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Card Background Patterns */}
-                  <div
-                    className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(#fff 1px, transparent 0)",
-                      backgroundSize: "20px 20px",
-                    }}
-                  />
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1076,7 +1459,7 @@ const App = () => {
             {/* Stack Vault */}
             <div className="group relative p-1">
               <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 rounded-4xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
-              <div className="relative h-full bg-[#0a0f1e] border border-white/10 rounded-xl sm:rounded-2xl md:rounded-4xl p-6 sm:p-8 md:p-12 overflow-hidden">
+              <div className="relative h-full bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl md:rounded-4xl p-6 sm:p-8 md:p-12 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_24px_-4px_rgba(0,0,0,0.35)]">
                 <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
@@ -1112,7 +1495,7 @@ const App = () => {
                       Live Dashboard <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
-                  <div className="w-full md:w-80 aspect-square bg-white/5 rounded-3xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden">
+                  <div className="w-full md:w-80 aspect-square bg-white/8 rounded-3xl border border-white/15 flex items-center justify-center p-4 relative overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
                     <div className="absolute inset-0 bg-radial-gradient(circle, #3b82f620 0%, transparent 70%)" />
                     <div className="relative z-10 w-full h-full">
                       <Image
@@ -1155,7 +1538,7 @@ const App = () => {
                 href={`https://github.com/${DATA.contact.github}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -1163,7 +1546,7 @@ const App = () => {
                 href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -1171,7 +1554,7 @@ const App = () => {
                 href={`https://x.com/${DATA.contact.twitter}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
               >
                 <svg
                   className="w-5 h-5 sm:w-6 sm:h-6"
@@ -1202,6 +1585,8 @@ const App = () => {
           </div>
         </div>
       </footer>
+
+      </div>
 
       <style>{`
         ::-webkit-scrollbar { width: 6px; }
