@@ -17,9 +17,7 @@ import {
   HardDrive,
   Layout,
   Activity,
-  Download,
   BookOpen,
-  Play,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -142,12 +140,31 @@ const DATA = {
       period: "July 2025 – Nov 2025",
       url: "https://www.stackvault.dev",
       description: "SaaS Portfolio Builder",
+      summary: "High-performance SaaS Portfolio builder with multi-tenant routing, AI support agents, and enterprise-grade middleware. Serving 50+ active users with custom subdomains.",
       tech: ["Next.js", "Middleware", "Zod", "SaaS"],
+      image: "/stackvault.png",
+      video: "https://youtu.be/YLAzcAiYHKY",
       details: [
         "Architected and launched a multi-tenant SaaS platform serving 50+ active users, featuring custom domain support (Vercel-style routing) and dynamic subdomains via Next.js Middleware.",
         "Integrated an AI Assistant to automate user support and enhance portfolio creation workflows.",
         "Implemented robust CI/CD pipelines using GitHub Actions for dev and prod branches, automating linting, testing, and builds to prevent regressions.",
         "Enforced end-to-end type safety using Zod across all API endpoints and database schemas.",
+      ],
+    },
+    {
+      name: "KRAG",
+      role: "Solo Builder",
+      period: "2025 – Present",
+      url: "https://github.com/SaurabhJain708/krag",
+      description: "Serverless RAG Agent",
+      summary: "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support. Built on Modal for scalable, cost-effective processing.",
+      status: "Launching soon, under development",
+      tech: ["Next.js", "Modal", "tRPC", "Python", "Prisma"],
+      image: "/krag.jpeg",
+      details: [
+        "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support.",
+        "Built on Modal for scalable, cost-effective processing. Multi-format ingestion, enterprise encryption (Simple/Advanced), streaming SSE responses.",
+        "Full stack: Next.js 16, tRPC, Prisma, Python workers (ingestion + retrieval), BGE-M3 embeddings, Qwen 2.5 for generation.",
       ],
     },
   ],
@@ -158,23 +175,106 @@ const DATA = {
       desc: "Merged 8+ PRs in a single month, working alongside core senior developers on high-priority tickets and received direct mentorship. Contributed a significant portion to the new calendar-based Kanban feature, implementing complex frontend logic and interactions.",
       impact: "8+ PRs Merged",
       link: "https://github.com/twentyhq/twenty",
+      prs: [
+        {
+          title: "Feat/14419 added infinite scroll icon picker (#14792)",
+          url: "https://github.com/twentyhq/twenty/pull/14792",
+        },
+        {
+          title: "Added all the initial selection logic (#14789)",
+          url: "https://github.com/twentyhq/twenty/pull/14789",
+        },
+        {
+          title: "Feat/add add icon to calendar view (#14696)",
+          url: "https://github.com/twentyhq/twenty/pull/14696",
+        },
+        {
+          title: "Fixed edit container width (#14625)",
+          url: "https://github.com/twentyhq/twenty/pull/14625",
+        },
+        {
+          title: "fix: Added isReadonly logic to css (#14584)",
+          url: "https://github.com/twentyhq/twenty/pull/14584",
+        },
+        {
+          title: "Added a util helper to remove accent and case (#14533)",
+          url: "https://github.com/twentyhq/twenty/pull/14533",
+        },
+        {
+          title: "chore(frontend): Lazy-load xyflow (#14505)",
+          url: "https://github.com/twentyhq/twenty/pull/14505",
+        },
+        {
+          title: "fix: remove unused framer-motion import (#14465)",
+          url: "https://github.com/twentyhq/twenty/pull/14465",
+        },
+        {
+          title: "Feat/14419 added infinite scroll icon picker (#14446)",
+          url: "https://github.com/twentyhq/twenty/pull/14446",
+        },
+        {
+          title: "Added disabled trash button in http workflows (#14439)",
+          url: "https://github.com/twentyhq/twenty/pull/14439",
+        },
+        {
+          title: "Move roles tab out of all roles (#14415)",
+          url: "https://github.com/twentyhq/twenty/pull/14415",
+        },
+      ],
+      issues: [
+        {
+          title: "SyntaxError: Unexpected token 'T', \"Texas\" is not valid JSON (#9075)",
+          url: "https://github.com/twentyhq/twenty/issues/9075",
+        },
+      ],
       tags: ["CRM", "Frontend", "Kanban"],
     },
     {
       name: "Formbricks",
       metric: "Contributor",
-      desc: "Integrated Vitest for type-safe unit testing and resolved critical UI formatting bugs affecting thousands of users.",
+      desc: "Contributed API permission fixes, keyboard accessibility improvements, Vitest setup for the types package, and type-safety refinements for the audit logging wrapper.",
       impact: "Thousands Impacted",
       link: "https://github.com/formbricks/formbricks",
-      tags: ["Open Survey", "Vitest", "Typescript"],
+      prs: [
+        {
+          title: "fix: allow read and write API key permissions for /v1/management/me (#6178)",
+          url: "https://github.com/formbricks/formbricks/pull/6178",
+        },
+        {
+          title: "fix: keyboard accessibility issue (#3768) (#5941)",
+          url: "https://github.com/formbricks/formbricks/pull/5941",
+        },
+        {
+          title: "feat: add Vitest setup and initial unit tests for action-class schema (#6170)",
+          url: "https://github.com/formbricks/formbricks/pull/6170",
+        },
+        {
+          title: "refactor: preserve return type in withAuditLogging wrapper (#6156)",
+          url: "https://github.com/formbricks/formbricks/pull/6156",
+        },
+      ],
+      issues: [
+        {
+          title: "All issues by SaurabhJain708",
+          url: "https://github.com/formbricks/formbricks/issues?q=is%3Aissue+author%3ASaurabhJain708",
+        },
+      ],
+      tags: ["Open Survey", "API", "A11y", "Vitest", "TypeScript"],
     },
     {
-      name: "GPT Engineer",
-      metric: "Feature Sprint",
-      desc: "Integrated Morph AI into the GPT Engineer codebase within a 3-hour sprint to enable 'Cursor-style' in-place file editing. Replaced full-file rewrites with diff-based editing, increasing agent accuracy by 60% and reducing generation costs.",
-      impact: "High-Velocity MVP",
-      link: "https://github.com/AntonOsika/gpt-engineer",
-      tags: ["AI Agent", "Morph AI", "Diffing"],
+      name: "KRAG",
+      metric: "Solo Builder",
+      desc: "Built KRAG, a serverless RAG agent that turns PDFs and URLs into intelligent, citation-aware chat. Designed for secure, real-time ingestion and scalable retrieval.",
+      impact: "Serverless RAG Platform",
+      link: "https://github.com/SaurabhJain708/krag",
+      prs: [
+        {
+          title: "KRAG repository",
+          url: "https://github.com/SaurabhJain708/krag",
+        },
+      ],
+      issues: [],
+      tags: ["RAG", "Serverless", "Modal", "Next.js"],
     },
   ],
   education: {
@@ -770,6 +870,220 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
   );
 };
 
+const OpenSourceCard = ({
+  oss,
+  index,
+}: {
+  oss: typeof DATA.openSource[0];
+  index: number;
+}) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const hasPrs = (oss.prs?.length ?? 0) > 0;
+  const hasIssues = (oss.issues?.length ?? 0) > 0;
+
+  React.useEffect(() => {
+    if (!modalOpen) return;
+    const onEscape = (e: KeyboardEvent) => e.key === "Escape" && setModalOpen(false);
+    document.addEventListener("keydown", onEscape);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
+
+  return (
+    <>
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className="group p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/8 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]"
+        onClick={() => setModalOpen(true)}
+      >
+        <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
+          <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
+        </div>
+
+        <div className="flex justify-between items-start mb-6 sm:mb-8 relative z-10">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+            <Terminal className="w-5 h-5 sm:w-6 sm:h-6" />
+          </div>
+          <span className="text-[9px] sm:text-[10px] font-black text-indigo-400 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full uppercase tracking-widest">
+            {oss.metric}
+          </span>
+        </div>
+
+        <h3 className="text-xl sm:text-2xl font-black text-white uppercase mb-3 sm:mb-4 group-hover:text-indigo-400 transition-colors relative z-10">
+          {oss.name}
+        </h3>
+        <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">
+          {oss.desc}
+        </p>
+
+        <div className="space-y-6 relative z-10">
+          <div className="flex flex-wrap gap-2">
+            {oss.tags?.map((t) => (
+              <span
+                key={t}
+                className="text-[9px] font-black uppercase tracking-widest text-gray-600 bg-white/5 px-2 py-1 rounded"
+              >
+                #{t}
+              </span>
+            ))}
+          </div>
+          <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+            <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest">
+              <Zap className="w-3 h-3" /> {oss.impact}
+            </div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalOpen(true);
+              }}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer"
+            >
+              View Links
+              <ChevronRight className="w-3.5 h-3.5 -rotate-90" />
+            </button>
+          </div>
+        </div>
+      </motion.div>
+
+      {modalOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`oss-modal-title-${index}`}
+          >
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-md"
+              onClick={() => setModalOpen(false)}
+              aria-hidden
+            />
+            <div
+              className="relative w-full max-w-2xl max-h-[85vh] flex flex-col bg-[#0b1220] border border-white/15 rounded-2xl sm:rounded-3xl shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_20px_80px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-white/10 shrink-0">
+                <div className="absolute inset-0 bg-linear-to-r from-blue-600/15 via-transparent to-indigo-600/15 pointer-events-none" />
+                <div className="flex items-center justify-between gap-4 relative">
+                  <div className="min-w-0">
+                    <h2
+                      id={`oss-modal-title-${index}`}
+                      className="text-base sm:text-xl font-black text-white truncate"
+                    >
+                      {oss.name} — PRs & Issues
+                    </h2>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2 py-0.5 rounded-full">
+                        {oss.metric}
+                      </span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-gray-500 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                        {oss.impact}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setModalOpen(false)}
+                    className="shrink-0 w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+                    aria-label="Close"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+                {(hasPrs || hasIssues) ? (
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Links to all pull requests and issues authored for this repository.
+                  </p>
+                ) : (
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    No PR or issue links listed for this repository yet.
+                  </p>
+                )}
+
+                <div className="space-y-4">
+                  {hasPrs && (
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                      <h3 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">
+                        Pull Requests
+                      </h3>
+                      <div className="space-y-2">
+                        {oss.prs?.map((pr) => (
+                          <a
+                            key={pr.url}
+                            href={pr.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-white/10 bg-[#0f172a] hover:bg-white/5 transition-all text-sm text-gray-300"
+                          >
+                            <span className="truncate">{pr.title}</span>
+                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-400" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {hasIssues && (
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                      <h3 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">
+                        Issues
+                      </h3>
+                      <div className="space-y-2">
+                        {oss.issues?.map((issue) => (
+                          <a
+                            key={issue.url}
+                            href={issue.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-white/10 bg-[#0f172a] hover:bg-white/5 transition-all text-sm text-gray-300"
+                          >
+                            <span className="truncate">{issue.title}</span>
+                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-400" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-6 border-t border-white/10 shrink-0">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <a
+                    href={oss.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
+                  >
+                    <GitBranch className="w-3.5 h-3.5" />
+                    View Repository
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <button
+                    onClick={() => setModalOpen(false)}
+                    className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-gray-300 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+    </>
+  );
+};
+
 const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -972,11 +1286,13 @@ const App = () => {
 
           <div className="flex items-center gap-2 sm:gap-4">
             <a
-              href={`mailto:${DATA.contact.email}`}
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 px-4 sm:px-6 py-2 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
             >
-              <Download className="w-3 h-3 sm:w-4 sm:h-4" />
-              Download Resume
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+              View Resume
             </a>
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
@@ -1032,15 +1348,17 @@ const App = () => {
               </div>
 
               <motion.a
-                href={`mailto:${DATA.contact.email}`}
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenu(false)}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center gap-2 px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all cursor-pointer shadow-lg shadow-blue-500/20 active:scale-95"
               >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
+                <ExternalLink className="w-4 h-4" />
+                <span>View Resume</span>
               </motion.a>
             </div>
           </motion.div>
@@ -1077,10 +1395,15 @@ const App = () => {
             </p>
 
             <div className="flex flex-wrap gap-3 sm:gap-4">
-              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer">
-                <Download className="w-3 h-3 sm:w-4 sm:h-4" />
-                Download Resume
-              </button>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
+              >
+                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                View Resume
+              </a>
               <div className="flex gap-2">
                 <a
                   href={`https://github.com/${DATA.contact.github}`}
@@ -1161,22 +1484,18 @@ const App = () => {
             </h2>
             <div className="h-1 w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full mx-auto" />
           </div>
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-white/2 shadow-[0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_0_rgba(255,255,255,0.03)]">
-            <div className="aspect-video flex items-center justify-center bg-[#0a0f1e] relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-50 group-hover:opacity-70 transition-opacity" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-white/20 bg-white/5 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:border-blue-400/40 transition-all cursor-pointer">
-                  <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white/90 ml-1" fill="currentColor" />
-                </div>
-              </div>
-              <p className="absolute bottom-4 left-4 right-4 text-center text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-500">
-                Your YouTube intro video will go here
-              </p>
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_4px_24px_-4px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+            <div className="aspect-video bg-[#0a0f1e] relative">
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-60 pointer-events-none" />
+              <iframe
+                src="https://www.youtube.com/embed/m4DetXg94ak"
+                title="Who I Am"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
-          <p className="text-center text-gray-500 text-sm mt-4">
-            Drop your embed code or video link above when ready.
-          </p>
         </div>
       </section>
 
@@ -1240,60 +1559,7 @@ const App = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {DATA.openSource.map((oss, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/8 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]"
-              >
-                <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
-                  <GitBranch className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-500" />
-                </div>
-
-                <div className="flex justify-between items-start mb-6 sm:mb-8 relative z-10">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                    <Terminal className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <span className="text-[9px] sm:text-[10px] font-black text-indigo-400 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full uppercase tracking-widest">
-                    {oss.metric}
-                  </span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-black text-white uppercase mb-3 sm:mb-4 group-hover:text-indigo-400 transition-colors relative z-10">
-                  {oss.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">
-                  {oss.desc}
-                </p>
-
-                <div className="space-y-6 relative z-10">
-                  <div className="flex flex-wrap gap-2">
-                    {oss.tags?.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[9px] font-black uppercase tracking-widest text-gray-600 bg-white/5 px-2 py-1 rounded"
-                      >
-                        #{t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest">
-                      <Zap className="w-3 h-3" /> {oss.impact}
-                    </div>
-                    <a
-                      href={oss.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-white/5 hover:bg-indigo-600 text-white transition-all cursor-pointer"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
+              <OpenSourceCard key={oss.name} oss={oss} index={i} />
             ))}
           </div>
         </div>
@@ -1455,61 +1721,136 @@ const App = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-1 gap-8">
-            {/* Stack Vault */}
-            <div className="group relative p-1">
-              <div className="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 rounded-4xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
-              <div className="relative h-full bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl md:rounded-4xl p-6 sm:p-8 md:p-12 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_24px_-4px_rgba(0,0,0,0.35)]">
-                <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                      <div className="px-2 sm:px-3 py-1 bg-blue-500/20 rounded-full text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest">
-                        Flagship Product
+          <div className="grid lg:grid-cols-1 gap-10 sm:gap-12">
+            {DATA.products.map((product, idx) => (
+              <motion.div
+                key={product.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="group relative"
+              >
+                <div className="relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-linear-to-br from-white/5 via-white/2 to-transparent backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_8px_40px_-12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 group-hover:border-white/20 group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_48px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)]">
+                  {/* Left accent */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl ${idx === 0 ? "bg-linear-to-b from-blue-500 to-indigo-500" : "bg-linear-to-b from-amber-500/80 to-orange-500/80"} opacity-70 group-hover:opacity-100 transition-opacity`} />
+
+                  {/* Background patterns */}
+                  <div
+                    className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.06] pointer-events-none rounded-2xl sm:rounded-3xl transition-opacity"
+                    style={{
+                      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.6) 1px, transparent 0)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-[0.015] pointer-events-none rounded-2xl sm:rounded-3xl"
+                    style={{
+                      backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                      backgroundSize: "48px 48px",
+                    }}
+                  />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+                  <div className="absolute bottom-0 left-1/2 w-96 h-48 bg-indigo-500/3 rounded-full blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
+
+                  <div className="relative p-6 sm:p-8 md:p-10 lg:p-12 pl-8 sm:pl-10">
+                    {/* Header row */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                      <div>
+                        <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+                          {idx === 0 && (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25 text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]">
+                              <span className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />
+                              Flagship Product
+                            </span>
+                          )}
+                          {"status" in product && product.status && (
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-linear-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 text-[9px] sm:text-[10px] font-black text-amber-300 uppercase tracking-widest shadow-[0_0_24px_-6px_rgba(245,158,11,0.25)] ring-1 ring-inset ring-amber-400/10">
+                              <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400/60" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                              </span>
+                              {product.status}
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase">
+                          {product.name}
+                        </h3>
                       </div>
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all shrink-0"
+                      >
+                        {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-4 uppercase">
-                      Stack Vault
-                    </h3>
-                    <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-2xl">
-                      High-performance SaaS Portfolio builder with multi-tenant
-                      routing, AI support agents, and enterprise-grade
-                      middleware. Serving 50+ active users with custom
-                      subdomains.
+
+                    <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl mb-6">
+                      {product.summary}
                     </p>
-                    <div className="flex flex-wrap gap-3 mb-8">
-                      {DATA.products[0].tech.map((t) => (
+
+                    <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                      {product.tech.map((t) => (
                         <span
                           key={t}
-                          className="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                          className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-gray-500 uppercase tracking-wider"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
-                    <a
-                      href={DATA.products[0].url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 text-white font-black text-xs uppercase tracking-widest hover:text-blue-400 transition-colors cursor-pointer"
-                    >
-                      Live Dashboard <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                  <div className="w-full md:w-80 aspect-square bg-white/8 rounded-3xl border border-white/15 flex items-center justify-center p-4 relative overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
-                    <div className="absolute inset-0 bg-radial-gradient(circle, #3b82f620 0%, transparent 70%)" />
-                    <div className="relative z-10 w-full h-full">
-                      <Image
-                        src="/stackvault.png"
-                        alt="Stack Vault"
-                        fill
-                        className="object-contain rounded-2xl"
-                        priority
-                      />
+
+                    {/* Media section: image + video */}
+                    <div className={`flex flex-col gap-6 items-center ${"video" in product && product.video ? "lg:flex-row lg:items-center" : "max-w-sm"}`}>
+                      <div className={`shrink-0 ${"video" in product && product.video ? "w-full lg:w-72 xl:w-80" : "w-full"}`}>
+                        <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-white/5 relative shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                          {product.image ? (
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              className="object-contain object-center p-4"
+                              priority={idx === 0}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-blue-600/15 via-indigo-600/10 to-transparent">
+                              <span className="text-5xl sm:text-6xl font-black text-white/30 tracking-tighter uppercase">
+                                {product.name}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      {"video" in product && product.video && (() => {
+                        const vidUrl = product.video as string;
+                        const id = vidUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?]+)/)?.[1];
+                        return id ? (
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[9px] sm:text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">
+                              Product Demo
+                            </p>
+                            <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-[inset_0_2px_8px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)]">
+                              <iframe
+                                src={`https://www.youtube.com/embed/${id}`}
+                                title={`${product.name} demo`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                className="w-full h-full"
+                                loading="lazy"
+                              />
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
