@@ -139,6 +139,7 @@ const DATA = {
       role: "Creator & Lead Developer",
       period: "July 2025 – Nov 2025",
       url: "https://www.stackvault.dev",
+      github: "https://github.com/SaurabhJain708/StackVault.dev",
       description: "SaaS Portfolio Builder",
       summary: "High-performance SaaS Portfolio builder with multi-tenant routing, AI support agents, and enterprise-grade middleware. Serving 50+ active users with custom subdomains.",
       tech: ["Next.js", "Middleware", "Zod", "SaaS"],
@@ -1778,15 +1779,28 @@ const App = () => {
                           {product.name}
                         </h3>
                       </div>
-                      <a
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all shrink-0"
-                      >
-                        {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      <div className="flex flex-wrap gap-2 shrink-0">
+                        {"github" in product && product.github && (
+                          <a
+                            href={product.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            GitHub
+                          </a>
+                        )}
+                        <a
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
+                        >
+                          {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
                     </div>
 
                     <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl mb-6">
