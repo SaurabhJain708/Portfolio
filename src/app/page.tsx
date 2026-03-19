@@ -110,7 +110,11 @@ const DATA = {
         },
         {
           title: "Product & Engineering",
-          desc: "Driving development of flagship products (KRAG, StealthNode, The Informant) and core infrastructure.",
+          desc: "Driving development of flagship products (KRAG, The Informant) and core infrastructure.",
+        },
+        {
+          title: "Client Development",
+          desc: "Building client products under the SMAKG development firm (e.g. StealthNode — AI-driven SOC platform).",
         },
       ],
     },
@@ -178,12 +182,12 @@ const DATA = {
     },
     {
       name: "StealthNode",
-      role: "Creator & Lead Developer",
+      role: "Lead Developer (SMAKG)",
       period: "Coming soon",
       url: "#",
       description: "AI-Driven SOC Platform",
-      summary: "AI-powered Security Operations Center that deploys via a lightweight installer (MCP + agent) on the client's system. Logs stream to Wazuh; custom rulesets trigger an AI agent that runs in an isolated sandbox on Modal, connected to the client through a secure Cloudflare MCP tunnel. The agent detects and neutralizes threats in real time and delivers a detailed incident report by email.",
-      status: "Launching soon — actively under development",
+      summary: "AI-powered Security Operations Center built by SMAKG for a client. Deploys via a lightweight installer (MCP + agent) on the client's system. Logs stream to Wazuh; custom rulesets trigger an AI agent that runs in an isolated sandbox on Modal, connected to the client through a secure Cloudflare MCP tunnel. The agent detects and neutralizes threats in real time and delivers a detailed incident report by email.",
+      status: "Client project — under development at SMAKG",
       tech: ["Modal", "MCP", "Wazuh", "Cloudflare Tunnel", "Event-driven"],
       image: "/stealthnode.png",
       video: "https://youtu.be/eGcgSURzO-E",
@@ -1331,11 +1335,11 @@ const App = () => {
           </div>
 
           <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-            {["OSS", "Experience", "Products", "Blog", "Recommendations", "Stack"].map(
+            {["OSS", "Experience", "Products", "Blog", "Recommendations", "Stack", "Book a meet"].map(
               (item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                   className="hover:text-blue-400 transition-colors cursor-pointer"
                 >
                   {item}
@@ -1388,10 +1392,11 @@ const App = () => {
                   "Blog",
                   "Recommendations",
                   "Stack",
+                  "Book a meet",
                 ].map((item, index) => (
                   <motion.a
                     key={item}
-                    href={`#${item.toLowerCase()}`}
+                    href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                     onClick={() => setMobileMenu(false)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -1456,10 +1461,16 @@ const App = () => {
 
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <a
+                href="#book-a-meet"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
+              >
+                Book a meet
+              </a>
+              <a
                 href="/resume"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 border border-white/15 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-white/10 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
               >
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                 View Resume
@@ -1934,8 +1945,8 @@ const App = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 sm:py-32 md:py-44 px-4 sm:px-6 text-center relative overflow-hidden">
+      {/* CTA / Book a meet */}
+      <section id="book-a-meet" className="py-24 sm:py-32 md:py-44 px-4 sm:px-6 text-center relative overflow-hidden scroll-mt-24">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/10 blur-[150px] -z-10" />
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-black text-white tracking-tighter leading-[1.1] sm:leading-none uppercase mb-8 sm:mb-12">

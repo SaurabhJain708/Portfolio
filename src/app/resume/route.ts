@@ -140,6 +140,25 @@ export async function GET() {
             font-size: 0.9rem;
         }
 
+        .job-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .job-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .job-links a:hover {
+            text-decoration: underline;
+        }
+
         ul.bullets {
             list-style-type: disc;
             margin-left: 1.2rem;
@@ -212,6 +231,7 @@ export async function GET() {
                 <a href="mailto:sauravjain.dev@gmail.com"><i class="fas fa-envelope"></i> sauravjain.dev@gmail.com</a>
             </div>
             <div class="contact-info" style="margin-top: 0.5rem;">
+                <a href="https://www.sauravjain.dev" target="_blank"><i class="fas fa-globe"></i> sauravjain.dev</a>
                 <a href="https://linkedin.com/in/saurabh-jain-226295320" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/saurabh-jain-226295320</a>
                 <a href="https://github.com/SaurabhJain708" target="_blank"><i class="fab fa-github"></i> github.com/SaurabhJain708</a>
                 <a href="https://x.com/_Saurav_Jain_" target="_blank"><i class="fab fa-twitter"></i> x.com/_Saurav_Jain_</a>
@@ -221,17 +241,17 @@ export async function GET() {
         <section>
             <h2>Summary</h2>
             <div class="summary">
-                High-impact Full Stack Engineer with deep expertise in <strong>AI infrastructure</strong>, <strong>RAG systems</strong>, and <strong>secure authentication</strong>. Proven track record of executing zero-downtime migrations and shipping complex production features for live clients in agency environments. Specialist in bridging traditional backend engineering (PostgreSQL, Redis) with cutting-edge AI tooling (MCP, Vercel AI SDK). Currently acting as a solo lead on high-stakes billing and analytics systems.
+                Founder and Full-Stack AI Engineer with deep expertise in RAG systems, serverless AI, vLLM, model hosting, and MLOps. Built KRAG, a serverless RAG platform that beats Google NotebookLM in PDF parsing and table extraction. It runs on scale-to-zero GPUs so you pay nothing when idle. Strong in Vector DBs (BGE-M3), MCP, Modal, and bridging backend (PostgreSQL, Redis, tRPC) with AI tooling (Vercel AI SDK, fine-tuning). Track record: zero-downtime migrations, 90% RAG accuracy gains at Buildway.ai. Now leading SMAKG and building flagship products (KRAG, The Informant) plus client work like StealthNode.
             </div>
         </section>
 
         <section>
             <h2>Core Skills</h2>
             <ul class="skills-list">
-                <li><span class="skill-category">AI & RAG:</span> Vercel AI SDK, MCP, Vector DBs, RAG Optimization, LangChain, Puppeteer (Automation).</li>
-                <li><span class="skill-category">Frontend:</span> React, Next.js 14+, TypeScript, Tailwind CSS, Recharts, Shadcn UI.</li>
-                <li><span class="skill-category">Backend:</span> Node.js, tRPC, PostgreSQL (Neon), Redis, Better Auth, NextAuth, Zod.</li>
-                <li><span class="skill-category">DevOps & Tools:</span> Docker, Kubernetes, CI/CD (GitHub Actions), AWS, E2B, Bot Scaling.</li>
+                <li><span class="skill-category">AI & RAG:</span> Vercel AI SDK, MCP (Model Context Protocol), Vector DBs & Embeddings (BGE-M3), RAG Optimization & Citation, LangChain, vLLM & LLM Orchestration, Modal (Serverless GPU), Fine-tuning, Puppeteer (Automation).</li>
+                <li><span class="skill-category">Frontend:</span> React, Next.js 14+, TypeScript, Tailwind CSS, Recharts, Shadcn UI, Responsive & SSR.</li>
+                <li><span class="skill-category">Backend:</span> Node.js, tRPC, Prisma, PostgreSQL (Neon / Supabase), Redis, Better Auth, NextAuth, Zod.</li>
+                <li><span class="skill-category">DevOps & Tools:</span> Docker, Kubernetes, CI/CD (GitHub Actions), AWS, Modal (Serverless), Vercel, E2B (Sandboxing), Cloudflare Tunnel.</li>
             </ul>
         </section>
 
@@ -248,7 +268,8 @@ export async function GET() {
                 </div>
                 <ul class="bullets">
                     <li><strong>Company Building:</strong> Founding and leading SMAKG.com; defining product vision, technical strategy, and go-to-market.</li>
-                    <li><strong>Product & Engineering:</strong> Driving development of flagship products (KRAG, StealthNode, The Informant) and core infrastructure.</li>
+                    <li><strong>Product & Engineering:</strong> Driving development of flagship products (KRAG, The Informant) and core infrastructure.</li>
+                    <li><strong>Client Development:</strong> Building client products under SMAKG (e.g. StealthNode, an AI-driven SOC platform).</li>
                 </ul>
             </div>
 
@@ -276,32 +297,72 @@ export async function GET() {
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <span class="job-title">StackVault - SaaS Portfolio Builder</span>
-                        <span class="company">Creator & Lead Developer</span>
+                        <span class="job-title">KRAG - Serverless RAG Agent</span>
+                        <span class="company">(Creator & Lead Developer)</span>
                     </div>
-                    <div class="job-meta">July 2025 – Nov 2025</div>
+                    <div class="job-meta">Jan 2026 – Present</div>
+                </div>
+                <div class="job-links">
+                    <a href="https://github.com/SaurabhJain708/krag" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://youtu.be/sngsQ6HJnlY" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
                 </div>
                 <ul class="bullets">
-                    <li>Architected and launched a multi-tenant SaaS platform serving <strong>50+ active users</strong>, featuring <strong>custom domain support</strong> (Vercel-style routing) and dynamic subdomains via Next.js Middleware.</li>
-                    <li>Integrated an <strong>AI Assistant</strong> to automate user support and enhance portfolio creation workflows.</li>
-                    <li>Implemented robust CI/CD pipelines using <strong>GitHub Actions</strong> for dev and prod branches, automating linting, testing, and builds to prevent regressions.</li>
-                    <li>Enforced end-to-end type safety using <strong>Zod</strong> across all API endpoints and database schemas.</li>
+                    <li>Beats Google NotebookLM in PDF parsing and table extraction (March 2026). Architected the world's first serverless RAG agent: Next.js API plus Modal Python workers and Redis task queues. 40% lower cost than major parsers while preserving tables, structure, and formatting.</li>
+                    <li>Serverless GPUs scale to zero. No idle costs; scales by design. Multi-format ingestion (PDFs, web URLs) with 3 enterprise encryption levels, parent-child chunking, real-time status, and context-aware chat with citations.</li>
+                    <li>Florence-2 for image understanding and search. Custom models on Modal: Marker PDF, BGE-M3, MXBAI Reranker, Qwen 2.5 14B. All serverless with auto-scaling.</li>
+                    <li>Stack: Next.js 16, tRPC, Prisma, Redis, Supabase, Exa, Modal, vLLM, model hosting, MLOps.</li>
                 </ul>
             </div>
 
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <span class="job-title">KRAG - Serverless RAG Agent</span>
-                        <span class="company">Creator & Lead Developer</span>
+                        <span class="job-title">StealthNode - AI-Driven SOC Platform</span>
+                        <span class="company">(Lead Developer at SMAKG)</span>
                     </div>
-                    <div class="job-meta">Jan 2026 – Present</div>
+                    <div class="job-meta">Coming soon</div>
+                </div>
+                <div class="job-links">
+                    <a href="https://youtu.be/eGcgSURzO-E" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
                 </div>
                 <ul class="bullets">
-                    <li>Architected the world's first serverless RAG agent with <strong>microservice design</strong>—Next.js API + Modal Python workers, <strong>Redis</strong> task queues—achieving <strong>40% lower cost</strong> than major parsers while preserving tables, structure, and formatting.</li>
-                    <li>Multi-format ingestion (PDFs, web URLs) with <strong>3 enterprise encryption levels</strong> (None, Simple, Advanced), <strong>parent-child chunking</strong>, real-time status, and context-aware chat with citations.</li>
-                    <li><strong>Florence-2</strong> for image understanding and search; custom models on Modal: Marker PDF, BGE-M3, MXBAI Reranker, Qwen 2.5 14B—all serverless with auto-scaling.</li>
-                    <li>Stack: Next.js 16, tRPC, Prisma, Redis, Supabase, Exa, Modal.</li>
+                    <li>AI-powered Security Operations Center built by SMAKG for a client. Deploys via lightweight MCP + agent installer; logs stream to <strong>Wazuh</strong>; custom rulesets trigger an AI agent in isolated <strong>Modal</strong> sandbox connected via secure Cloudflare MCP tunnel.</li>
+                    <li>Agent detects and neutralizes threats in real time; delivers detailed incident reports. Stack: Modal, MCP, Wazuh, Cloudflare Tunnel, event-driven architecture.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">The Informant - Custom SLM for CS Students</span>
+                        <span class="company">(Creator & Lead Developer)</span>
+                    </div>
+                    <div class="job-meta">Coming soon</div>
+                </div>
+                <ul class="bullets">
+                    <li>Custom fine-tuned SLM for CS students. [PROSE] explains concepts like a 1940s noir detective; [CODE] returns ready-to-use Python code.</li>
+                    <li>Serverless deployment on <strong>Modal</strong>; actively under development. Stack: Modal, Python, SLM, fine-tuning.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">StackVault - SaaS Portfolio Builder</span>
+                        <span class="company">(Creator & Lead Developer)</span>
+                    </div>
+                    <div class="job-meta">July 2025 – Nov 2025</div>
+                </div>
+                <div class="job-links">
+                    <a href="https://www.stackvault.dev" target="_blank"><i class="fas fa-globe"></i> Live</a>
+                    <a href="https://github.com/SaurabhJain708/StackVault.dev" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://youtu.be/YLAzcAiYHKY" target="_blank"><i class="fab fa-youtube"></i> Demo</a>
+                </div>
+                <ul class="bullets">
+                    <li>Architected and launched a multi-tenant SaaS platform serving <strong>50+ active users</strong>, featuring <strong>custom domain support</strong> (Vercel-style routing) and dynamic subdomains via Next.js Middleware.</li>
+                    <li>Integrated an <strong>AI Assistant</strong> to automate user support and enhance portfolio creation workflows.</li>
+                    <li>Implemented robust CI/CD pipelines using <strong>GitHub Actions</strong> for dev and prod branches, automating linting, testing, and builds to prevent regressions.</li>
+                    <li>Enforced end-to-end type safety using <strong>Zod</strong> across all API endpoints and database schemas.</li>
                 </ul>
             </div>
         </section>
@@ -357,7 +418,7 @@ export async function GET() {
             <h2>Education</h2>
             <div class="edu-item">
                 <span><strong>Bachelor of Science in Data Science</strong>, Indian Institute of Technology, Madras</span>
-                <span>Exp. May 2029</span>
+                <span>Exp. Jan 2029</span>
             </div>
         </section>
 
