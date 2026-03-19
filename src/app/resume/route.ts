@@ -241,7 +241,7 @@ export async function GET() {
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <span class="job-title">Founding Engineer (Contract)</span>
+                        <span class="job-title">Founding Engineer</span>
                         <span class="company">Buildway.ai</span>
                     </div>
                     <div class="job-meta">Oct 2025 – Present | Berlin, Germany (Remote)</div>

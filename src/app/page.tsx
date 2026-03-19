@@ -41,10 +41,13 @@ const DATA = {
       id: "INTEL-01",
       items: [
         "Vercel AI SDK",
-        "MCP",
-        "Vector DBs",
-        "RAG Optimization",
+        "MCP (Model Context Protocol)",
+        "Vector DBs & Embeddings (BGE-M3)",
+        "RAG Optimization & Citation",
         "LangChain",
+        "vLLM & LLM Orchestration",
+        "Modal (Serverless GPU)",
+        "Fine-tuning",
         "Puppeteer (Automation)",
       ],
       color: "blue",
@@ -58,6 +61,7 @@ const DATA = {
         "Tailwind CSS",
         "Recharts",
         "Shadcn UI",
+        "Responsive & SSR",
       ],
       color: "indigo",
     },
@@ -66,7 +70,8 @@ const DATA = {
       items: [
         "Node.js",
         "tRPC",
-        "PostgreSQL (Neon)",
+        "Prisma",
+        "PostgreSQL (Neon / Supabase)",
         "Redis",
         "Better Auth",
         "NextAuth",
@@ -81,8 +86,10 @@ const DATA = {
         "Kubernetes",
         "CI/CD (GitHub Actions)",
         "AWS",
-        "E2B",
-        "Bot Scaling",
+        "Modal (Serverless)",
+        "Vercel",
+        "E2B (Sandboxing)",
+        "Cloudflare Tunnel",
       ],
       color: "orange",
     },
@@ -90,7 +97,7 @@ const DATA = {
   experience: [
     {
       company: "Buildway.ai",
-      role: "Founding Engineer (Contract)",
+      role: "Founding Engineer",
       period: "Oct 2025 – Present",
       location: "Berlin, Germany (Remote)",
       highlights: [
@@ -135,6 +142,39 @@ const DATA = {
   ],
   products: [
     {
+      name: "KRAG",
+      role: "Solo Builder",
+      period: "2025 – Present",
+      url: "https://github.com/SaurabhJain708/krag",
+      description: "Serverless RAG Agent",
+      summary: "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support. Built on Modal for scalable, cost-effective processing.",
+      tech: ["vLLM", "Finetuning", "Orchestration", "Modal", "Python", "…"],
+      image: "/krag.png",
+      video: "https://youtu.be/sngsQ6HJnlY",
+      details: [
+        "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support.",
+        "Built on Modal for scalable, cost-effective processing. Multi-format ingestion, enterprise encryption (Simple/Advanced), streaming SSE responses.",
+        "Full stack: Next.js 16, tRPC, Prisma, Python workers (ingestion + retrieval), BGE-M3 embeddings, Qwen 2.5 for generation.",
+      ],
+    },
+    {
+      name: "StealthNode",
+      role: "Creator & Lead Developer",
+      period: "Coming soon",
+      url: "#",
+      description: "AI-Driven SOC Platform",
+      summary: "AI-powered Security Operations Center that deploys via a lightweight installer (MCP + agent) on the client's system. Logs stream to Wazuh; custom rulesets trigger an AI agent that runs in an isolated sandbox on Modal, connected to the client through a secure Cloudflare MCP tunnel. The agent detects and neutralizes threats in real time and delivers a detailed incident report by email.",
+      status: "Launching soon — actively under development",
+      tech: ["Modal", "MCP", "Wazuh", "Cloudflare Tunnel", "Event-driven"],
+      image: "/stealthnode.png",
+      video: "https://youtu.be/eGcgSURzO-E",
+      details: [
+        "Custom event-driven architecture for the AI agent; clients install MCP + lightweight agent via installer; logs flow to Wazuh with custom rulesets—triggers fire when anomalies are detected.",
+        "On trigger, the AI agent runs in an isolated sandbox on Modal, connected to the client via a secure Cloudflare MCP tunnel.",
+        "Agent actively detects and neutralizes threats using MCP; sends a detailed incident report to the user via email.",
+      ],
+    },
+    {
       name: "StackVault",
       role: "Creator & Lead Developer",
       period: "July 2025 – Nov 2025",
@@ -153,19 +193,19 @@ const DATA = {
       ],
     },
     {
-      name: "KRAG",
-      role: "Solo Builder",
-      period: "2025 – Present",
-      url: "https://github.com/SaurabhJain708/krag",
-      description: "Serverless RAG Agent",
-      summary: "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support. Built on Modal for scalable, cost-effective processing.",
-      status: "Launching soon, under development",
-      tech: ["Next.js", "Modal", "tRPC", "Python", "Prisma"],
-      image: "/krag.jpeg",
+      name: "The Informant",
+      role: "Creator & Lead Developer",
+      period: "Coming soon",
+      url: "#",
+      description: "Custom SLM for CS Students",
+      summary: "A custom fine-tuned SLM that helps CS students grasp complex concepts and get code on demand. Prefix prompts with [PROSE] for explanations in the style of a 1940s noir detective, or [CODE] for ready-to-use Python code. Deployed serverlessly on Modal.",
+      status: "Launching soon — actively under development",
+      tech: ["Modal", "Python", "SLM", "Fine-tuning"],
+      image: "/informant.png",
       details: [
-        "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support.",
-        "Built on Modal for scalable, cost-effective processing. Multi-format ingestion, enterprise encryption (Simple/Advanced), streaming SSE responses.",
-        "Full stack: Next.js 16, tRPC, Prisma, Python workers (ingestion + retrieval), BGE-M3 embeddings, Qwen 2.5 for generation.",
+        "Custom fine-tuned SLM to help CS students understand complex concepts and get code.",
+        "[PROSE] — explains concepts like a 1940s noir detective; [CODE] — returns Python code.",
+        "Serverless deployment on Modal; actively under development.",
       ],
     },
   ],
@@ -1734,7 +1774,7 @@ const App = () => {
               >
                 <div className="relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-linear-to-br from-white/5 via-white/2 to-transparent backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_8px_40px_-12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 group-hover:border-white/20 group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_48px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)]">
                   {/* Left accent */}
-                  <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl ${idx === 0 ? "bg-linear-to-b from-blue-500 to-indigo-500" : "bg-linear-to-b from-amber-500/80 to-orange-500/80"} opacity-70 group-hover:opacity-100 transition-opacity`} />
+                  <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl opacity-70 group-hover:opacity-100 transition-opacity ${product.url === "#" ? "bg-linear-to-b from-amber-500/80 to-orange-500/80" : "bg-linear-to-b from-blue-500 to-indigo-500"}`} />
 
                   {/* Background patterns */}
                   <div
@@ -1759,7 +1799,7 @@ const App = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                       <div>
                         <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
-                          {idx === 0 && (
+                          {product.name === "KRAG" && (
                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25 text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]">
                               <span className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />
                               Flagship Product
@@ -1791,15 +1831,21 @@ const App = () => {
                             GitHub
                           </a>
                         )}
-                        <a
-                          href={product.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
-                        >
-                          {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
+                        {product.url === "#" ? (
+                          <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-500 font-bold text-xs uppercase tracking-widest cursor-default">
+                            Launching soon
+                          </span>
+                        ) : (
+                          <a
+                            href={product.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
+                          >
+                            {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
                       </div>
                     </div>
 
@@ -1827,8 +1873,8 @@ const App = () => {
                               src={product.image}
                               alt={product.name}
                               fill
-                              className="object-contain object-center p-4"
-                              priority={idx === 0}
+                              className="object-cover object-center"
+                              priority={product.name === "KRAG"}
                             />
                           ) : (
                             <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-blue-600/15 via-indigo-600/10 to-transparent">
