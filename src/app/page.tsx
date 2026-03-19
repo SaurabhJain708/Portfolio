@@ -22,6 +22,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
+import Cal from "@calcom/embed-react";
 import { blogs } from "@/data/blogs";
 
 const DATA = {
@@ -35,6 +36,8 @@ const DATA = {
     github: "SaurabhJain708",
     linkedin: "saurabh-jain-226295320",
     twitter: "_Saurav_Jain_",
+    cal: "smakg", // Cal.com username (https://cal.com/smakg/30min)
+    calEventSlug: "30min",
   },
   skills: {
     "AI & RAG": {
@@ -96,9 +99,25 @@ const DATA = {
   },
   experience: [
     {
+      company: "SMAKG.com",
+      role: "Founder",
+      period: "Feb 2026 – Present",
+      location: "Remote",
+      highlights: [
+        {
+          title: "Company Building",
+          desc: "Founding and leading SMAKG.com; defining product vision, technical strategy, and go-to-market.",
+        },
+        {
+          title: "Product & Engineering",
+          desc: "Driving development of flagship products (KRAG, StealthNode, The Informant) and core infrastructure.",
+        },
+      ],
+    },
+    {
       company: "Buildway.ai",
       role: "Founding Engineer",
-      period: "Oct 2025 – Present",
+      period: "Oct 2025 – Mar 2026",
       location: "Berlin, Germany (Remote)",
       highlights: [
         {
@@ -1927,6 +1946,15 @@ const App = () => {
             Currently reviewing opportunities for Founding Engineer & AI
             Infrastructure roles.
           </p>
+          <div className="mb-12 sm:mb-16 w-full max-w-2xl mx-auto">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] [&_.cal-embed]:rounded-2xl">
+              <Cal
+                calLink={`${DATA.contact.cal}/${DATA.contact.calEventSlug}`}
+                config={{ theme: "light" }}
+                style={{ width: "100%", height: "100%", overflow: "scroll" }}
+              />
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
             <a
               href={`mailto:${DATA.contact.email}`}

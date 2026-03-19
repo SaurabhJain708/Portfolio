@@ -241,10 +241,24 @@ export async function GET() {
             <div class="job">
                 <div class="job-header">
                     <div>
+                        <span class="job-title">Founder</span>
+                        <span class="company">SMAKG.com</span>
+                    </div>
+                    <div class="job-meta">Feb 2026 – Present | Remote</div>
+                </div>
+                <ul class="bullets">
+                    <li><strong>Company Building:</strong> Founding and leading SMAKG.com; defining product vision, technical strategy, and go-to-market.</li>
+                    <li><strong>Product & Engineering:</strong> Driving development of flagship products (KRAG, StealthNode, The Informant) and core infrastructure.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
                         <span class="job-title">Founding Engineer</span>
                         <span class="company">Buildway.ai</span>
                     </div>
-                    <div class="job-meta">Oct 2025 – Present | Berlin, Germany (Remote)</div>
+                    <div class="job-meta">Oct 2025 – Mar 2026 | Berlin, Germany (Remote)</div>
                 </div>
                 <ul class="bullets">
                     <li><strong>AI Infrastructure & RAG Optimization:</strong> Engineered a multi-agent system with <strong>Dynamic Chain of Thought</strong> and Web Search tools using MCP. Improved RAG citation accuracy by <strong>90%</strong> and data retrieval by <strong>70%</strong> via complex vector DB logic and post-hoc processing.</li>
