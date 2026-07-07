@@ -26,27 +26,27 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen bg-[#020617] text-gray-300 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-700 font-sans">
       {/* Subtle grid background */}
       <div
-        className="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-20"
+        className="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-40"
         aria-hidden
       >
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `linear-gradient(to right, #1e293b 1px, transparent 1px),
-              linear-gradient(to bottom, #1e293b 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #cbd5e1 1px, transparent 1px),
+              linear-gradient(to bottom, #cbd5e1 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
       </div>
 
-      <header className="border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl sticky top-0 z-10">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-xl sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-blue-400 text-xs font-black uppercase tracking-widest transition-colors"
+            className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 text-xs font-black uppercase tracking-widest transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> All posts
           </Link>
@@ -55,10 +55,10 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center">
             <BookOpen className="w-5 h-5" />
           </div>
-          <span className="text-[9px] font-black uppercase tracking-widest text-gray-500">
+          <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
             {post.date}
           </span>
         </div>
@@ -67,27 +67,27 @@ export default async function BlogPostPage({ params }: Props) {
           {post.tags.map((t) => (
             <span
               key={t}
-              className="px-2 py-1 bg-blue-500/10 border border-blue-500/20 rounded text-[9px] font-bold text-blue-400 uppercase tracking-widest"
+              className="px-2 py-1 bg-blue-50 border border-blue-200 rounded text-[9px] font-bold text-blue-600 uppercase tracking-widest"
             >
               {t}
             </span>
           ))}
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight uppercase mb-8">
           {post.title}
         </h1>
 
-        <div className="prose prose-invert max-w-none text-gray-400 text-base sm:text-lg leading-relaxed space-y-6">
+        <div className="prose max-w-none text-slate-600 text-base sm:text-lg leading-relaxed space-y-6">
           {post.body.split("\n\n").map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </div>
 
-        <footer className="mt-16 pt-8 border-t border-white/10">
+        <footer className="mt-16 pt-8 border-t border-slate-200">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-black uppercase tracking-widest transition-colors"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-black uppercase tracking-widest transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Back to all posts
           </Link>

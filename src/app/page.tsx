@@ -99,6 +99,26 @@ const DATA = {
   },
   experience: [
     {
+      company: "TathyaGrid.com",
+      role: "Founder",
+      period: "Apr 2026 – Present",
+      location: "India / Remote",
+      highlights: [
+        {
+          title: "India's First Agentic Lawyer",
+          desc: "Architecting and scaling India's first agentic AI lawyer platform with a custom legal data moat covering Indian court data.",
+        },
+        {
+          title: "Client & Market Adoption",
+          desc: "Secured trust and active usage from 20+ B2B law firms across India.",
+        },
+        {
+          title: "Strategic Backing",
+          desc: "Backed by infrastructure and resource programs from NVIDIA, Google, and AWS.",
+        },
+      ],
+    },
+    {
       company: "SMAKG.com",
       role: "Founder",
       period: "Feb 2026 – Present",
@@ -121,7 +141,7 @@ const DATA = {
     {
       company: "Buildway.ai",
       role: "Founding Engineer",
-      period: "Oct 2025 – Mar 2026",
+      period: "Oct 2025 – Apr 2026",
       location: "Berlin, Germany (Remote)",
       highlights: [
         {
@@ -148,17 +168,21 @@ const DATA = {
     },
     {
       company: "Freelance Client",
-      role: "Full-Stack Developer",
+      role: "Full-Stack & AI Developer",
       period: "Feb 2025 – May 2025",
       location: "Remote",
       highlights: [
+        {
+          title: "NAU AI Sales Funnel Finalist",
+          desc: "Led a team and got selected as a top 5 finalist in the contract for Northern Arizona University Healthcare MBA AI sales funnel custom development contract against giants with millions in revenue.",
+        },
         {
           title: "Secure Containerized Web Application",
           desc: "Delivered a secure, containerized (Docker) web application using Next.js and MongoDB.",
         },
         {
           title: "Reusable Component Library",
-          desc: "Built a reusable UI component library and containerized the app to reduce deployment friction and ensure environment consistency.",
+          desc: "Built a reusable UI component library and containerized the app to reduce deployment friction.",
         },
       ],
     },
@@ -401,204 +425,28 @@ It's rare to find a developer who can step into a complex, high-traffic codebase
 
 const BlueprintGrid = () => (
   <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-size-[40px_40px]" />
-    <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,transparent_0%,#020617_80%)" />
-  </div>
-);
-
-const FLOATING_ORBS = [
-  { top: "8%", left: "10%", w: 320, h: 320, color: "rgba(59,130,246,0.22)", blur: 100, delay: 0, duration: 25 },
-  { top: "60%", left: "75%", w: 280, h: 280, color: "rgba(99,102,241,0.18)", blur: 90, delay: 2, duration: 30 },
-  { top: "25%", left: "82%", w: 200, h: 200, color: "rgba(34,211,238,0.15)", blur: 70, delay: 1, duration: 22 },
-  { top: "70%", left: "15%", w: 240, h: 240, color: "rgba(139,92,246,0.16)", blur: 80, delay: 3, duration: 28 },
-  { top: "40%", left: "50%", w: 400, h: 400, color: "rgba(59,130,246,0.14)", blur: 120, delay: 1.5, duration: 35 },
-  { top: "15%", left: "55%", w: 160, h: 160, color: "rgba(99,102,241,0.2)", blur: 60, delay: 0.5, duration: 20 },
-  { top: "85%", left: "45%", w: 220, h: 220, color: "rgba(59,130,246,0.16)", blur: 75, delay: 2.5, duration: 26 },
-];
-
-const FLOATING_ICONS: { Icon: React.ComponentType<{ className?: string }>; top: string; left: string; size: number; delay: number; duration: number; opacity: number }[] = [
-  { Icon: Terminal, top: "12%", left: "18%", size: 24, delay: 0, duration: 18, opacity: 0.14 },
-  { Icon: CpuIcon, top: "22%", left: "88%", size: 32, delay: 2, duration: 24, opacity: 0.12 },
-  { Icon: Workflow, top: "55%", left: "8%", size: 28, delay: 1, duration: 20, opacity: 0.14 },
-  { Icon: GitBranch, top: "75%", left: "85%", size: 26, delay: 3, duration: 22, opacity: 0.12 },
-  { Icon: Layout, top: "35%", left: "92%", size: 22, delay: 0.5, duration: 26, opacity: 0.1 },
-  { Icon: HardDrive, top: "88%", left: "22%", size: 24, delay: 2.5, duration: 19, opacity: 0.12 },
-  { Icon: Activity, top: "48%", left: "5%", size: 28, delay: 1.5, duration: 21, opacity: 0.14 },
-  { Icon: Zap, top: "18%", left: "72%", size: 20, delay: 1, duration: 23, opacity: 0.12 },
-  { Icon: BookOpen, top: "65%", left: "28%", size: 22, delay: 2, duration: 25, opacity: 0.1 },
-];
-
-const FloatingAmbient = () => (
-  <div
-    className="fixed inset-0 overflow-hidden pointer-events-none"
-    style={{ zIndex: 1 }}
-    aria-hidden
-  >
-    {/* Gradient orbs */}
-    {FLOATING_ORBS.map((orb, i) => (
-      <motion.div
-        key={`orb-${i}`}
-        className="absolute rounded-full"
-        style={{
-          top: orb.top,
-          left: orb.left,
-          width: orb.w,
-          height: orb.h,
-          background: orb.color,
-          filter: `blur(${orb.blur}px)`,
-        }}
-        animate={{
-          x: [0, 30, -20, 0],
-          y: [0, -25, 15, 0],
-          scale: [1, 1.08, 0.95, 1],
-        }}
-        transition={{
-          duration: orb.duration,
-          delay: orb.delay,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-    {/* Floating tech icons */}
-    {FLOATING_ICONS.map(({ Icon, top, left, size, delay, duration, opacity }, i) => (
-      <motion.div
-        key={`icon-${i}`}
-        className="absolute text-blue-400/80"
-        style={{
-          top,
-          left,
-          width: size,
-          height: size,
-          opacity,
-        }}
-        animate={{
-          y: [0, -12, 8, 0],
-          x: [0, 8, -5, 0],
-          rotate: [0, 5, -3, 0],
-        }}
-        transition={{
-          duration,
-          delay,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Icon className="w-full h-full" />
-      </motion.div>
-    ))}
-    {/* Subtle floating brackets / code symbols */}
-    {["{", "}", "[", "]", "<", ">", "()"].map((char, i) => {
-      const positions = [
-        { top: "30%", left: "12%" }, { top: "55%", left: "78%" }, { top: "8%", left: "45%" },
-        { top: "82%", left: "55%" }, { top: "42%", left: "25%" }, { top: "68%", left: "62%" }, { top: "20%", left: "88%" },
-      ];
-      const pos = positions[i % positions.length];
-      return (
-        <motion.span
-          key={`char-${i}`}
-          className="absolute font-mono text-blue-400/30 text-2xl sm:text-3xl"
-          style={{ top: pos.top, left: pos.left }}
-          animate={{
-            y: [0, -8, 0],
-            opacity: [0.12, 0.2, 0.12],
-          }}
-          transition={{
-            duration: 14 + i * 2,
-            delay: i * 0.7,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          {char}
-        </motion.span>
-      );
-    })}
-    {/* Soft grid overlay for depth */}
-    <div
-      className="absolute inset-0 opacity-[0.06]"
-      style={{
-        backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)",
-        backgroundSize: "32px 32px",
-      }}
+    <div 
+      className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)]" 
+      style={{ backgroundSize: "40px 40px" }}
     />
+    <div className="absolute inset-0 bg-radial-gradient(circle_at_50%_50%,transparent_0%,#f8fafc_80%)" />
   </div>
 );
 
-const HACKER_CHARACTERS = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-];
-
-const HackerGlitch = () => {
-  // Generate random values only on client to avoid hydration mismatch
-  const [glitchData, setGlitchData] = useState<Array<{
-    char: string;
-    left: string;
-    delay: number;
-    duration: number;
-    repeatDelay: number;
-  }>>([]);
-
-  React.useEffect(() => {
-    setGlitchData(
-      Array.from({ length: 60 }).map(() => ({
-        char: HACKER_CHARACTERS[Math.floor(Math.random() * HACKER_CHARACTERS.length)],
-        left: `${3 + Math.random() * 94}%`,
-        delay: Math.random() * 10,
-        duration: 4 + Math.random() * 4,
-        repeatDelay: Math.random() * 3,
-      }))
-    );
-  }, []);
-
-  if (glitchData.length === 0) {
-    return null;
-  }
-
+const BackgroundVideo = () => {
   return (
-    <div
-      className="absolute inset-0 z-25 pointer-events-none"
-      style={{ overflow: "visible" }}
-    >
-      {glitchData.map((data, i) => (
-        <motion.div
-          key={i}
-          className="hacker-char absolute font-mono text-[9px] sm:text-[10px] text-emerald-300 font-bold whitespace-nowrap"
-          style={{
-            left: data.left,
-            opacity: 0.95,
-          }}
-          initial={{ y: -30, opacity: 0 }}
-          animate={{
-            y: 600,
-            opacity: [0, 0.8, 1, 0.95, 0.7, 0.4, 0],
-          }}
-          transition={{
-            duration: data.duration,
-            delay: data.delay,
-            repeat: Infinity,
-            repeatDelay: data.repeatDelay,
-            ease: "linear",
-          }}
-        >
-          {data.char}
-        </motion.div>
-      ))}
+    <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none bg-slate-50">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-8 transition-opacity duration-1000 filter invert contrast-125 brightness-110"
+        src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-connection-network-loop-41604-large.mp4"
+      />
+      {/* Fallback gradient loops for visual interest in case video is blocked */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.04)_0%,transparent_50%),radial-gradient(circle_at_80%_80%,rgba(59,130,246,0.04)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-radial-gradient(circle at center, transparent 0%, #f8fafc 85%)" />
     </div>
   );
 };
@@ -607,93 +455,35 @@ const Avatar = () => {
   return (
     <motion.div
       className="relative w-full max-w-md lg:max-w-xl xl:max-w-lg 2xl:max-w-xl mx-auto"
-      initial={{ opacity: 0, scale: 0.8 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
     >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-blue-500/20 blur-[80px] rounded-full" />
+      <div className="absolute inset-0 bg-indigo-500/5 blur-[80px] rounded-full pointer-events-none" />
 
-      {/* Animated border ring */}
-      <motion.div
-        className="absolute -inset-2 rounded-full border-2 border-dashed border-blue-500/30"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      />
+      {/* Subtle animated ring around profile */}
+      <div className="absolute -inset-2 rounded-full border border-indigo-500/10 animate-pulse pointer-events-none" />
 
-      {/* Avatar container */}
-      <div className="relative rounded-full overflow-hidden border-4 border-white/10 shadow-2xl bg-linear-to-br from-blue-600/20 to-indigo-600/20 backdrop-blur-sm">
-        <div className="aspect-square w-full relative glitch-container">
-          {/* RGB Glitch Layers - Subtle Chromatic Aberration */}
-          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-red pointer-events-none rounded-full overflow-hidden">
-            <Image
-              src="/avatar.png"
-              alt=""
-              fill
-              className="object-cover rounded-full"
-              priority
-              aria-hidden="true"
-            />
-          </div>
-          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-green pointer-events-none rounded-full overflow-hidden">
-            <Image
-              src="/avatar.png"
-              alt=""
-              fill
-              className="object-cover rounded-full"
-              priority
-              aria-hidden="true"
-            />
-          </div>
-          <div className="absolute inset-0 z-15 rgb-glitch rgb-glitch-blue pointer-events-none rounded-full overflow-hidden">
-            <Image
-              src="/avatar.png"
-              alt=""
-              fill
-              className="object-cover rounded-full"
-              priority
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Main image */}
+      {/* Clean Avatar container */}
+      <div className="relative rounded-full overflow-hidden border-4 border-white shadow-xl bg-white/50 backdrop-blur-md transition-transform duration-500 hover:scale-102">
+        <div className="aspect-square w-full relative">
           <Image
             src="/avatar.png"
             alt="Saurabh Jain"
             fill
-            className="object-cover transition-all duration-700 relative z-10"
+            className="object-cover"
             priority
           />
 
-          {/* Hacker-style glitch overlay */}
-          <div
-            className="absolute inset-0 z-20 hacker-overlay rounded-full"
-            style={{ overflow: "visible" }}
-          >
-            <HackerGlitch />
-          </div>
-
-          {/* Scan line effect */}
-          <motion.div
-            className="absolute inset-0 z-21 hacker-scanline pointer-events-none"
-            animate={{
-              y: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-
           {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-200/40 via-transparent to-transparent z-10" />
 
           {/* Status indicator */}
           <div className="absolute bottom-4 right-4 z-30">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-500/30">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[9px] font-black text-emerald-300 uppercase tracking-widest">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 backdrop-blur-md border border-emerald-200/80">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">
                 Active
               </span>
             </div>
@@ -702,21 +492,13 @@ const Avatar = () => {
       </div>
 
       {/* Floating badges */}
-      <motion.div
-        className="absolute -top-4 -right-4 bg-blue-600 p-3 rounded-xl shadow-xl border border-white/10 z-30"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
+      <div className="absolute -top-4 -right-4 bg-indigo-600 p-3 rounded-xl shadow-xl border border-indigo-500/20 z-30">
         <Terminal className="w-6 h-6 text-white" />
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="absolute -bottom-4 -left-4 bg-indigo-600 p-3 rounded-xl shadow-xl border border-white/10 z-30"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-      >
+      <div className="absolute -bottom-4 -left-4 bg-blue-600 p-3 rounded-xl shadow-xl border border-blue-500/20 z-30">
         <Zap className="w-6 h-6 text-white" />
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
@@ -739,10 +521,10 @@ const SkillIcon = ({ category }: { category: string }) => {
 };
 
 const DOMAIN_COLORS: Record<string, { bg: string; text: string; accent: string; border: string }> = {
-  "AI & RAG": { bg: "bg-blue-500/15", text: "text-blue-400", accent: "bg-blue-500/50", border: "border-blue-500/30" },
-  Frontend: { bg: "bg-indigo-500/15", text: "text-indigo-400", accent: "bg-indigo-500/50", border: "border-indigo-500/30" },
-  Backend: { bg: "bg-emerald-500/15", text: "text-emerald-400", accent: "bg-emerald-500/50", border: "border-emerald-500/30" },
-  "DevOps & Tools": { bg: "bg-orange-500/15", text: "text-orange-400", accent: "bg-orange-500/50", border: "border-orange-500/30" },
+  "AI & RAG": { bg: "bg-blue-50/80", text: "text-blue-600", accent: "bg-blue-500", border: "border-blue-200/60" },
+  Frontend: { bg: "bg-indigo-50/80", text: "text-indigo-600", accent: "bg-indigo-500", border: "border-indigo-200/60" },
+  Backend: { bg: "bg-emerald-50/80", text: "text-emerald-600", accent: "bg-emerald-500", border: "border-emerald-200/60" },
+  "DevOps & Tools": { bg: "bg-orange-50/80", text: "text-orange-600", accent: "bg-orange-500", border: "border-orange-200/60" },
 };
 function getDomainStyle(name: string) {
   return DOMAIN_COLORS[name] ?? DOMAIN_COLORS["AI & RAG"];
@@ -786,12 +568,12 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
         transition={{ delay: index * 0.1 }}
         className="group relative"
       >
-        <div className="h-full p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-3xl hover:bg-white/8 hover:border-indigo-500/30 transition-all relative overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]">
+        <div className="h-full p-6 sm:p-8 bg-white/80 border border-slate-200/80 rounded-2xl sm:rounded-3xl hover:bg-white hover:border-indigo-500/30 transition-all relative overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]">
           {/* Background Pattern */}
           <div
-            className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] pointer-events-none transition-opacity"
+            className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.08] pointer-events-none transition-opacity"
             style={{
-              backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
+              backgroundImage: "radial-gradient(#94a3b8 1px, transparent 0)",
               backgroundSize: "20px 20px",
             }}
           />
@@ -799,8 +581,8 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
           {/* Top Section with Image */}
           <div className="flex items-start gap-4 sm:gap-5 mb-6 relative z-10">
             <div className="relative shrink-0">
-              <div className="absolute -inset-1 bg-indigo-500/30 rounded-full blur-md group-hover:bg-indigo-500/50 transition-colors" />
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/15 ring-2 ring-indigo-500/20 group-hover:ring-indigo-500/40 transition-all">
+              <div className="absolute -inset-1 bg-indigo-500/10 rounded-full blur-md group-hover:bg-indigo-500/20 transition-colors" />
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-slate-200 ring-2 ring-indigo-500/10 group-hover:ring-indigo-500/30 transition-all">
                 <Image
                   src={rec.image}
                   alt={rec.name}
@@ -810,10 +592,10 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
               </div>
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter mb-1 group-hover:text-indigo-400 transition-colors">
+              <h3 className="text-lg sm:text-xl font-black text-slate-800 tracking-tighter mb-1 group-hover:text-indigo-600 transition-colors">
                 {rec.name}
               </h3>
-              <p className="text-xs sm:text-sm text-indigo-400 font-bold uppercase tracking-wider">
+              <p className="text-xs sm:text-sm text-indigo-600 font-bold uppercase tracking-wider">
                 {rec.role}
               </p>
             </div>
@@ -824,17 +606,17 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
             <div className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
               &ldquo;
             </div>
-            <p className="text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic relative line-clamp-4">
+            <p className="text-sm sm:text-base text-slate-500 leading-relaxed pl-6 sm:pl-8 italic relative line-clamp-4">
               {truncatedText}
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-between gap-3 relative z-10 pt-4 border-t border-white/5">
+          <div className="flex items-center justify-between gap-3 relative z-10 pt-4 border-t border-slate-100">
             {needsFullView ? (
               <button
                 onClick={() => setModalOpen(true)}
-                className="text-xs cursor-pointer font-bold text-indigo-400 hover:text-indigo-300 uppercase tracking-wider transition-colors flex items-center gap-1"
+                className="text-xs cursor-pointer font-bold text-indigo-600 hover:text-indigo-700 uppercase tracking-wider transition-colors flex items-center gap-1"
               >
                 <span>View full</span>
                 <ChevronRight className="w-3 h-3 -rotate-90" />
@@ -846,7 +628,7 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
               href={rec.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all group/link"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 font-bold text-xs uppercase tracking-wider rounded-lg transition-all group/link"
             >
               <Linkedin className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">LinkedIn</span>
@@ -874,12 +656,12 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
               aria-hidden
             />
             <div
-              className="relative w-full max-w-lg max-h-[85vh] flex flex-col bg-[#0f172a] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-lg max-h-[85vh] flex flex-col bg-white border border-slate-200 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between gap-4 p-4 sm:p-6 border-b border-white/10 shrink-0">
+              <div className="flex items-center justify-between gap-4 p-4 sm:p-6 border-b border-slate-200 shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-slate-200 shrink-0">
                     <Image
                       src={rec.image}
                       alt={rec.name}
@@ -888,17 +670,17 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
                     />
                   </div>
                   <div className="min-w-0">
-                    <h2 id="recommendation-modal-title" className="text-base sm:text-lg font-black text-white truncate">
+                    <h2 id="recommendation-modal-title" className="text-base sm:text-lg font-black text-slate-900 truncate">
                       {rec.name}
                     </h2>
-                    <p className="text-xs text-indigo-400 font-bold uppercase tracking-wider truncate">
+                    <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider truncate">
                       {rec.role}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setModalOpen(false)}
-                  className="shrink-0 w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+                  className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
                   aria-label="Close"
                 >
                   <X className="w-5 h-5" />
@@ -909,17 +691,17 @@ const RecommendationCard = ({ rec, index }: { rec: typeof DATA.recommendations[0
                   <span className="absolute top-0 left-0 w-8 h-8 text-indigo-500/20 font-serif text-4xl leading-none">
                     &ldquo;
                   </span>
-                  <p className="text-sm sm:text-base text-gray-400 leading-relaxed pl-6 sm:pl-8 italic">
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-8 italic">
                     {rec.text}
                   </p>
                 </div>
               </div>
-              <div className="p-4 sm:p-6 border-t border-white/10 shrink-0">
+              <div className="p-4 sm:p-6 border-t border-slate-200 shrink-0">
                 <a
                   href={rec.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                   View on LinkedIn
@@ -964,7 +746,7 @@ const OpenSourceCard = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1 }}
-        className="group p-6 sm:p-8 bg-white/5 border border-white/15 rounded-2xl sm:rounded-[2.5rem] hover:bg-white/8 hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_24px_-4px_rgba(0,0,0,0.35)]"
+        className="group p-6 sm:p-8 bg-white/80 border border-slate-200/80 rounded-2xl sm:rounded-[2.5rem] hover:bg-white hover:border-indigo-500/30 transition-all flex flex-col h-full relative overflow-hidden cursor-pointer shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]"
         onClick={() => setModalOpen(true)}
       >
         <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-5 group-hover:opacity-20 transition-opacity">
@@ -972,18 +754,18 @@ const OpenSourceCard = ({
         </div>
 
         <div className="flex justify-between items-start mb-6 sm:mb-8 relative z-10">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-500 group-hover:text-white transition-all">
             <Terminal className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <span className="text-[9px] sm:text-[10px] font-black text-indigo-400 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full uppercase tracking-widest">
+          <span className="text-[9px] sm:text-[10px] font-black text-indigo-600 bg-indigo-50 px-2 sm:px-3 py-1 rounded-full uppercase tracking-widest">
             {oss.metric}
           </span>
         </div>
 
-        <h3 className="text-xl sm:text-2xl font-black text-white uppercase mb-3 sm:mb-4 group-hover:text-indigo-400 transition-colors relative z-10">
+        <h3 className="text-xl sm:text-2xl font-black text-slate-800 uppercase mb-3 sm:mb-4 group-hover:text-indigo-600 transition-colors relative z-10">
           {oss.name}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">
+        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6 sm:mb-8 flex-1 relative z-10">
           {oss.desc}
         </p>
 
@@ -992,14 +774,14 @@ const OpenSourceCard = ({
             {oss.tags?.map((t) => (
               <span
                 key={t}
-                className="text-[9px] font-black uppercase tracking-widest text-gray-600 bg-white/5 px-2 py-1 rounded"
+                className="text-[9px] font-black uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-1 rounded"
               >
                 #{t}
               </span>
             ))}
           </div>
-          <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest">
+          <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex items-center gap-2 text-emerald-600 text-[10px] font-black uppercase tracking-widest">
               <Zap className="w-3 h-3" /> {oss.impact}
             </div>
             <button
@@ -1007,7 +789,7 @@ const OpenSourceCard = ({
                 e.stopPropagation();
                 setModalOpen(true);
               }}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer"
             >
               View Links
               <ChevronRight className="w-3.5 h-3.5 -rotate-90" />
@@ -1030,31 +812,31 @@ const OpenSourceCard = ({
               aria-hidden
             />
             <div
-              className="relative w-full max-w-2xl max-h-[85vh] flex flex-col bg-[#0b1220] border border-white/15 rounded-2xl sm:rounded-3xl shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_20px_80px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+              className="relative w-full max-w-2xl max-h-[85vh] flex flex-col bg-white border border-slate-200 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-white/10 shrink-0">
-                <div className="absolute inset-0 bg-linear-to-r from-blue-600/15 via-transparent to-indigo-600/15 pointer-events-none" />
+              <div className="relative px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-slate-200 shrink-0">
+                <div className="absolute inset-0 bg-linear-to-r from-blue-600/5 via-transparent to-indigo-600/5 pointer-events-none" />
                 <div className="flex items-center justify-between gap-4 relative">
                   <div className="min-w-0">
                     <h2
                       id={`oss-modal-title-${index}`}
-                      className="text-base sm:text-xl font-black text-white truncate"
+                      className="text-base sm:text-xl font-black text-slate-900 truncate"
                     >
                       {oss.name} — PRs & Issues
                     </h2>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-[9px] font-black uppercase tracking-widest text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2 py-0.5 rounded-full">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-200/80 px-2 py-0.5 rounded-full">
                         {oss.metric}
                       </span>
-                      <span className="text-[9px] font-black uppercase tracking-widest text-gray-500 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
                         {oss.impact}
                       </span>
                     </div>
                   </div>
                   <button
                     onClick={() => setModalOpen(false)}
-                    className="shrink-0 w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer"
+                    className="shrink-0 w-10 h-10 rounded-full border border-slate-200 bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
                     aria-label="Close"
                   >
                     <X className="w-5 h-5" />
@@ -1064,19 +846,19 @@ const OpenSourceCard = ({
 
               <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
                 {(hasPrs || hasIssues) ? (
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-slate-500 leading-relaxed">
                     Links to all pull requests and issues authored for this repository.
                   </p>
                 ) : (
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                  <p className="text-sm text-slate-400 leading-relaxed">
                     No PR or issue links listed for this repository yet.
                   </p>
                 )}
 
                 <div className="space-y-4">
                   {hasPrs && (
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                      <h3 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+                      <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
                         Pull Requests
                       </h3>
                       <div className="space-y-2">
@@ -1086,10 +868,10 @@ const OpenSourceCard = ({
                             href={pr.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-white/10 bg-[#0f172a] hover:bg-white/5 transition-all text-sm text-gray-300"
+                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-all text-sm text-slate-700"
                           >
                             <span className="truncate">{pr.title}</span>
-                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-400" />
+                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-600" />
                           </a>
                         ))}
                       </div>
@@ -1097,8 +879,8 @@ const OpenSourceCard = ({
                   )}
 
                   {hasIssues && (
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                      <h3 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+                      <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
                         Issues
                       </h3>
                       <div className="space-y-2">
@@ -1108,10 +890,10 @@ const OpenSourceCard = ({
                             href={issue.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-white/10 bg-[#0f172a] hover:bg-white/5 transition-all text-sm text-gray-300"
+                            className="flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-all text-sm text-slate-700"
                           >
                             <span className="truncate">{issue.title}</span>
-                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-400" />
+                            <ExternalLink className="w-4 h-4 shrink-0 text-blue-600" />
                           </a>
                         ))}
                       </div>
@@ -1120,13 +902,13 @@ const OpenSourceCard = ({
                 </div>
               </div>
 
-              <div className="p-4 sm:p-6 border-t border-white/10 shrink-0">
+              <div className="p-4 sm:p-6 border-t border-slate-200 shrink-0">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <a
                     href={oss.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 hover:border-indigo-500/50 text-indigo-300 hover:text-indigo-200 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 font-bold text-xs uppercase tracking-wider rounded-lg transition-all"
                   >
                     <GitBranch className="w-3.5 h-3.5" />
                     View Repository
@@ -1134,7 +916,7 @@ const OpenSourceCard = ({
                   </a>
                   <button
                     onClick={() => setModalOpen(false)}
-                    className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-gray-300 transition-colors"
+                    className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-800 transition-colors"
                   >
                     Close
                   </button>
@@ -1158,19 +940,19 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
       initial={{ opacity: 0, x: -20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ delay: index * 0.1 }}
-      className="relative pl-6 sm:pl-8 pb-8 sm:pb-12 border-l border-white/10 last:pb-0"
+      className="relative pl-6 sm:pl-8 pb-8 sm:pb-12 border-l border-slate-200/80 last:pb-0"
     >
-      <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+      <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div>
-          <h3 className="text-lg sm:text-xl font-black text-white tracking-tighter uppercase">
+          <h3 className="text-lg sm:text-xl font-black text-slate-800 tracking-tighter uppercase">
             {exp.role}
           </h3>
-          <p className="text-blue-400 font-bold uppercase text-xs sm:text-sm">
+          <p className="text-blue-600 font-bold uppercase text-xs sm:text-sm">
             {exp.company}
           </p>
         </div>
-        <span className="text-[9px] sm:text-[10px] font-black px-2 sm:px-3 py-1 bg-white/5 border border-white/10 rounded-full uppercase tracking-widest text-gray-500">
+        <span className="text-[9px] sm:text-[10px] font-black px-2 sm:px-3 py-1 bg-slate-100 border border-slate-200 rounded-full uppercase tracking-widest text-slate-500">
           {exp.period}
         </span>
       </div>
@@ -1178,13 +960,13 @@ const ExperienceItem = ({ exp, index }: { exp: Experience; index: number }) => {
         {exp.highlights.map((h: ExperienceHighlight, i: number) => (
           <div
             key={i}
-            className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/5 border border-white/15 hover:border-blue-500/30 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
+            className="group p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white border border-slate-200/80 hover:border-blue-500/30 hover:bg-slate-50/50 transition-all cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.01)]"
           >
-            <h4 className="text-white text-xs sm:text-sm font-bold flex items-center gap-2 mb-1">
-              <ChevronRight className="w-3 h-3 text-blue-500 shrink-0" />{" "}
+            <h4 className="text-slate-800 text-xs sm:text-sm font-bold flex items-center gap-2 mb-1">
+              <ChevronRight className="w-3 h-3 text-blue-600 shrink-0" />{" "}
               <span>{h.title}</span>
             </h4>
-            <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+            <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed">
               {h.desc}
             </p>
           </div>
@@ -1204,41 +986,41 @@ const BlogCard = ({
   <Link
     href={`/blog/${blog.id}`}
     className={`group shrink-0 flex flex-col p-6 sm:p-8 rounded-3xl transition-all duration-300 cursor-pointer h-full relative overflow-hidden ${className}
-      bg-white/8 border border-white/15
+      bg-white/80 border border-slate-200/80
       backdrop-blur-2xl
-      shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_4px_24px_-4px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.06)]
-      hover:bg-white/10 hover:border-white/25
-      hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)]`}
+      shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)]
+      hover:bg-white hover:border-blue-500/25
+      hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.06)]`}
     style={{ width: 480, minWidth: 480 }}
   >
     {/* Left accent bar */}
-    <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-blue-500/60 via-blue-400/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity rounded-l-3xl" />
+    <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-blue-600/30 via-blue-400/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity rounded-l-3xl" />
     <div className="absolute inset-0 bg-linear-to-br from-white/2 via-transparent to-transparent pointer-events-none rounded-3xl" />
     <div className="flex items-center gap-2 mb-4 relative z-10">
-      <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 group-hover:scale-105 transition-all border border-white/10">
+      <div className="w-11 h-11 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-500/20 group-hover:scale-105 transition-all border border-blue-100">
         <BookOpen className="w-5 h-5" />
       </div>
-      <span className="text-[9px] font-black uppercase tracking-widest text-gray-500">
+      <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
         {blog.date}
       </span>
     </div>
-    <h3 className="text-lg sm:text-xl font-black text-white uppercase mb-3 group-hover:text-blue-400 transition-colors relative z-10 line-clamp-2 pr-2">
+    <h3 className="text-lg sm:text-xl font-black text-slate-800 uppercase mb-3 group-hover:text-blue-600 transition-colors relative z-10 line-clamp-2 pr-2">
       {blog.title}
     </h3>
-    <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-5 line-clamp-3 relative z-10">
+    <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-5 line-clamp-3 relative z-10">
       {blog.excerpt}
     </p>
     <div className="flex flex-wrap gap-2 mb-4 relative z-10">
       {blog.tags.slice(0, 3).map((t) => (
         <span
           key={t}
-          className="text-[8px] font-bold uppercase tracking-widest text-gray-500 bg-white/10 border border-white/10 px-2.5 py-1 rounded-lg"
+          className="text-[8px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-lg"
         >
           #{t}
         </span>
       ))}
     </div>
-    <span className="inline-flex items-center gap-2 text-blue-400 text-[10px] font-black uppercase tracking-widest group-hover:gap-3 transition-all relative z-10">
+    <span className="inline-flex items-center gap-2 text-blue-600 text-[10px] font-black uppercase tracking-widest group-hover:gap-3 transition-all relative z-10">
       Read more <ChevronRight className="w-4 h-4" />
     </span>
   </Link>
@@ -1310,37 +1092,37 @@ const App = () => {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <div className="bg-[#020617] text-gray-300 min-h-screen font-sans selection:bg-blue-500/30 overflow-x-hidden">
+    <div className="bg-slate-50 text-slate-700 min-h-screen font-sans selection:bg-indigo-500/20 overflow-x-hidden">
       <BlueprintGrid />
-      <FloatingAmbient />
+      <BackgroundVideo />
 
       {/* Main content above ambient layer */}
       <div className="relative z-10">
       {/* Scroll Progress */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-100 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-indigo-600 z-100 origin-left"
         style={{ scaleX }}
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/5">
+      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white text-lg sm:text-xl">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-indigo-600 flex items-center justify-center font-black text-white text-lg sm:text-xl">
               S
             </div>
-            <span className="font-black text-white tracking-tighter text-base sm:text-xl uppercase">
-              Saurabh<span className="text-blue-500">.</span>Jain
+            <span className="font-black text-slate-900 tracking-tighter text-base sm:text-xl uppercase">
+              Saurabh<span className="text-indigo-500">.</span>Jain
             </span>
           </div>
 
-          <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+          <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
             {["OSS", "Experience", "Products", "Blog", "Recommendations", "Stack", "Book a meet"].map(
               (item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="hover:text-blue-400 transition-colors cursor-pointer"
+                  className="hover:text-blue-600 transition-colors cursor-pointer"
                 >
                   {item}
                 </a>
@@ -1353,19 +1135,19 @@ const App = () => {
               href="/resume"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 px-4 sm:px-6 py-2 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
+              className="hidden sm:flex items-center gap-2 px-4 sm:px-6 py-2 bg-slate-900 text-white font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-blue-600 transition-all cursor-pointer"
             >
               <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
               View Resume
             </a>
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
-              className="md:hidden p-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30 transition-all cursor-pointer"
+              className="md:hidden p-2.5 rounded-lg bg-slate-100 border border-slate-200 hover:bg-slate-200 hover:border-blue-500/20 transition-all cursor-pointer"
             >
               {mobileMenu ? (
-                <X className="w-5 h-5 text-white" />
+                <X className="w-5 h-5 text-slate-700" />
               ) : (
-                <Menu className="w-5 h-5 text-white" />
+                <Menu className="w-5 h-5 text-slate-700" />
               )}
             </button>
           </div>
@@ -1378,11 +1160,11 @@ const App = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#020617]/98 backdrop-blur-2xl border-t border-white/10 shadow-2xl"
+            className="md:hidden bg-white/95 backdrop-blur-2xl border-t border-slate-200 shadow-xl"
           >
             <div className="px-4 py-6 space-y-3">
-              <div className="mb-4 pb-4 border-b border-white/10">
-                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 mb-3">
+              <div className="mb-4 pb-4 border-b border-slate-200">
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-400 mb-3">
                   NAVIGATION
                 </p>
                 {[
@@ -1401,13 +1183,13 @@ const App = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex items-center gap-3 py-3.5 px-4 rounded-xl bg-white/2 border border-white/5 hover:bg-white/5 hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-pointer group"
+                    className="flex items-center gap-3 py-3.5 px-4 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100 hover:border-blue-500/20 hover:text-blue-600 transition-all cursor-pointer group"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-blue-500 transition-colors" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 group-hover:text-blue-400 transition-colors">
+                    <div className="w-1.5 h-1.5 rounded-full bg-slate-400 group-hover:bg-blue-600 transition-colors" />
+                    <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-blue-600 transition-colors">
                       {item}
                     </span>
-                    <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-blue-500 ml-auto transition-colors" />
+                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 ml-auto transition-colors" />
                   </motion.a>
                 ))}
               </div>
@@ -1420,7 +1202,7 @@ const App = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="flex items-center justify-center gap-2 px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all cursor-pointer shadow-lg shadow-blue-500/20 active:scale-95"
+                className="flex items-center justify-center gap-2 px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all cursor-pointer shadow-lg shadow-blue-500/10 active:scale-95"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>View Resume</span>
@@ -1437,32 +1219,32 @@ const App = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-blue-400 mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-blue-600 mb-6 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               <span className="hidden sm:inline">
                 Operational in Production Environment
               </span>
               <span className="sm:hidden">Production Ready</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-white tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 uppercase">
               Engineer <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
                 Intelligent
               </span>
               <br />
               Infrastructure
             </h1>
-            <p className="text-base sm:text-lg lg:text-base xl:text-lg text-gray-400 max-w-xl mb-8 sm:mb-12 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg lg:text-base xl:text-lg text-slate-500 max-w-xl mb-8 sm:mb-12 leading-relaxed font-medium">
               Bridging the gap between{" "}
-              <span className="text-white">robust backend systems</span> and{" "}
-              <span className="text-white">agentic AI workflows</span>.
+              <span className="text-slate-800">robust backend systems</span> and{" "}
+              <span className="text-slate-800">agentic AI workflows</span>.
               Specializing in RAG optimization and zero-downtime engineering.
             </p>
 
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <a
                 href="#book-a-meet"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-500 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-blue-700 shadow-md shadow-blue-500/10 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
               >
                 Book a meet
               </a>
@@ -1470,7 +1252,7 @@ const App = () => {
                 href="/resume"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 border border-white/15 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-white/10 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-slate-100 border border-slate-200 text-slate-800 font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all flex items-center gap-2 sm:gap-3 cursor-pointer"
               >
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                 View Resume
@@ -1480,7 +1262,7 @@ const App = () => {
                   href={`https://github.com/${DATA.contact.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                  className="p-3 sm:p-4 bg-slate-100 border border-slate-200 rounded-xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
                 >
                   <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
@@ -1488,7 +1270,7 @@ const App = () => {
                   href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                  className="p-3 sm:p-4 bg-slate-100 border border-slate-200 rounded-xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
                 >
                   <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
@@ -1496,7 +1278,7 @@ const App = () => {
                   href={`https://x.com/${DATA.contact.twitter}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all text-white cursor-pointer"
+                  className="p-3 sm:p-4 bg-slate-100 border border-slate-200 rounded-xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
                 >
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5"
@@ -1512,23 +1294,23 @@ const App = () => {
           </motion.div>
 
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute -inset-4 bg-blue-500/10 blur-[100px] opacity-30 pointer-events-none" />
+            <div className="absolute -inset-4 bg-blue-500/5 blur-[100px] opacity-20 pointer-events-none" />
             <div className="space-y-4 sm:space-y-6 relative">
               <Avatar />
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="p-4 sm:p-6 bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_20px_-4px_rgba(0,0,0,0.3)]">
-                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-blue-500 transition-colors">
+                <div className="p-4 sm:p-6 bg-white/80 border border-slate-200 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-blue-500/50 hover:bg-white transition-all cursor-pointer shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                  <div className="text-2xl sm:text-3xl font-black text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">
                     90%
                   </div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">
+                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-slate-400">
                     RAG Accuracy
                   </div>
                 </div>
-                <div className="p-4 sm:p-6 bg-white/5 border border-white/15 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 hover:bg-white/8 transition-all cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_4px_20px_-4px_rgba(0,0,0,0.3)]">
-                  <div className="text-2xl sm:text-3xl font-black text-white mb-1 group-hover:text-emerald-500 transition-colors">
+                <div className="p-4 sm:p-6 bg-white/80 border border-slate-200 rounded-xl sm:rounded-2xl backdrop-blur-sm group hover:border-emerald-500/50 hover:bg-white transition-all cursor-pointer shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                  <div className="text-2xl sm:text-3xl font-black text-slate-800 mb-1 group-hover:text-emerald-600 transition-colors">
                     0%
                   </div>
-                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-gray-500">
+                  <div className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-slate-400">
                     Migration Downtime
                   </div>
                 </div>
@@ -1544,20 +1326,20 @@ const App = () => {
         className="relative py-12 sm:py-16 md:py-20 overflow-hidden"
       >
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-blue-600/5 to-transparent pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-500/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
           <div className="text-center mb-8 sm:mb-10">
-            <p className="text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+            <p className="text-blue-600 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
               In my own words
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-2">
               Who I Am
             </h2>
-            <div className="h-1 w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full mx-auto" />
+            <div className="h-1 w-20 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
           </div>
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_4px_24px_-4px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.04)]">
-            <div className="aspect-video bg-[#0a0f1e] relative">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-transparent to-indigo-500/10 opacity-60 pointer-events-none" />
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-md">
+            <div className="aspect-video bg-slate-100 relative">
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-indigo-500/5 opacity-60 pointer-events-none" />
               <iframe
                 src="https://www.youtube.com/embed/m4DetXg94ak"
                 title="Who I Am"
@@ -1576,21 +1358,21 @@ const App = () => {
         className="relative py-12 sm:py-16 md:py-20 overflow-hidden"
       >
         <div className="absolute inset-0 bg-linear-to-b from-blue-600/5 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 sm:mb-10 relative">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+              <div className="flex items-center gap-2 text-blue-600 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
                 <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" /> Latest
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-1">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-1">
                 Blog
               </h2>
-              <div className="h-1 w-16 sm:w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full" />
+              <div className="h-1 w-16 sm:w-20 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full" />
             </div>
             <Link
               href="/blog"
-              className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-blue-400 transition-colors"
+              className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors"
             >
               View all posts
             </Link>
@@ -1602,26 +1384,26 @@ const App = () => {
       {/* OSS Highlight Section */}
       <section
         id="oss"
-        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/2 relative overflow-hidden"
+        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-50/30 relative overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
             <div>
-              <div className="flex items-center gap-2 sm:gap-3 text-indigo-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
+              <div className="flex items-center gap-2 sm:gap-3 text-indigo-600 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
                 <Activity className="w-3 h-3 sm:w-4 sm:h-4" /> Global
                 Contribution Metrics
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
                 Open Source <br />{" "}
-                <span className="text-indigo-500">Impact.</span>
+                <span className="text-indigo-600">Impact.</span>
               </h2>
             </div>
-            <div className="p-6 sm:p-8 bg-indigo-500/15 border border-indigo-500/25 rounded-2xl sm:rounded-3xl backdrop-blur-xl md:max-w-xs shadow-[0_0_0_1px_rgba(99,102,241,0.2),0_4px_24px_-4px_rgba(0,0,0,0.3)]">
-              <div className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter">
+            <div className="p-6 sm:p-8 bg-white border border-indigo-100 rounded-2xl sm:rounded-3xl backdrop-blur-xl md:max-w-xs shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)]">
+              <div className="text-3xl sm:text-4xl font-black text-indigo-600 mb-2 tracking-tighter">
                 TOP 4%
               </div>
-              <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest leading-relaxed">
+              <p className="text-xs text-indigo-700 font-bold uppercase tracking-widest leading-relaxed">
                 Global contributor rank on Twenty CRM. Architecting tools used by
                 the modern developer ecosystem.
               </p>
@@ -1645,13 +1427,13 @@ const App = () => {
         <div className="absolute top-1/4 right-0 w-1/3 h-1/2 bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
           <div className="mb-12 sm:mb-16 md:mb-20">
-            <p className="text-blue-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
+            <p className="text-blue-600 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-2">
               Stack
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-2">
-              Technical <span className="text-blue-500">Domains</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-2">
+              Technical <span className="text-blue-600">Domains</span>
             </h2>
-            <div className="h-1 w-20 bg-linear-to-r from-blue-500 to-indigo-500 rounded-full" />
+            <div className="h-1 w-20 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full" />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
@@ -1667,23 +1449,23 @@ const App = () => {
                   className="group relative h-full"
                 >
                   <div
-                    className={`h-full p-8 sm:p-10 bg-white/8 border border-white/15 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 group-hover:border-white/25 group-hover:bg-white/10 relative cursor-pointer backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_4px_24px_-4px_rgba(0,0,0,0.3)] group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_-4px_rgba(0,0,0,0.35)]`}
+                    className={`h-full p-8 sm:p-10 bg-white/80 border border-slate-200/80 rounded-3xl overflow-hidden flex flex-col transition-all duration-300 group-hover:border-slate-300 group-hover:bg-white relative cursor-pointer backdrop-blur-sm shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.06)]`}
                   >
                     {/* Left accent bar */}
                     <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-3xl ${style.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
 
-                    <div className="absolute top-4 right-6 font-mono text-[9px] text-gray-600 group-hover:text-gray-400 transition-colors uppercase font-bold tracking-widest">
+                    <div className="absolute top-4 right-6 font-mono text-[9px] text-slate-400 group-hover:text-slate-600 transition-colors uppercase font-bold tracking-widest">
                       {category.id}
                     </div>
 
                     <div className="flex items-start gap-5 mb-8 relative">
                       <div
-                        className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center ${style.text} border border-white/10 group-hover:scale-105 transition-transform shrink-0`}
+                        className={`w-16 h-16 rounded-2xl ${style.bg} flex items-center justify-center ${style.text} border border-slate-100 group-hover:scale-105 transition-transform shrink-0`}
                       >
                         <SkillIcon category={name} />
                       </div>
                       <div className="min-w-0 pt-0.5">
-                        <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter mb-2">
+                        <h3 className="text-xl sm:text-2xl font-black text-slate-800 uppercase tracking-tighter mb-2">
                           {name}
                         </h3>
                         <div className={`h-0.5 w-14 ${style.accent} rounded-full group-hover:w-20 transition-all duration-500`} />
@@ -1697,7 +1479,7 @@ const App = () => {
                           className="flex items-center gap-3 group/item"
                         >
                           <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${style.accent} opacity-70 group-hover/item:opacity-100 group-hover/item:shadow-[0_0_6px_currentColor] transition-all`} />
-                          <span className="text-xs sm:text-[13px] font-medium text-gray-400 group-hover/item:text-gray-200 transition-colors">
+                          <span className="text-xs sm:text-[13px] font-medium text-slate-500 group-hover/item:text-slate-800 transition-colors">
                             {item}
                           </span>
                         </div>
@@ -1705,9 +1487,9 @@ const App = () => {
                     </div>
 
                     <div
-                      className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.04] pointer-events-none transition-opacity rounded-3xl"
+                      className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.08] pointer-events-none transition-opacity rounded-3xl"
                       style={{
-                        backgroundImage: "radial-gradient(#fff 1px, transparent 0)",
+                        backgroundImage: "radial-gradient(#94a3b8 1px, transparent 0)",
                         backgroundSize: "24px 24px",
                       }}
                     />
@@ -1723,10 +1505,10 @@ const App = () => {
       <section id="experience" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 md:mb-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-4">
               Deployment History
             </h2>
-            <p className="text-gray-500 font-mono text-xs sm:text-sm tracking-widest">
+            <p className="text-slate-400 font-mono text-xs sm:text-sm tracking-widest">
               TIMELINE // PRODUCTION_LOGS
             </p>
           </div>
@@ -1741,20 +1523,20 @@ const App = () => {
       {/* Recommendations */}
       <section
         id="recommendations"
-        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-600/5 relative overflow-hidden"
+        className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-indigo-50/20 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-1/3 h-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
             <div>
-              <div className="flex items-center gap-2 sm:gap-3 text-indigo-400 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
+              <div className="flex items-center gap-2 sm:gap-3 text-indigo-600 font-black uppercase tracking-[0.3em] text-[9px] sm:text-[10px] mb-3 sm:mb-4">
                 <Activity className="w-3 h-3 sm:w-4 sm:h-4" /> Peer Validation
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter uppercase mb-4 leading-tight sm:leading-none">
                 Professional <br />{" "}
-                <span className="text-indigo-500">Endorsements.</span>
+                <span className="text-indigo-600">Endorsements.</span>
               </h2>
-              <p className="text-gray-400 font-medium text-sm sm:text-base max-w-xl mt-4">
+              <p className="text-slate-500 font-medium text-sm sm:text-base max-w-xl mt-4">
                 Recommendations from colleagues and leaders in the industry.
               </p>
             </div>
@@ -1762,7 +1544,7 @@ const App = () => {
               href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:bg-indigo-500 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-500/10 transition-all cursor-pointer group"
             >
               <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               View All on LinkedIn
@@ -1779,14 +1561,14 @@ const App = () => {
       </section>
 
       {/* Products */}
-      <section id="products" className="py-16 sm:py-24 md:py-32 bg-blue-600/5">
+      <section id="products" className="py-16 sm:py-24 md:py-32 bg-slate-100/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-end mb-12 sm:mb-16 md:mb-20">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase mb-2">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tighter uppercase mb-2">
                 Live Products
               </h2>
-              <p className="text-gray-400 font-medium text-sm sm:text-base">
+              <p className="text-slate-500 font-medium text-sm sm:text-base">
                 Production-grade builds and architectures.
               </p>
             </div>
@@ -1802,7 +1584,7 @@ const App = () => {
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 className="group relative"
               >
-                <div className="relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-linear-to-br from-white/5 via-white/2 to-transparent backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_8px_40px_-12px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 group-hover:border-white/20 group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_12px_48px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)]">
+                <div className="relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white/80 backdrop-blur-md shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)] transition-all duration-300 group-hover:border-slate-300 group-hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.05)]">
                   {/* Left accent */}
                   <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl opacity-70 group-hover:opacity-100 transition-opacity ${product.url === "#" ? "bg-linear-to-b from-amber-500/80 to-orange-500/80" : "bg-linear-to-b from-blue-500 to-indigo-500"}`} />
 
@@ -1810,14 +1592,14 @@ const App = () => {
                   <div
                     className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.06] pointer-events-none rounded-2xl sm:rounded-3xl transition-opacity"
                     style={{
-                      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.6) 1px, transparent 0)",
+                      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0)",
                       backgroundSize: "24px 24px",
                     }}
                   />
                   <div
                     className="absolute inset-0 opacity-[0.015] pointer-events-none rounded-2xl sm:rounded-3xl"
                     style={{
-                      backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                      backgroundImage: "linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)",
                       backgroundSize: "48px 48px",
                     }}
                   />
@@ -1830,22 +1612,22 @@ const App = () => {
                       <div>
                         <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
                           {product.name === "KRAG" && (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25 text-[9px] sm:text-[10px] font-black text-blue-400 uppercase tracking-widest shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]">
-                              <span className="w-1 h-1 rounded-full bg-blue-400 animate-pulse" />
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[9px] sm:text-[10px] font-black text-blue-600 uppercase tracking-widest shadow-none">
+                              <span className="w-1 h-1 rounded-full bg-blue-500 animate-pulse" />
                               Flagship Product
                             </span>
                           )}
                           {"status" in product && product.status && (
-                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-linear-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 text-[9px] sm:text-[10px] font-black text-amber-300 uppercase tracking-widest shadow-[0_0_24px_-6px_rgba(245,158,11,0.25)] ring-1 ring-inset ring-amber-400/10">
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-[9px] sm:text-[10px] font-black text-amber-700 uppercase tracking-widest shadow-none">
                               <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400/60" />
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
                               </span>
                               {product.status}
                             </span>
                           )}
                         </div>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-800 tracking-tight uppercase">
                           {product.name}
                         </h3>
                       </div>
@@ -1855,14 +1637,14 @@ const App = () => {
                             href={product.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs uppercase tracking-widest hover:bg-slate-200 transition-all"
                           >
                             <Github className="w-3.5 h-3.5" />
                             GitHub
                           </a>
                         )}
                         {product.url === "#" ? (
-                          <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-500 font-bold text-xs uppercase tracking-widest cursor-default">
+                          <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 font-bold text-xs uppercase tracking-widest cursor-default">
                             Launching soon
                           </span>
                         ) : (
@@ -1870,7 +1652,7 @@ const App = () => {
                             href={product.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-white/10 hover:border-blue-500/40 transition-all"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs uppercase tracking-widest hover:bg-slate-200 transition-all"
                           >
                             {product.url.includes("github.com") ? "View on GitHub" : "Live Dashboard"}
                             <ExternalLink className="w-3.5 h-3.5" />
@@ -1879,7 +1661,7 @@ const App = () => {
                       </div>
                     </div>
 
-                    <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl mb-6">
+                    <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-3xl mb-6">
                       {product.summary}
                     </p>
 
@@ -1887,7 +1669,7 @@ const App = () => {
                       {product.tech.map((t) => (
                         <span
                           key={t}
-                          className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-gray-500 uppercase tracking-wider"
+                          className="px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-[10px] font-semibold text-slate-600 uppercase tracking-wider"
                         >
                           {t}
                         </span>
@@ -1897,7 +1679,7 @@ const App = () => {
                     {/* Media section: image + video */}
                     <div className={`flex flex-col gap-6 items-center ${"video" in product && product.video ? "lg:flex-row lg:items-center" : "max-w-sm"}`}>
                       <div className={`shrink-0 ${"video" in product && product.video ? "w-full lg:w-72 xl:w-80" : "w-full"}`}>
-                        <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-white/5 relative shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                        <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 relative shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                           {product.image ? (
                             <Image
                               src={product.image}
@@ -1907,8 +1689,8 @@ const App = () => {
                               priority={product.name === "KRAG"}
                             />
                           ) : (
-                            <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-blue-600/15 via-indigo-600/10 to-transparent">
-                              <span className="text-5xl sm:text-6xl font-black text-white/30 tracking-tighter uppercase">
+                            <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-blue-600/5 via-indigo-600/5 to-transparent">
+                              <span className="text-5xl sm:text-6xl font-black text-slate-300 tracking-tighter uppercase">
                                 {product.name}
                               </span>
                             </div>
@@ -1920,10 +1702,10 @@ const App = () => {
                         const id = vidUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?]+)/)?.[1];
                         return id ? (
                           <div className="flex-1 min-w-0">
-                            <p className="text-[9px] sm:text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">
+                            <p className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">
                               Product Demo
                             </p>
-                            <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-[inset_0_2px_8px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)]">
+                            <div className="aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 shadow-none">
                               <iframe
                                 src={`https://www.youtube.com/embed/${id}`}
                                 title={`${product.name} demo`}
@@ -1947,18 +1729,18 @@ const App = () => {
 
       {/* CTA / Book a meet */}
       <section id="book-a-meet" className="py-24 sm:py-32 md:py-44 px-4 sm:px-6 text-center relative overflow-hidden scroll-mt-24">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/10 blur-[150px] -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/5 blur-[150px] -z-10" />
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-black text-white tracking-tighter leading-[1.1] sm:leading-none uppercase mb-8 sm:mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl font-black text-slate-900 tracking-tighter leading-[1.1] sm:leading-none uppercase mb-8 sm:mb-12">
             Initialize <br />
-            <span className="text-blue-500 italic">Contact.</span>
+            <span className="text-blue-600 italic">Contact.</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 font-medium px-4">
+          <p className="text-base sm:text-lg md:text-xl text-slate-500 mb-8 sm:mb-12 font-medium px-4">
             Currently reviewing opportunities for Founding Engineer & AI
             Infrastructure roles.
           </p>
           <div className="mb-12 sm:mb-16 w-full max-w-2xl mx-auto">
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] [&_.cal-embed]:rounded-2xl">
+            <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md shadow-slate-200/50 [&_.cal-embed]:rounded-2xl">
               <Cal
                 calLink={`${DATA.contact.cal}/${DATA.contact.calEventSlug}`}
                 config={{ theme: "light" }}
@@ -1969,7 +1751,7 @@ const App = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
             <a
               href={`mailto:${DATA.contact.email}`}
-              className="px-8 sm:px-12 py-4 sm:py-6 bg-white text-black font-black rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all cursor-pointer w-full sm:w-auto"
+              className="px-8 sm:px-12 py-4 sm:py-6 bg-slate-900 text-white font-black rounded-xl sm:rounded-2xl text-sm sm:text-base md:text-lg uppercase tracking-widest hover:bg-blue-600 transition-all cursor-pointer w-full sm:w-auto"
             >
               Direct Mail
             </a>
@@ -1978,7 +1760,7 @@ const App = () => {
                 href={`https://github.com/${DATA.contact.github}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
+                className="p-4 sm:p-6 bg-slate-100 border border-slate-200 rounded-xl sm:rounded-2xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -1986,7 +1768,7 @@ const App = () => {
                 href={`https://linkedin.com/in/${DATA.contact.linkedin}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
+                className="p-4 sm:p-6 bg-slate-100 border border-slate-200 rounded-xl sm:rounded-2xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -1994,7 +1776,7 @@ const App = () => {
                 href={`https://x.com/${DATA.contact.twitter}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 sm:p-6 bg-white/8 border border-white/15 rounded-xl sm:rounded-2xl hover:bg-white/12 transition-all text-white cursor-pointer shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_12px_-2px_rgba(0,0,0,0.25)]"
+                className="p-4 sm:p-6 bg-slate-100 border border-slate-200 rounded-xl sm:rounded-2xl hover:bg-slate-200 transition-all text-slate-700 cursor-pointer"
               >
                 <svg
                   className="w-5 h-5 sm:w-6 sm:h-6"
@@ -2011,8 +1793,8 @@ const App = () => {
       </section>
 
       {/* Agent Status Bar */}
-      <footer className="fixed bottom-0 w-full z-50 px-3 sm:px-6 py-3 sm:py-4 bg-[#020617]/80 backdrop-blur-md border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-[8px] sm:text-[9px] font-bold text-gray-600 uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+      <footer className="fixed bottom-0 w-full z-50 px-3 sm:px-6 py-3 sm:py-4 bg-white/80 backdrop-blur-md border-t border-slate-200">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">
           <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center sm:justify-start">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />{" "}
@@ -2030,8 +1812,8 @@ const App = () => {
 
       <style>{`
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
         
         @keyframes scan {
@@ -2053,19 +1835,19 @@ const App = () => {
             filter: brightness(1) contrast(1) saturate(1);
           }
           10% {
-            filter: brightness(1.05) contrast(1.08) saturate(1.1);
+            filter: brightness(1.02) contrast(1.04) saturate(1.05);
           }
           20% {
-            filter: brightness(0.98) contrast(1.05) saturate(1.05);
+            filter: brightness(0.99) contrast(1.02) saturate(1.02);
           }
           30% {
             filter: brightness(1) contrast(1) saturate(1);
           }
           50% {
-            filter: brightness(1.03) contrast(1.06) saturate(1.08);
+            filter: brightness(1.01) contrast(1.03) saturate(1.04);
           }
           60% {
-            filter: brightness(0.99) contrast(1.03) saturate(1.03);
+            filter: brightness(0.99) contrast(1.01) saturate(1.01);
           }
           70% {
             filter: brightness(1) contrast(1) saturate(1);
@@ -2103,11 +1885,11 @@ const App = () => {
           }
           5% {
             transform: translateX(-2px);
-            opacity: 0.6;
+            opacity: 0.3;
           }
           10% {
             transform: translateX(1px);
-            opacity: 0.4;
+            opacity: 0.2;
           }
           15% {
             transform: translateX(0);
@@ -2115,11 +1897,11 @@ const App = () => {
           }
           45% {
             transform: translateX(-1.5px);
-            opacity: 0.5;
+            opacity: 0.25;
           }
           50% {
             transform: translateX(1.5px);
-            opacity: 0.5;
+            opacity: 0.25;
           }
           55% {
             transform: translateX(0);
@@ -2127,11 +1909,11 @@ const App = () => {
           }
           85% {
             transform: translateX(-1px);
-            opacity: 0.4;
+            opacity: 0.2;
           }
           90% {
             transform: translateX(1px);
-            opacity: 0.3;
+            opacity: 0.15;
           }
           95% {
             transform: translateX(0);
@@ -2146,11 +1928,11 @@ const App = () => {
           }
           7% {
             transform: translateX(2px);
-            opacity: 0.5;
+            opacity: 0.25;
           }
           12% {
             transform: translateX(-1px);
-            opacity: 0.3;
+            opacity: 0.15;
           }
           17% {
             transform: translateX(0);
@@ -2158,11 +1940,11 @@ const App = () => {
           }
           47% {
             transform: translateX(1.5px);
-            opacity: 0.4;
+            opacity: 0.2;
           }
           52% {
             transform: translateX(-1.5px);
-            opacity: 0.4;
+            opacity: 0.2;
           }
           57% {
             transform: translateX(0);
@@ -2170,11 +1952,11 @@ const App = () => {
           }
           87% {
             transform: translateX(1px);
-            opacity: 0.3;
+            opacity: 0.15;
           }
           92% {
             transform: translateX(-1px);
-            opacity: 0.25;
+            opacity: 0.1;
           }
           97% {
             transform: translateX(0);
@@ -2189,11 +1971,11 @@ const App = () => {
           }
           3% {
             transform: translateX(-1.5px);
-            opacity: 0.55;
+            opacity: 0.28;
           }
           8% {
             transform: translateX(2px);
-            opacity: 0.35;
+            opacity: 0.18;
           }
           13% {
             transform: translateX(0);
@@ -2201,11 +1983,11 @@ const App = () => {
           }
           43% {
             transform: translateX(-1px);
-            opacity: 0.45;
+            opacity: 0.22;
           }
           48% {
             transform: translateX(2px);
-            opacity: 0.45;
+            opacity: 0.22;
           }
           53% {
             transform: translateX(0);
@@ -2213,11 +1995,11 @@ const App = () => {
           }
           83% {
             transform: translateX(-1.5px);
-            opacity: 0.35;
+            opacity: 0.18;
           }
           88% {
             transform: translateX(1.5px);
-            opacity: 0.3;
+            opacity: 0.15;
           }
           93% {
             transform: translateX(0);
@@ -2231,29 +2013,29 @@ const App = () => {
 
         .rgb-glitch-red {
           animation: rgb-glitch-red 12s infinite;
-          mix-blend-mode: screen;
+          mix-blend-mode: multiply;
         }
 
         .rgb-glitch-green {
           animation: rgb-glitch-green 12s infinite 0.15s;
-          mix-blend-mode: screen;
+          mix-blend-mode: multiply;
         }
 
         .rgb-glitch-blue {
           animation: rgb-glitch-blue 12s infinite 0.3s;
-          mix-blend-mode: screen;
+          mix-blend-mode: multiply;
         }
 
         .rgb-glitch-red img {
-          filter: contrast(1.5) brightness(0.85) saturate(1.8);
+          filter: contrast(1.2) brightness(1.1) saturate(1.4);
         }
 
         .rgb-glitch-green img {
-          filter: contrast(1.4) brightness(0.9) saturate(1.6);
+          filter: contrast(1.2) brightness(1.1) saturate(1.3);
         }
 
         .rgb-glitch-blue img {
-          filter: contrast(1.3) brightness(1.1) saturate(1.4);
+          filter: contrast(1.1) brightness(1.2) saturate(1.2);
         }
 
         .glitch-container {
@@ -2269,29 +2051,29 @@ const App = () => {
           background: linear-gradient(
             90deg,
             transparent 0%,
-            rgba(16, 185, 129, 0.03) 25%,
+            rgba(59, 130, 246, 0.02) 25%,
             transparent 50%,
-            rgba(59, 130, 246, 0.03) 75%,
+            rgba(99, 102, 241, 0.02) 75%,
             transparent 100%
           );
           animation: rgb-shift 15s infinite;
           pointer-events: none;
-          mix-blend-mode: screen;
-          opacity: 0.6;
-        }
-
-        .hacker-overlay {
-          background: radial-gradient(circle at center, transparent 30%, rgba(16, 185, 129, 0.02) 50%, rgba(16, 185, 129, 0.03) 70%, transparent 90%);
-          mix-blend-mode: screen;
+          mix-blend-mode: multiply;
           opacity: 0.4;
         }
 
+        .hacker-overlay {
+          background: radial-gradient(circle at center, transparent 30%, rgba(59, 130, 246, 0.01) 50%, rgba(99, 102, 241, 0.02) 70%, transparent 90%);
+          mix-blend-mode: multiply;
+          opacity: 0.3;
+        }
+
         .hacker-char {
-          text-shadow: 0 0 10px rgba(16, 185, 129, 1), 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.5);
+          text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(99, 102, 241, 0.4);
           filter: blur(0.3px);
           font-weight: 900;
           letter-spacing: 0.1em;
-          color: rgba(110, 231, 183, 1) !important;
+          color: rgba(99, 102, 241, 0.9) !important;
         }
 
         .hacker-scanline {
@@ -2299,15 +2081,15 @@ const App = () => {
             to bottom,
             transparent 0%,
             transparent 48%,
-            rgba(16, 185, 129, 0.15) 49%,
-            rgba(16, 185, 129, 0.15) 51%,
+            rgba(59, 130, 246, 0.08) 49%,
+            rgba(59, 130, 246, 0.08) 51%,
             transparent 52%,
             transparent 100%
           );
           height: 2px;
-          opacity: 0.4;
-          box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
-          mix-blend-mode: screen;
+          opacity: 0.3;
+          box-shadow: 0 0 8px rgba(59, 130, 246, 0.15);
+          mix-blend-mode: multiply;
         }
 
         .hacker-scanline::before {
@@ -2320,9 +2102,9 @@ const App = () => {
           background: linear-gradient(
             to bottom,
             transparent 0%,
-            rgba(16, 185, 129, 0.03) 49.5%,
-            rgba(16, 185, 129, 0.06) 50%,
-            rgba(16, 185, 129, 0.03) 50.5%,
+            rgba(59, 130, 246, 0.01) 49.5%,
+            rgba(59, 130, 246, 0.03) 50%,
+            rgba(59, 130, 246, 0.01) 50.5%,
             transparent 100%
           );
         }

@@ -241,7 +241,7 @@ export async function GET() {
         <section>
             <h2>Summary</h2>
             <div class="summary">
-                Founder and Full-Stack AI Engineer with deep expertise in RAG systems, serverless AI, vLLM, model hosting, and MLOps. Built KRAG, a serverless RAG platform that beats Google NotebookLM in PDF parsing and table extraction. It runs on scale-to-zero GPUs so you pay nothing when idle. Strong in Vector DBs (BGE-M3), MCP, Modal, and bridging backend (PostgreSQL, Redis, tRPC) with AI tooling (Vercel AI SDK, fine-tuning). Track record: zero-downtime migrations, 90% RAG accuracy gains at Buildway.ai. Now leading SMAKG and building flagship products (KRAG, The Informant) plus client work like StealthNode.
+                Founder of TathyaGrid.com (India's first agentic lawyer) and Full-Stack AI Engineer with deep expertise in RAG, serverless AI, vLLM, and MLOps. Led a team to secure a top 5 finalist spot for the Northern Arizona University Healthcare MBA AI sales funnel contract against multi-million dollar enterprise giants. Built KRAG, a serverless RAG platform that outperforms Google NotebookLM in PDF table/structure parsing. Proven track record: 90% RAG accuracy gains at alawyer.ai, solo billing/devops operations for 500M+ follower brands at replient.ai, and building data-moat agentic systems trusted by 20+ B2B law firms with backing from NVIDIA, Google, and AWS.
             </div>
         </section>
 
@@ -262,6 +262,21 @@ export async function GET() {
                 <div class="job-header">
                     <div>
                         <span class="job-title">Founder</span>
+                        <span class="company">TathyaGrid.com</span>
+                    </div>
+                    <div class="job-meta">Apr 2026 – Present</div>
+                </div>
+                <ul class="bullets">
+                    <li><strong>India's First Agentic Lawyer:</strong> Architecting and scaling India's first agentic AI lawyer platform with a custom legal data moat covering all Indian court data.</li>
+                    <li><strong>Client Adoption:</strong> Trusted and utilized by <strong>20+ B2B law firms</strong> across India.</li>
+                    <li><strong>Partnerships & Backing:</strong> Backed by program benefits and infrastructure from <strong>NVIDIA, Google, and AWS</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Founder</span>
                         <span class="company">SMAKG.com</span>
                     </div>
                     <div class="job-meta">Feb 2026 – Present | Remote</div>
@@ -276,17 +291,47 @@ export async function GET() {
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <span class="job-title">Founding Engineer</span>
-                        <span class="company">Buildway.ai</span>
+                        <span class="job-title">Founding AI Engineer</span>
+                        <span class="company">alawyer.ai</span>
                     </div>
-                    <div class="job-meta">Oct 2025 – Mar 2026 | Berlin, Germany (Remote)</div>
+                    <div class="job-meta">Oct 2025 – Mar 2026 | Vienna, Austria (Remote)</div>
                 </div>
                 <ul class="bullets">
+                    <li><strong>Growth & Impact:</strong> Served as Founding AI Engineer at Austria's fastest-growing legal AI startup, architecting core LLM and RAG features.</li>
                     <li><strong>AI Infrastructure & RAG Optimization:</strong> Engineered a multi-agent system with <strong>Dynamic Chain of Thought</strong> and Web Search tools using MCP. Improved RAG citation accuracy by <strong>90%</strong> and data retrieval by <strong>70%</strong> via complex vector DB logic and post-hoc processing.</li>
-                    <li><strong>Solo Lead (Billing & AI):</strong> Built complex billing infrastructure and shipped a full AI chat system with dynamic interactive charts (<strong>Vercel AI SDK, Recharts</strong>) in &lt;2.5 weeks. Debugged critical production "ghost migrations" with 100% reliability.</li>
-                    <li><strong>Critical Zero-Downtime Migration:</strong> Executed a high-stakes migration from NextAuth to Better Auth for a live production app, resulting in <strong>0% downtime</strong> and <strong>zero data loss</strong>.</li>
+                    <li><strong>High-Velocity Engineering:</strong> Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching.</li>
                     <li><strong>Advanced Security & Infrastructure:</strong> Refactored tRPC infra for security (zip-bomb protection, E2B sandboxing). Implemented 100% secure Redis-backed pagination for MCP, boosting client agent accuracy by <strong>90%</strong>.</li>
-                    <li><strong>High-Velocity Engineering:</strong> Contributed to 3 production projects from <strong>Day 1</strong> (zero onboarding). Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching.</li>
+                    <li><strong>Critical Zero-Downtime Migration:</strong> Executed a high-stakes migration from NextAuth to Better Auth for a live production app, resulting in <strong>0% downtime</strong> and <strong>zero data loss</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Founding Engineer (Contract)</span>
+                        <span class="company">Buildway.ai</span>
+                    </div>
+                    <div class="job-meta">Oct 2025 – Apr 2026 | Berlin, Germany (Remote)</div>
+                </div>
+                <ul class="bullets">
+                    <li><strong>AI Infrastructure & Operations:</strong> Engineered scalable multi-agent systems and custom Vector DB retrieval logic. Hardened web and security setups including zero-downtime Auth migrations and tRPC endpoints.</li>
+                    <li><strong>Solo Lead:</strong> Directed DevOps, billing infrastructure, and event-driven automation pipelines supporting high-throughput business workflows.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Founding Engineer & Operations Lead</span>
+                        <span class="company">replient.ai</span>
+                    </div>
+                    <div class="job-meta">Oct 2025 – Mar 2026 | Remote</div>
+                </div>
+                <ul class="bullets">
+                    <li><strong>Solo Operations & Billing:</strong> Handled billing, DevOps, and all backend operations solo, supporting global brands and influencers with <strong>500 million+ combined followers</strong>.</li>
+                    <li><strong>Automation Pipelines & Webhooks:</strong> Built and optimized mission-critical, event-driven automation pipelines leveraging webhooks and serverless functions to automate high-throughput business workflows.</li>
+                    <li><strong>AI-Driven Analytics & Dashboards:</strong> Designed and implemented deep AI-driven analytics dashboards featuring interactive charts and predictive intelligence for operations monitoring.</li>
+                    <li><strong>High-Impact Delivery:</strong> Shipped a complete billing infrastructure and AI chat system with dynamic interactive charts (<strong>Vercel AI SDK, Recharts</strong>) in less than 2.5 weeks, ensuring 100% reliability under peak load.</li>
                 </ul>
             </div>
         </section>
@@ -399,6 +444,20 @@ export async function GET() {
         <section>
             <h2>Freelance Experience</h2>
             
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Lead AI Engineer / Team Lead</span>
+                        <span class="company">Custom AI Sales Funnel Contract</span>
+                    </div>
+                    <div class="job-meta">2025 – 2026</div>
+                </div>
+                <ul class="bullets">
+                    <li><strong>Competitive Selection:</strong> Led a technical team and achieved selection as a <strong>top 5 finalist</strong> for the Northern Arizona University Healthcare MBA AI sales funnel custom development contract, successfully competing against established enterprise giants with millions in annual revenue.</li>
+                    <li><strong>Engineering Quality:</strong> Architected the high-throughput sales funnel and agentic workflow demonstration, validating enterprise-grade quality and performance.</li>
+                </ul>
+            </div>
+
             <div class="job">
                 <div class="job-header">
                     <div>
