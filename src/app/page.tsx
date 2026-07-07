@@ -145,24 +145,40 @@ const DATA = {
       location: "Berlin, Germany (Remote)",
       highlights: [
         {
-          title: "AI Infrastructure & RAG Optimization",
-          desc: "Engineered a multi-agent system with Dynamic Chain of Thought and Web Search tools using MCP. Improved RAG citation accuracy by 90% and data retrieval by 70% via complex vector DB logic and post-hoc processing.",
+          title: "Contract Projects Overview (alawyer.ai & replient.ai)",
+          desc: "Deployed as lead founding contractor to architect AI systems, core infra, operations, and security across multiple live production startups.",
         },
         {
-          title: "Solo Lead (Billing & AI)",
-          desc: "Built complex billing infrastructure and shipped a full AI chat system with dynamic interactive charts (Vercel AI SDK, Recharts) in <2.5 weeks. Debugged critical production 'ghost migrations' with 100% reliability.",
+          title: "alawyer.ai: AI Infrastructure & RAG Optimization",
+          desc: "Engineered a multi-agent system with Dynamic Chain of Thought and Web Search tools (MCP). Improved RAG citation accuracy by 90% and data retrieval by 70% via complex vector DB logic.",
         },
         {
-          title: "Critical Zero-Downtime Migration",
+          title: "alawyer.ai: High-Velocity Austrian Legal API Seeding",
+          desc: "Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching.",
+        },
+        {
+          title: "alawyer.ai: Advanced Security & tRPC Hardening",
+          desc: "Refactored tRPC infra for zip-bomb protection and E2B sandboxing, and implemented secure Redis-backed pagination for MCP, boosting client agent accuracy by 90%.",
+        },
+        {
+          title: "alawyer.ai: Critical Better Auth Migration",
           desc: "Executed a high-stakes migration from NextAuth to Better Auth for a live production app, resulting in 0% downtime and zero data loss.",
         },
         {
-          title: "Advanced Security & Infrastructure",
-          desc: "Refactored tRPC infra for security (zip-bomb protection, E2B sandboxing). Implemented 100% secure Redis-backed pagination for MCP, boosting client agent accuracy by 90%.",
+          title: "replient.ai: Solo Operations & DevOps (500M+ Followers)",
+          desc: "Handled billing, DevOps, and all backend operations solo, supporting global brands and influencers with 500 million+ combined followers.",
         },
         {
-          title: "High-Velocity Engineering",
-          desc: "Contributed to 3 production projects from Day 1 (zero onboarding). Parsed complex Austrian legal APIs (big data seeding, complex joins) and reduced launch times by optimizing DB load and caching.",
+          title: "replient.ai: Event-Driven Automation Pipelines",
+          desc: "Built and optimized mission-critical, event-driven automation pipelines leveraging webhooks and serverless functions to automate high-throughput business workflows.",
+        },
+        {
+          title: "replient.ai: AI-Driven Analytics & Dashboards",
+          desc: "Designed and implemented deep AI-driven analytics dashboards featuring interactive charts (Recharts) and predictive intelligence for operations monitoring.",
+        },
+        {
+          title: "replient.ai: Rapid Billing & Chat Feature Delivery",
+          desc: "Shipped a complete billing infrastructure and AI chat system with dynamic interactive charts (Vercel AI SDK) in less than 2.5 weeks, ensuring 100% reliability under peak load.",
         },
       ],
     },
@@ -202,6 +218,22 @@ const DATA = {
         "World's first serverless RAG platform. Build intelligent knowledge bases from PDFs and web URLs with real-time chat and citation support.",
         "Built on Modal for scalable, cost-effective processing. Multi-format ingestion, enterprise encryption (Simple/Advanced), streaming SSE responses.",
         "Full stack: Next.js 16, tRPC, Prisma, Python workers (ingestion + retrieval), BGE-M3 embeddings, Qwen 2.5 for generation.",
+      ],
+    },
+    {
+      name: "AI Concierge",
+      role: "Creator & Lead Developer",
+      period: "Dec 2025 – Present",
+      url: "#",
+      description: "Custom AI Concierge for Brands",
+      summary: "Custom, high-performance conversational AI concierges built for enterprise e-commerce and retail brands, directly boosting sales conversions by guiding customers to products matching their preferences in real time.",
+      tech: ["Next.js", "OpenAI API", "TailwindCSS", "Vector Search", "Streaming APIs"],
+      image: "/concierge.png",
+      video: "https://youtu.be/yl8RTdP41hs?si=BNLMy7-Q7__LVvJO",
+      details: [
+        "Developed custom, high-performance conversational AI concierges for enterprise e-commerce and retail brands, directly boosting sales conversions.",
+        "Integrated real-time database queries, dynamic filtering, and LLM-based product reasoning to handle complex conversational queries with zero latency.",
+        "Created fluid streaming UI interfaces using Next.js and serverless API routes for interactive customer shopping sessions.",
       ],
     },
     {
