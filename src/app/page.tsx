@@ -136,6 +136,10 @@ const DATA = {
           title: "Client Development",
           desc: "Building client products under the SMAKG development firm (e.g. StealthNode — AI-driven SOC platform).",
         },
+        {
+          title: "NAU AI Sales Funnel Finalist",
+          desc: "Led a team and achieved selection as a top 5 finalist for the Northern Arizona University Healthcare MBA AI sales funnel custom development contract, successfully competing against enterprise giants with millions in revenue.",
+        },
       ],
     },
     {
@@ -188,10 +192,6 @@ const DATA = {
       period: "Feb 2025 – May 2025",
       location: "Remote",
       highlights: [
-        {
-          title: "NAU AI Sales Funnel Finalist",
-          desc: "Led a team and got selected as a top 5 finalist in the contract for Northern Arizona University Healthcare MBA AI sales funnel custom development contract against giants with millions in revenue.",
-        },
         {
           title: "Secure Containerized Web Application",
           desc: "Delivered a secure, containerized (Docker) web application using Next.js and MongoDB.",

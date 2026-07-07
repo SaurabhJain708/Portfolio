@@ -285,6 +285,7 @@ export async function GET() {
                     <li><strong>Company Building:</strong> Founding and leading SMAKG.com; defining product vision, technical strategy, and go-to-market.</li>
                     <li><strong>Product & Engineering:</strong> Driving development of flagship products (KRAG, The Informant) and core infrastructure.</li>
                     <li><strong>Client Development:</strong> Building client products under SMAKG (e.g. StealthNode, an AI-driven SOC platform).</li>
+                    <li><strong>NAU AI Sales Funnel:</strong> Led a technical team and achieved selection as a <strong>top 5 finalist</strong> for the Northern Arizona University Healthcare MBA AI sales funnel custom development contract, competing against enterprise giants with millions in annual revenue.</li>
                 </ul>
             </div>
 
@@ -467,7 +468,7 @@ export async function GET() {
                     <li><strong>Engineering Quality:</strong> Architected the high-throughput sales funnel and agentic workflow demonstration, validating enterprise-grade quality and performance.</li>
                 </ul>
             </div>
-
+            
             <div class="job">
                 <div class="job-header">
                     <div>
